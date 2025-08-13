@@ -37,7 +37,7 @@ Hello, Linux World!<br>
         </div>
     </div>
     
-    <h2>5.2 バックアップスクリプトを作ろう</h2>
+    <h2>5.2 実践！バックアップスクリプト</h2>
     
     <div class="command-grid">
         <div class="command-card">
@@ -79,158 +79,7 @@ $ ./backup.sh
         </div>
     </div>
     
-    <h2>5.3 システム情報レポート作成</h2>
-    
-    <div class="command-grid">
-        <div class="command-card">
-            <h3>sysinfo.sh - システム状態レポート</h3>
-            <div class="code-box">
-#!/bin/bash
-
-echo "========================================="
-echo "     システム情報レポート"
-echo "     作成日時: $(date)"
-echo "========================================="
-echo ""
-
-echo "【ホスト情報】"
-echo "ホスト名: $(hostname)"
-echo "OS: $(cat /etc/os-release | grep PRETTY_NAME | cut -d'"' -f2)"
-echo "カーネル: $(uname -r)"
-echo ""
-
-echo "【CPU情報】"
-echo "CPU: $(lscpu | grep 'Model name' | cut -d':' -f2 | xargs)"
-echo "コア数: $(nproc)"
-echo ""
-
-echo "【メモリ情報】"
-free -h | grep Mem | awk '{print "総メモリ: "$2"\n使用中: "$3"\n空き: "$4}'
-echo ""
-
-echo "【ディスク使用状況】"
-df -h | grep -E '^/dev/' | awk '{print $1": "$5" 使用 ("$3"/"$2")"}'
-echo ""
-
-echo "【ネットワーク】"
-ip -4 addr | grep inet | grep -v 127.0.0.1 | awk '{print "IP: "$2}'
-echo ""
-
-echo "【起動時間】"
-uptime -p
-echo ""
-
-echo "レポート作成完了"
-            </div>
-            <p><strong>実行例：</strong></p>
-            <div class="command-box">
-$ chmod +x sysinfo.sh<br>
-$ ./sysinfo.sh > report.txt  # ファイルに保存
-            </div>
-        </div>
-    </div>
-    
-    <h2>5.4 ファイル整理スクリプト</h2>
-    
-    <div class="command-grid">
-        <div class="command-card">
-            <h3>organize.sh - ダウンロードフォルダ整理</h3>
-            <div class="code-box">
-#!/bin/bash
-
-# 整理対象ディレクトリ
-TARGET_DIR="$HOME/Downloads"
-cd "$TARGET_DIR" || exit 1
-
-echo "📁 ダウンロードフォルダを整理します..."
-
-# 各種フォルダを作成
-mkdir -p Images Documents Videos Archives Others
-
-# 画像ファイルを移動
-for file in *.{jpg,jpeg,png,gif,svg,webp} 2>/dev/null; do
-    [ -f "$file" ] && mv "$file" Images/ && echo "  画像: $file → Images/"
-done
-
-# ドキュメントを移動
-for file in *.{pdf,doc,docx,txt,odt} 2>/dev/null; do
-    [ -f "$file" ] && mv "$file" Documents/ && echo "  文書: $file → Documents/"
-done
-
-# 動画を移動
-for file in *.{mp4,avi,mkv,mov,webm} 2>/dev/null; do
-    [ -f "$file" ] && mv "$file" Videos/ && echo "  動画: $file → Videos/"
-done
-
-# アーカイブを移動
-for file in *.{zip,tar,gz,7z,rar} 2>/dev/null; do
-    [ -f "$file" ] && mv "$file" Archives/ && echo "  圧縮: $file → Archives/"
-done
-
-echo "✅ 整理完了！"
-            </div>
-        </div>
-    </div>
-    
-    <h2>5.5 便利な関数とエイリアス</h2>
-    
-    <div class="command-grid">
-        <div class="command-card">
-            <h3>.bashrc に追加する便利設定</h3>
-            <div class="code-box">
-# ~/.bashrc に追加
-
-# よく使うコマンドのエイリアス
-alias ll='ls -la'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias grep='grep --color=auto'
-alias df='df -h'
-alias free='free -h'
-
-# 安全対策
-alias rm='rm -i'  # 削除前に確認
-alias cp='cp -i'  # 上書き前に確認
-alias mv='mv -i'  # 移動前に確認
-
-# ディレクトリ作成して移動する関数
-mkcd() {
-    mkdir -p "$1" && cd "$1"
-}
-
-# ファイル検索関数
-findfile() {
-    find . -type f -name "*$1*" 2>/dev/null
-}
-
-# プロセス検索関数
-psgrep() {
-    ps aux | grep -v grep | grep "$1"
-}
-
-# 解凍万能関数
-extract() {
-    if [ -f "$1" ]; then
-        case "$1" in
-            *.tar.gz)  tar xzf "$1"    ;;
-            *.tar.bz2) tar xjf "$1"    ;;
-            *.zip)     unzip "$1"      ;;
-            *.gz)      gunzip "$1"     ;;
-            *.tar)     tar xf "$1"     ;;
-            *.tgz)     tar xzf "$1"    ;;
-            *)         echo "未対応の形式: $1" ;;
-        esac
-    else
-        echo "ファイルが見つかりません: $1"
-    fi
-}
-            </div>
-            <p><strong>設定を反映：</strong></p>
-            <div class="command-box">$ source ~/.bashrc</div>
-        </div>
-    </div>
-    
-    <h2>5.6 cronで定期実行</h2>
+    <h2>5.3 cronで定期実行</h2>
     
     <div class="command-grid">
         <div class="command-card">
@@ -261,26 +110,24 @@ extract() {
         </div>
     </div>
     
-    <h2>5.7 学習のまとめ</h2>
+    <h2>5.4 学習のまとめ</h2>
     
     <div class="explanation">
         <h3>🎯 この章で学んだこと</h3>
         <ul>
-            <li>シェルスクリプトの基本構造</li>
-            <li>変数とコマンド置換の使い方</li>
-            <li>条件分岐（if文）の基本</li>
-            <li>ループ処理（for文）の基本</li>
-            <li>関数の定義と使用</li>
-            <li>cronによる定期実行</li>
+            <li>シェルスクリプトの基本構造（#!/bin/bash）</li>
+            <li>変数の定義と使用方法</li>
+            <li>条件分岐（if文）による処理制御</li>
+            <li>コマンド置換（$(command)）の活用</li>
+            <li>cronによる定期実行の設定</li>
         </ul>
         
         <h3>📚 次のステップ</h3>
         <ul>
+            <li>ループ処理（for, while文）の学習</li>
+            <li>関数の定義と活用</li>
             <li>より複雑な条件分岐（case文）</li>
-            <li>配列の使用</li>
-            <li>エラーハンドリング</li>
-            <li>デバッグ技法</li>
-            <li>sedやawkを使った高度なテキスト処理</li>
+            <li>エラーハンドリングの実装</li>
         </ul>
         
         <h3>💡 スクリプト作成のコツ</h3>

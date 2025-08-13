@@ -251,6 +251,21 @@ code {
     margin: 0 0 10px 0;
 }
 
+/* Code Box for Script Display */
+.code-box {
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    font-family: 'Courier New', monospace;
+    margin: 15px 0;
+    white-space: pre;
+    overflow-x: auto;
+    overflow-y: hidden;
+    line-height: 1.5;
+    max-width: 100%;
+}
+
 /* Warning and Info Boxes */
 .warning {
     background: #fff3cd;
