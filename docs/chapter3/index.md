@@ -3,92 +3,8 @@ layout: chapter
 title: "第3章：ネットワークの基礎"
 chapter: 3
 ---
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第3章：ネットワークの基礎</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            background: #f5f5f5;
-        }
-        .section {
-            background: white;
-            border-radius: 8px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #2c3e50;
-            border-bottom: 3px solid #9b59b6;
-            padding-bottom: 10px;
-        }
-        h2 {
-            color: #34495e;
-            margin-top: 30px;
-        }
-        .diagram-container {
-            margin: 30px 0;
-            text-align: center;
-        }
-        .command-box {
-            background: #2c3e50;
-            color: #27ae60;
-            padding: 15px;
-            border-radius: 5px;
-            font-family: 'Courier New', monospace;
-            margin: 15px 0;
-        }
-        .explanation {
-            background: #ecf0f1;
-            padding: 15px;
-            border-left: 4px solid #9b59b6;
-            margin: 20px 0;
-        }
-        .key-point {
-            background: #f4ecf7;
-            padding: 10px 15px;
-            border-radius: 4px;
-            margin: 15px 0;
-        }
-        svg {
-            max-width: 100%;
-            height: auto;
-        }
-        code {
-            background: #f4f4f4;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
-        }
-        .network-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        .network-table th, .network-table td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-        .network-table th {
-            background: #9b59b6;
-            color: white;
-        }
-        .network-table tr:nth-child(even) {
-            background: #f2f2f2;
-        }
-    </style>
-</head>
-<body>
-    <div class="section">
+
+<div class="section">
         <h1>第3章：ネットワークの基礎</h1>
         
         <h2>3.1 IPアドレスとは</h2>
@@ -187,238 +103,268 @@ chapter: 3
                     <text x="400" y="50" font-family="monospace" font-size="12" fill="#9b59b6">10.x.x.x</text>
                     <text x="500" y="50" font-size="12">= プライベートIPアドレス（大規模）</text>
                     
-                    <text x="400" y="70" font-family="monospace" font-size="12" fill="#f39c12">8.8.8.8</text>
-                    <text x="500" y="70" font-size="12">= Google Public DNS</text>
+                    <text x="400" y="70" font-family="monospace" font-size="12" fill="#1abc9c">172.16.x.x</text>
+                    <text x="500" y="70" font-size="12">= プライベートIPアドレス（中規模）</text>
                 </g>
             </svg>
         </div>
         
         <div class="key-point">
-            <strong>IPv4 vs IPv6：</strong>
+            <strong>覚えておこう：</strong>
             <ul style="margin: 5px 0;">
-                <li>IPv4: 32ビット（約43億個）例: 192.168.1.1</li>
-                <li>IPv6: 128ビット（ほぼ無限）例: 2001:0db8:0000:0000:0000:8a2e:0370:7334</li>
+                <li><strong>127.0.0.1</strong> - 自分自身を指す特別なアドレス</li>
+                <li><strong>192.168.x.x</strong> - 家庭やオフィスのLAN内で使用</li>
+                <li><strong>グローバルIP</strong> - インターネット上で使用される固有アドレス</li>
+                <li><strong>プライベートIP</strong> - LAN内でのみ使用される内部アドレス</li>
             </ul>
         </div>
         
-        <h2>3.2 ポートの概念</h2>
+        <h2>3.2 ポートとは</h2>
         
         <div class="diagram-container">
-            <svg width="850" height="550" viewBox="0 0 850 550">
+            <svg width="800" height="500" viewBox="0 0 800 500">
                 <!-- タイトル -->
-                <text x="425" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#2c3e50">ポート = マンションの部屋番号</text>
+                <text x="400" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#2c3e50">ポート = サービスの窓口</text>
                 
-                <!-- マンションのアナロジー -->
+                <!-- マンションの例え -->
                 <g transform="translate(100, 60)">
-                    <text x="175" y="0" font-size="16" font-weight="bold" fill="#2c3e50">マンションに例えると...</text>
+                    <text x="200" y="0" font-size="16" font-weight="bold" fill="#2c3e50">マンションに例えると...</text>
                     
-                    <!-- マンション建物 -->
-                    <rect x="50" y="20" width="250" height="300" fill="#95a5a6" stroke="#2c3e50" stroke-width="3"/>
-                    <text x="175" y="45" text-anchor="middle" fill="white" font-size="14" font-weight="bold">IPアドレス: 192.168.1.100</text>
-                    <text x="175" y="65" text-anchor="middle" fill="white" font-size="12">（建物の住所）</text>
+                    <!-- ビル -->
+                    <rect x="150" y="30" width="100" height="200" fill="#34495e" stroke="#2c3e50" stroke-width="2"/>
                     
-                    <!-- 各部屋（ポート） -->
-                    <!-- 80番 -->
-                    <rect x="70" y="90" width="90" height="50" fill="#3498db" stroke="#2c3e50" stroke-width="2"/>
-                    <text x="115" y="110" text-anchor="middle" fill="white" font-size="14" font-weight="bold">80号室</text>
-                    <text x="115" y="130" text-anchor="middle" fill="white" font-size="10">HTTP</text>
+                    <!-- 部屋 -->
+                    <rect x="160" y="50" width="35" height="30" fill="#3498db" stroke="#2c3e50"/>
+                    <text x="177" y="70" text-anchor="middle" fill="white" font-size="10">101</text>
+                    <text x="177" y="95" text-anchor="middle" font-size="8" fill="#7f8c8d">Web</text>
                     
-                    <!-- 443番 -->
-                    <rect x="190" y="90" width="90" height="50" fill="#27ae60" stroke="#2c3e50" stroke-width="2"/>
-                    <text x="235" y="110" text-anchor="middle" fill="white" font-size="14" font-weight="bold">443号室</text>
-                    <text x="235" y="130" text-anchor="middle" fill="white" font-size="10">HTTPS</text>
+                    <rect x="205" y="50" width="35" height="30" fill="#e74c3c" stroke="#2c3e50"/>
+                    <text x="222" y="70" text-anchor="middle" fill="white" font-size="10">102</text>
+                    <text x="222" y="95" text-anchor="middle" font-size="8" fill="#7f8c8d">Mail</text>
                     
-                    <!-- 22番 -->
-                    <rect x="70" y="160" width="90" height="50" fill="#e74c3c" stroke="#2c3e50" stroke-width="2"/>
-                    <text x="115" y="180" text-anchor="middle" fill="white" font-size="14" font-weight="bold">22号室</text>
-                    <text x="115" y="200" text-anchor="middle" fill="white" font-size="10">SSH</text>
+                    <rect x="160" y="110" width="35" height="30" fill="#27ae60" stroke="#2c3e50"/>
+                    <text x="177" y="130" text-anchor="middle" fill="white" font-size="10">201</text>
+                    <text x="177" y="155" text-anchor="middle" font-size="8" fill="#7f8c8d">SSH</text>
                     
-                    <!-- 3306番 -->
-                    <rect x="190" y="160" width="90" height="50" fill="#f39c12" stroke="#2c3e50" stroke-width="2"/>
-                    <text x="235" y="180" text-anchor="middle" fill="white" font-size="14" font-weight="bold">3306号室</text>
-                    <text x="235" y="200" text-anchor="middle" fill="white" font-size="10">MySQL</text>
+                    <rect x="205" y="110" width="35" height="30" fill="#f39c12" stroke="#2c3e50"/>
+                    <text x="222" y="130" text-anchor="middle" fill="white" font-size="10">202</text>
+                    <text x="222" y="155" text-anchor="middle" font-size="8" fill="#7f8c8d">FTP</text>
                     
-                    <!-- 25番 -->
-                    <rect x="70" y="230" width="90" height="50" fill="#9b59b6" stroke="#2c3e50" stroke-width="2"/>
-                    <text x="115" y="250" text-anchor="middle" fill="white" font-size="14" font-weight="bold">25号室</text>
-                    <text x="115" y="270" text-anchor="middle" fill="white" font-size="10">SMTP</text>
-                    
-                    <!-- 21番 -->
-                    <rect x="190" y="230" width="90" height="50" fill="#1abc9c" stroke="#2c3e50" stroke-width="2"/>
-                    <text x="235" y="250" text-anchor="middle" fill="white" font-size="14" font-weight="bold">21号室</text>
-                    <text x="235" y="270" text-anchor="middle" fill="white" font-size="10">FTP</text>
+                    <!-- 住所プレート -->
+                    <rect x="120" y="250" width="160" height="40" fill="#f8f9fa" stroke="#34495e" stroke-width="2" rx="5"/>
+                    <text x="200" y="275" text-anchor="middle" font-size="14" font-weight="bold">192.168.1.10</text>
+                    <text x="200" y="285" text-anchor="middle" font-size="8" fill="#7f8c8d">（マンション全体の住所）</text>
                 </g>
                 
-                <!-- よく使うポート番号 -->
-                <g transform="translate(450, 80)">
-                    <text x="150" y="0" font-size="16" font-weight="bold" fill="#2c3e50">主要なポート番号</text>
-                    
-                    <rect x="0" y="20" width="300" height="260" fill="#f8f9fa" stroke="#34495e" stroke-width="2" rx="10"/>
-                    
-                    <!-- Well-known ports -->
-                    <text x="15" y="45" font-size="14" font-weight="bold" fill="#2c3e50">■ Well-known（0-1023）</text>
-                    <text x="25" y="70" font-size="12"><tspan fill="#e74c3c" font-weight="bold">22</tspan> - SSH（セキュアシェル）</text>
-                    <text x="25" y="90" font-size="12"><tspan fill="#3498db" font-weight="bold">80</tspan> - HTTP（Web）</text>
-                    <text x="25" y="110" font-size="12"><tspan fill="#27ae60" font-weight="bold">443</tspan> - HTTPS（暗号化Web）</text>
-                    <text x="25" y="130" font-size="12"><tspan fill="#9b59b6" font-weight="bold">25</tspan> - SMTP（メール送信）</text>
-                    
-                    <!-- Registered ports -->
-                    <text x="15" y="160" font-size="14" font-weight="bold" fill="#2c3e50">■ Registered（1024-49151）</text>
-                    <text x="25" y="185" font-size="12"><tspan fill="#f39c12" font-weight="bold">3306</tspan> - MySQL</text>
-                    <text x="25" y="205" font-size="12"><tspan fill="#e67e22" font-weight="bold">5432</tspan> - PostgreSQL</text>
-                    <text x="25" y="225" font-size="12"><tspan fill="#d35400" font-weight="bold">6379</tspan> - Redis</text>
-                    <text x="25" y="245" font-size="12"><tspan fill="#c0392b" font-weight="bold">8080</tspan> - 代替HTTP</text>
-                    
-                    <!-- Dynamic ports -->
-                    <text x="15" y="270" font-size="12" fill="#7f8c8d">■ Dynamic（49152-65535）: 一時利用</text>
-                </g>
-                
-                <!-- 接続の流れ -->
-                <g transform="translate(50, 380)">
-                    <text x="375" y="0" text-anchor="middle" font-size="16" font-weight="bold" fill="#2c3e50">接続の流れ</text>
-                    
-                    <rect x="0" y="20" width="750" height="120" fill="#2c3e50" rx="10"/>
-                    
-                    <!-- クライアント -->
-                    <rect x="20" y="40" width="150" height="60" fill="#3498db" rx="5"/>
-                    <text x="95" y="65" text-anchor="middle" fill="white" font-size="12">クライアント</text>
-                    <text x="95" y="85" text-anchor="middle" fill="white" font-size="10">192.168.1.10:54321</text>
-                    
-                    <!-- 矢印 -->
-                    <path d="M 180 70 L 280 70" stroke="white" stroke-width="2" marker-end="url(#arrowhead-white)"/>
-                    <text x="230" y="60" text-anchor="middle" fill="white" font-size="10">接続要求</text>
+                <!-- サーバーの実例 -->
+                <g transform="translate(450, 60)">
+                    <text x="150" y="0" font-size="16" font-weight="bold" fill="#2c3e50">サーバーの実例</text>
                     
                     <!-- サーバー -->
-                    <rect x="290" y="40" width="150" height="60" fill="#e74c3c" rx="5"/>
-                    <text x="365" y="65" text-anchor="middle" fill="white" font-size="12">Webサーバー</text>
-                    <text x="365" y="85" text-anchor="middle" fill="white" font-size="10">192.168.1.100:80</text>
+                    <rect x="100" y="30" width="100" height="200" fill="#2c3e50" stroke="#34495e" stroke-width="2"/>
                     
-                    <!-- レスポンス -->
-                    <path d="M 440 90 L 540 90" stroke="white" stroke-width="2" stroke-dasharray="5,5"/>
-                    <text x="490" y="80" text-anchor="middle" fill="white" font-size="10">応答</text>
+                    <!-- サービス -->
+                    <rect x="110" y="50" width="80" height="25" fill="#3498db"/>
+                    <text x="150" y="67" text-anchor="middle" fill="white" font-size="10">HTTP: 80</text>
                     
-                    <!-- 説明 -->
-                    <text x="580" y="70" fill="white" font-size="11">「192.168.1.100の80番ポートに</text>
-                    <text x="580" y="90" fill="white" font-size="11">　接続したい」という要求</text>
+                    <rect x="110" y="85" width="80" height="25" fill="#27ae60"/>
+                    <text x="150" y="102" text-anchor="middle" fill="white" font-size="10">HTTPS: 443</text>
                     
-                    <defs>
-                        <marker id="arrowhead-white" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
-                            <polygon points="0 0, 10 3.5, 0 7" fill="white"/>
-                        </marker>
-                    </defs>
-                </g>
-            </svg>
-        </div>
-        
-        <div class="command-box">
-$ netstat -tuln    # 開いているポートを確認<br>
-$ ss -tuln         # 新しいコマンド（netstatの代替）<br>
-$ lsof -i :80      # 80番ポートを使用しているプロセスを確認
-        </div>
-        
-        <h2>3.3 通信の流れ</h2>
-        
-        <div class="diagram-container">
-            <svg width="850" height="600" viewBox="0 0 850 600">
-                <!-- タイトル -->
-                <text x="425" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#2c3e50">ネットワーク通信 = 郵便配達</text>
-                
-                <!-- OSI参照モデル風の層 -->
-                <g transform="translate(50, 60)">
-                    <text x="200" y="0" font-size="16" font-weight="bold" fill="#2c3e50">データの梱包と配送</text>
+                    <rect x="110" y="120" width="80" height="25" fill="#e74c3c"/>
+                    <text x="150" y="137" text-anchor="middle" fill="white" font-size="10">SSH: 22</text>
                     
-                    <!-- アプリケーション層 -->
-                    <rect x="50" y="30" width="300" height="50" fill="#3498db" stroke="#2c3e50" stroke-width="2"/>
-                    <text x="200" y="60" text-anchor="middle" fill="white" font-size="14" font-weight="bold">アプリケーション層</text>
-                    <text x="380" y="60" font-size="12">手紙の内容（HTTPリクエスト等）</text>
+                    <rect x="110" y="155" width="80" height="25" fill="#f39c12"/>
+                    <text x="150" y="172" text-anchor="middle" fill="white" font-size="10">MySQL: 3306</text>
                     
-                    <!-- トランスポート層 -->
-                    <rect x="50" y="90" width="300" height="50" fill="#e74c3c" stroke="#2c3e50" stroke-width="2"/>
-                    <text x="200" y="120" text-anchor="middle" fill="white" font-size="14" font-weight="bold">トランスポート層（TCP/UDP）</text>
-                    <text x="380" y="120" font-size="12">封筒に入れる（ポート番号付与）</text>
+                    <rect x="110" y="190" width="80" height="25" fill="#9b59b6"/>
+                    <text x="150" y="207" text-anchor="middle" fill="white" font-size="10">DNS: 53</text>
                     
-                    <!-- ネットワーク層 -->
-                    <rect x="50" y="150" width="300" height="50" fill="#27ae60" stroke="#2c3e50" stroke-width="2"/>
-                    <text x="200" y="180" text-anchor="middle" fill="white" font-size="14" font-weight="bold">ネットワーク層（IP）</text>
-                    <text x="380" y="180" font-size="12">宛先住所を書く（IPアドレス）</text>
-                    
-                    <!-- データリンク層 -->
-                    <rect x="50" y="210" width="300" height="50" fill="#f39c12" stroke="#2c3e50" stroke-width="2"/>
-                    <text x="200" y="240" text-anchor="middle" fill="white" font-size="14" font-weight="bold">データリンク層</text>
-                    <text x="380" y="240" font-size="12">配送トラックに載せる（MACアドレス）</text>
-                    
-                    <!-- 物理層 -->
-                    <rect x="50" y="270" width="300" height="50" fill="#9b59b6" stroke="#2c3e50" stroke-width="2"/>
-                    <text x="200" y="300" text-anchor="middle" fill="white" font-size="14" font-weight="bold">物理層</text>
-                    <text x="380" y="300" font-size="12">実際の配送（電気信号・光信号）</text>
+                    <!-- IPアドレス -->
+                    <rect x="70" y="250" width="160" height="40" fill="#f8f9fa" stroke="#34495e" stroke-width="2" rx="5"/>
+                    <text x="150" y="275" text-anchor="middle" font-size="14" font-weight="bold">192.168.1.100</text>
+                    <text x="150" y="285" text-anchor="middle" font-size="8" fill="#7f8c8d">（サーバーのIPアドレス）</text>
                 </g>
                 
-                <!-- 実際の通信フロー -->
-                <g transform="translate(50, 400)">
-                    <text x="375" y="0" text-anchor="middle" font-size="16" font-weight="bold" fill="#2c3e50">Webページアクセスの流れ</text>
+                <!-- アクセス例 -->
+                <g transform="translate(100, 350)">
+                    <text x="300" y="0" font-size="16" font-weight="bold" fill="#2c3e50">アクセスの仕方</text>
                     
-                    <!-- PC -->
-                    <rect x="50" y="30" width="80" height="60" fill="#3498db" stroke="#2c3e50" stroke-width="2"/>
-                    <text x="90" y="60" text-anchor="middle" fill="white" font-size="12">あなたのPC</text>
-                    <text x="90" y="110" text-anchor="middle" font-size="10">192.168.1.10</text>
+                    <rect x="50" y="20" width="500" height="100" fill="#2c3e50" stroke="#34495e" stroke-width="2"/>
                     
-                    <!-- Step 1: DNS -->
-                    <path d="M 140 60 L 210 60" stroke="#7f8c8d" stroke-width="2" marker-end="url(#arrowhead)"/>
-                    <text x="175" y="50" text-anchor="middle" font-size="10">①DNS問合せ</text>
+                    <text x="70" y="45" fill="#27ae60" font-family="monospace" font-size="12">$ ssh user@192.168.1.100</text>
+                    <text x="450" y="45" fill="#7f8c8d" font-size="10">（ポート22で接続）</text>
                     
-                    <rect x="220" y="30" width="80" height="60" fill="#1abc9c" stroke="#2c3e50" stroke-width="2"/>
-                    <text x="260" y="55" text-anchor="middle" fill="white" font-size="12">DNSサーバー</text>
-                    <text x="260" y="75" text-anchor="middle" fill="white" font-size="10">名前→IP変換</text>
+                    <text x="70" y="65" fill="#27ae60" font-family="monospace" font-size="12">$ curl http://192.168.1.100:80</text>
+                    <text x="450" y="65" fill="#7f8c8d" font-size="10">（ポート80を明示）</text>
                     
-                    <!-- Step 2: ルーター -->
-                    <path d="M 140 90 L 350 90" stroke="#7f8c8d" stroke-width="2" marker-end="url(#arrowhead)"/>
-                    <text x="245" y="105" text-anchor="middle" font-size="10">②ルーティング</text>
+                    <text x="70" y="85" fill="#27ae60" font-family="monospace" font-size="12">$ mysql -h 192.168.1.100 -P 3306</text>
+                    <text x="450" y="85" fill="#7f8c8d" font-size="10">（ポート3306で接続）</text>
                     
-                    <rect x="360" y="30" width="80" height="60" fill="#e67e22" stroke="#2c3e50" stroke-width="2"/>
-                    <text x="400" y="55" text-anchor="middle" fill="white" font-size="12">ルーター</text>
-                    <text x="400" y="75" text-anchor="middle" fill="white" font-size="10">経路選択</text>
-                    
-                    <!-- Step 3: インターネット -->
-                    <path d="M 450 60 L 520 60" stroke="#7f8c8d" stroke-width="2" marker-end="url(#arrowhead)"/>
-                    <text x="485" y="50" text-anchor="middle" font-size="10">③インターネット</text>
-                    
-                    <ellipse cx="570" cy="60" rx="40" ry="30" fill="#95a5a6" stroke="#2c3e50" stroke-width="2"/>
-                    <text x="570" y="65" text-anchor="middle" fill="white" font-size="12">Internet</text>
-                    
-                    <!-- Step 4: Webサーバー -->
-                    <path d="M 620 60 L 680 60" stroke="#7f8c8d" stroke-width="2" marker-end="url(#arrowhead)"/>
-                    <text x="650" y="50" text-anchor="middle" font-size="10">④到達</text>
-                    
-                    <rect x="690" y="30" width="80" height="60" fill="#e74c3c" stroke="#2c3e50" stroke-width="2"/>
-                    <text x="730" y="55" text-anchor="middle" fill="white" font-size="12">Webサーバー</text>
-                    <text x="730" y="75" text-anchor="middle" fill="white" font-size="10">203.0.113.1</text>
-                    
-                    <!-- レスポンス -->
-                    <path d="M 730 90 L 90 120" stroke="#27ae60" stroke-width="2" stroke-dasharray="5,5"/>
-                    <text x="410" y="140" text-anchor="middle" font-size="10" fill="#27ae60">⑤レスポンス（Webページ）</text>
+                    <text x="70" y="105" fill="#27ae60" font-family="monospace" font-size="12">$ nc -l 8080</text>
+                    <text x="450" y="105" fill="#7f8c8d" font-size="10">（ポート8080で待機）</text>
                 </g>
             </svg>
         </div>
         
         <div class="explanation">
-            <strong>ネットワーク診断コマンド：</strong>
+            <strong>よく使われるポート番号：</strong>
             <ul>
-                <li><code>ping</code> - 接続確認（例: ping google.com）</li>
-                <li><code>traceroute</code> - 経路確認（例: traceroute google.com）</li>
-                <li><code>nslookup</code> / <code>dig</code> - DNS確認</li>
-                <li><code>curl</code> / <code>wget</code> - HTTPリクエスト送信</li>
-                <li><code>ip addr</code> / <code>ifconfig</code> - ネットワークインターフェース確認</li>
-                <li><code>netstat</code> / <code>ss</code> - ネットワーク接続状態確認</li>
+                <li><strong>80</strong> - HTTP（Webサイト）</li>
+                <li><strong>443</strong> - HTTPS（暗号化されたWebサイト）</li>
+                <li><strong>22</strong> - SSH（安全なリモート接続）</li>
+                <li><strong>25</strong> - SMTP（メール送信）</li>
+                <li><strong>53</strong> - DNS（ドメイン名解決）</li>
+                <li><strong>3306</strong> - MySQL（データベース）</li>
             </ul>
         </div>
         
-        <div class="key-point">
-            <strong>TCP vs UDP：</strong>
-            <ul style="margin: 5px 0;">
-                <li><strong>TCP：</strong>信頼性重視。確実にデータ到達（Web、メール、ファイル転送）</li>
-                <li><strong>UDP：</strong>速度重視。多少のロスOK（動画ストリーミング、オンラインゲーム、DNS）</li>
-            </ul>
+        <h2>3.3 基本的なネットワークコマンド</h2>
+        
+        <div class="diagram-container">
+            <svg width="850" height="550" viewBox="0 0 850 550">
+                <!-- タイトル -->
+                <text x="425" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#2c3e50">ネットワーク診断ツール</text>
+                
+                <!-- ping -->
+                <g transform="translate(50, 60)">
+                    <rect x="0" y="0" width="180" height="100" fill="#3498db" stroke="#2c3e50" stroke-width="2" rx="10"/>
+                    <text x="90" y="30" text-anchor="middle" fill="white" font-size="16" font-weight="bold">ping</text>
+                    <text x="90" y="50" text-anchor="middle" fill="white" font-size="12">疎通確認</text>
+                    <text x="90" y="70" text-anchor="middle" fill="white" font-size="10">相手が応答するかチェック</text>
+                    
+                    <!-- ping の流れ -->
+                    <circle cx="270" cy="50" r="20" fill="#ecf0f1"/>
+                    <text x="270" y="55" text-anchor="middle" font-size="12">PC</text>
+                    
+                    <circle cx="450" cy="50" r="20" fill="#e74c3c"/>
+                    <text x="450" y="55" text-anchor="middle" font-size="12">Server</text>
+                    
+                    <!-- 矢印 -->
+                    <path d="M 290 40 L 430 40" stroke="#27ae60" stroke-width="2" marker-end="url(#arrowhead)"/>
+                    <text x="360" y="35" text-anchor="middle" font-size="8" fill="#27ae60">ICMP Echo Request</text>
+                    
+                    <path d="M 430 60 L 290 60" stroke="#f39c12" stroke-width="2" marker-end="url(#arrowhead)"/>
+                    <text x="360" y="75" text-anchor="middle" font-size="8" fill="#f39c12">ICMP Echo Reply</text>
+                </g>
+                
+                <!-- traceroute -->
+                <g transform="translate(50, 200)">
+                    <rect x="0" y="0" width="180" height="100" fill="#e74c3c" stroke="#2c3e50" stroke-width="2" rx="10"/>
+                    <text x="90" y="30" text-anchor="middle" fill="white" font-size="16" font-weight="bold">traceroute</text>
+                    <text x="90" y="50" text-anchor="middle" fill="white" font-size="12">経路追跡</text>
+                    <text x="90" y="70" text-anchor="middle" fill="white" font-size="10">どこを通ってアクセスするか</text>
+                    
+                    <!-- traceroute の流れ -->
+                    <circle cx="250" cy="50" r="15" fill="#ecf0f1"/>
+                    <text x="250" y="55" text-anchor="middle" font-size="10">PC</text>
+                    
+                    <circle cx="350" cy="50" r="15" fill="#f39c12"/>
+                    <text x="350" y="55" text-anchor="middle" font-size="8">Router1</text>
+                    
+                    <circle cx="450" cy="50" r="15" fill="#f39c12"/>
+                    <text x="450" y="55" text-anchor="middle" font-size="8">Router2</text>
+                    
+                    <circle cx="550" cy="50" r="15" fill="#27ae60"/>
+                    <text x="550" y="55" text-anchor="middle" font-size="8">Server</text>
+                    
+                    <!-- 経路線 -->
+                    <path d="M 265 50 L 335 50" stroke="#3498db" stroke-width="2"/>
+                    <path d="M 365 50 L 435 50" stroke="#3498db" stroke-width="2"/>
+                    <path d="M 465 50 L 535 50" stroke="#3498db" stroke-width="2"/>
+                    
+                    <text x="400" y="80" text-anchor="middle" font-size="8" fill="#7f8c8d">1. 192.168.1.1  →  2. 203.0.113.1  →  3. 198.51.100.1</text>
+                </g>
+                
+                <!-- netstat -->
+                <g transform="translate(50, 340)">
+                    <rect x="0" y="0" width="180" height="100" fill="#27ae60" stroke="#2c3e50" stroke-width="2" rx="10"/>
+                    <text x="90" y="30" text-anchor="middle" fill="white" font-size="16" font-weight="bold">netstat</text>
+                    <text x="90" y="50" text-anchor="middle" fill="white" font-size="12">接続状況表示</text>
+                    <text x="90" y="70" text-anchor="middle" fill="white" font-size="10">開いているポートを確認</text>
+                    
+                    <!-- netstat 出力例 -->
+                    <rect x="250" y="10" width="400" height="80" fill="#2c3e50"/>
+                    <text x="260" y="30" fill="#27ae60" font-family="monospace" font-size="8">Proto Local Address    Foreign Address  State</text>
+                    <text x="260" y="45" fill="#95a5a6" font-family="monospace" font-size="8">tcp   0.0.0.0:22       *:*              LISTEN</text>
+                    <text x="260" y="60" fill="#95a5a6" font-family="monospace" font-size="8">tcp   0.0.0.0:80       *:*              LISTEN</text>
+                    <text x="260" y="75" fill="#95a5a6" font-family="monospace" font-size="8">tcp   192.168.1.10:22  192.168.1.5:1234 ESTABLISHED</text>
+                </g>
+                
+                <!-- nslookup/dig -->
+                <g transform="translate(450, 60)">
+                    <rect x="0" y="0" width="180" height="100" fill="#9b59b6" stroke="#2c3e50" stroke-width="2" rx="10"/>
+                    <text x="90" y="25" text-anchor="middle" fill="white" font-size="16" font-weight="bold">nslookup</text>
+                    <text x="90" y="45" text-anchor="middle" fill="white" font-size="16" font-weight="bold">dig</text>
+                    <text x="90" y="65" text-anchor="middle" fill="white" font-size="12">DNS問い合わせ</text>
+                    <text x="90" y="80" text-anchor="middle" fill="white" font-size="10">ドメイン名↔IPアドレス変換</text>
+                </g>
+                
+                <!-- wget/curl -->
+                <g transform="translate(450, 200)">
+                    <rect x="0" y="0" width="180" height="100" fill="#f39c12" stroke="#2c3e50" stroke-width="2" rx="10"/>
+                    <text x="90" y="25" text-anchor="middle" fill="white" font-size="16" font-weight="bold">wget</text>
+                    <text x="90" y="45" text-anchor="middle" fill="white" font-size="16" font-weight="bold">curl</text>
+                    <text x="90" y="65" text-anchor="middle" fill="white" font-size="12">HTTP通信</text>
+                    <text x="90" y="80" text-anchor="middle" fill="white" font-size="10">ファイルダウンロード・API</text>
+                </g>
+                
+                <!-- nc -->
+                <g transform="translate(450, 340)">
+                    <rect x="0" y="0" width="180" height="100" fill="#1abc9c" stroke="#2c3e50" stroke-width="2" rx="10"/>
+                    <text x="90" y="30" text-anchor="middle" fill="white" font-size="16" font-weight="bold">nc (netcat)</text>
+                    <text x="90" y="50" text-anchor="middle" fill="white" font-size="12">汎用通信</text>
+                    <text x="90" y="70" text-anchor="middle" fill="white" font-size="10">ポート接続・データ送信</text>
+                </g>
+                
+                <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                        <polygon points="0 0, 10 3.5, 0 7" fill="#27ae60"/>
+                    </marker>
+                </defs>
+            </svg>
         </div>
-    </div>
-</body>
-</html>
+        
+        <div class="command-grid">
+            <div class="command-card">
+                <h3>ping - 疎通確認</h3>
+                <div class="command-box">$ ping google.com</div>
+                <div class="output-box">
+PING google.com (172.217.161.78): 56 data bytes<br>
+64 bytes from 172.217.161.78: icmp_seq=0 time=10.123 ms
+                </div>
+                <p>応答時間とパケットロスを確認</p>
+            </div>
+            
+            <div class="command-card">
+                <h3>curl - HTTP通信</h3>
+                <div class="command-box">$ curl -I https://example.com</div>
+                <div class="command-box">$ curl -o file.html https://example.com</div>
+                <p><code>-I</code>: ヘッダーのみ　<code>-o</code>: ファイル保存</p>
+            </div>
+            
+            <div class="command-card">
+                <h3>netstat - 接続状況</h3>
+                <div class="command-box">$ netstat -tuln</div>
+                <div class="command-box">$ netstat -r</div>
+                <p><code>-t</code>: TCP　<code>-u</code>: UDP　<code>-l</code>: 待機中<br><code>-n</code>: 数値表示　<code>-r</code>: ルーティングテーブル</p>
+            </div>
+            
+            <div class="command-card">
+                <h3>nslookup - DNS問い合わせ</h3>
+                <div class="command-box">$ nslookup google.com</div>
+                <div class="command-box">$ dig +short google.com</div>
+                <p>ドメイン名からIPアドレスを取得</p>
+            </div>
+        </div>
+        
+        <div class="key-point">
+            <strong>トラブルシューティングの手順：</strong>
+            <ol style="margin: 5px 0;">
+                <li><code>ping</code>で基本的な疎通確認</li>
+                <li><code>traceroute</code>で経路を確認</li>
+                <li><code>nslookup</code>でDNS解決を確認</li>
+                <li><code>netstat</code>で待機ポートを確認</li>
+                <li><code>curl/nc</code>で個別サービスをテスト</li>
+            </ol>
+        </div>
+</div>

@@ -3,78 +3,8 @@ layout: chapter
 title: "第1章：Linuxの世界地図"
 chapter: 1
 ---
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第1章：Linuxの世界地図</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            background: #f5f5f5;
-        }
-        .section {
-            background: white;
-            border-radius: 8px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #2c3e50;
-            border-bottom: 3px solid #27ae60;
-            padding-bottom: 10px;
-        }
-        h2 {
-            color: #34495e;
-            margin-top: 30px;
-        }
-        .diagram-container {
-            margin: 30px 0;
-            text-align: center;
-        }
-        .explanation {
-            background: #ecf0f1;
-            padding: 15px;
-            border-left: 4px solid #27ae60;
-            margin: 20px 0;
-        }
-        .key-point {
-            background: #d5f4e6;
-            padding: 10px 15px;
-            border-radius: 4px;
-            margin: 15px 0;
-        }
-        svg {
-            max-width: 100%;
-            height: auto;
-        }
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        .comparison-table th, .comparison-table td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-        .comparison-table th {
-            background: #27ae60;
-            color: white;
-        }
-        .comparison-table tr:nth-child(even) {
-            background: #f2f2f2;
-        }
-    </style>
-</head>
-<body>
-    <div class="section">
+
+<div class="section">
         <h1>第1章：Linuxの世界地図</h1>
         
         <h2>1.1 Linuxディストリビューション全体像</h2>
@@ -394,6 +324,4 @@ chapter: 1
                 <li><code>/tmp</code> - 一時ファイル（再起動で消去）</li>
             </ul>
         </div>
-    </div>
-</body>
-</html>
+</div>

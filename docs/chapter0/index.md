@@ -4,61 +4,7 @@ title: "第0章：コンピュータの仕組み"
 chapter: 0
 ---
 
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第0章：コンピュータの仕組み</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            background: #f5f5f5;
-        }
-        .section {
-            background: white;
-            border-radius: 8px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #2c3e50;
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 10px;
-        }
-        h2 {
-            color: #34495e;
-            margin-top: 30px;
-        }
-        .diagram-container {
-            margin: 30px 0;
-            text-align: center;
-        }
-        .explanation {
-            background: #ecf0f1;
-            padding: 15px;
-            border-left: 4px solid #3498db;
-            margin: 20px 0;
-        }
-        .key-point {
-            background: #fff3cd;
-            padding: 10px 15px;
-            border-radius: 4px;
-            margin: 15px 0;
-        }
-        svg {
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
-</head>
-<body>
-    <div class="section">
+<div class="section">
         <h1>第0章：コンピュータの仕組み</h1>
         
         <h2>0.1 PCの中身を図解</h2>
@@ -265,6 +211,4 @@ chapter: 0
         <div class="key-point">
             <strong>重要：</strong>サーバーは「役割」であり、通常のPCでもサーバーソフトウェアを動かせばサーバーになる
         </div>
-    </div>
-</body>
-</html>
+</div>

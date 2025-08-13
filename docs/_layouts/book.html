@@ -15,6 +15,8 @@
     <!-- CSS -->
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
     <link rel="stylesheet" href="{{ '/assets/css/syntax-highlighting.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/book-content.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/mobile-menu.css' | relative_url }}">
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ '/assets/favicon.ico' | relative_url }}">
@@ -94,15 +96,15 @@
         </header>
 
         <!-- Sidebar -->
-        <aside class="book-sidebar" id="sidebar">
+        <aside class="book-sidebar sidebar" id="sidebar">
             <nav class="sidebar-nav" role="navigation" aria-label="Main navigation">
                 {% include sidebar-nav.html %}
             </nav>
         </aside>
 
         <!-- Main Content -->
-        <main class="book-main" id="main">
-            <div class="book-content">
+        <main class="book-main main-content chapter-{{ page.chapter }}" id="main">
+            <div class="book-content content-wrapper">
 
                 <!-- Page Content -->
                 <article class="page-content">
@@ -141,6 +143,7 @@
     <!-- Scripts -->
     <script src="{{ '/assets/js/theme.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/sidebar.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/mobile-menu.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/search.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/code-copy.js' | relative_url }}"></script>
     <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
