@@ -1,0 +1,291 @@
+/* Sidebar Navigation Styles */
+.book-layout {
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Header */
+.book-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: white;
+    border-bottom: 1px solid #e0e0e0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-title {
+    text-decoration: none;
+    color: #333;
+}
+
+.header-title h1 {
+    font-size: 20px;
+    margin: 0;
+    font-weight: 600;
+}
+
+/* Sidebar */
+.book-sidebar {
+    position: fixed;
+    left: 0;
+    top: 60px;
+    bottom: 0;
+    width: 280px;
+    background: #f8f9fa;
+    border-right: 1px solid #e0e0e0;
+    overflow-y: auto;
+    z-index: 100;
+    transition: transform 0.3s ease;
+}
+
+.sidebar-nav {
+    padding: 20px;
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item {
+    margin-bottom: 5px;
+}
+
+.nav-link {
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+    background: #e9ecef;
+    color: #0066cc;
+}
+
+.nav-link.active {
+    background: #0066cc;
+    color: white;
+    font-weight: 600;
+}
+
+.nav-section {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.nav-section-title {
+    display: block;
+    padding: 5px 15px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #6c757d;
+}
+
+/* Main Content */
+.book-main {
+    margin-left: 280px;
+    padding-top: 60px;
+    width: calc(100% - 280px);
+    min-height: calc(100vh - 60px);
+}
+
+.book-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Hamburger Menu Button */
+.sidebar-toggle {
+    display: none;
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    color: #333;
+}
+
+.sidebar-toggle:hover {
+    background: #f0f0f0;
+    border-radius: 4px;
+}
+
+/* Mobile Overlay */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+}
+
+.sidebar-overlay.active {
+    display: block;
+}
+
+/* Search Container */
+.search-container {
+    position: relative;
+    display: none; /* Hide on mobile by default */
+}
+
+.search-input {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 200px;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    color: #333;
+}
+
+.theme-toggle:hover {
+    background: #f0f0f0;
+    border-radius: 4px;
+}
+
+.theme-icon {
+    display: none;
+}
+
+.theme-icon-light {
+    display: block;
+}
+
+[data-theme="dark"] .theme-icon-light {
+    display: none;
+}
+
+[data-theme="dark"] .theme-icon-dark {
+    display: block;
+}
+
+/* GitHub Link */
+.github-link {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    color: #333;
+    text-decoration: none;
+}
+
+.github-link:hover {
+    background: #f0f0f0;
+    border-radius: 4px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar-toggle {
+        display: block;
+    }
+    
+    .book-sidebar {
+        transform: translateX(-100%);
+    }
+    
+    .book-sidebar.active {
+        transform: translateX(0);
+    }
+    
+    .book-main {
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    .search-container {
+        display: none;
+    }
+    
+    .header-title h1 {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 769px) {
+    .search-container {
+        display: block;
+    }
+}
+
+/* Dark Mode Support */
+[data-theme="dark"] .book-header {
+    background: #1a1a1a;
+    border-bottom-color: #333;
+    color: #fff;
+}
+
+[data-theme="dark"] .header-title {
+    color: #fff;
+}
+
+[data-theme="dark"] .book-sidebar {
+    background: #222;
+    border-right-color: #333;
+}
+
+[data-theme="dark"] .nav-link {
+    color: #ccc;
+}
+
+[data-theme="dark"] .nav-link:hover {
+    background: #333;
+    color: #4a9eff;
+}
+
+[data-theme="dark"] .nav-link.active {
+    background: #4a9eff;
+    color: white;
+}
+
+[data-theme="dark"] .nav-section-title {
+    color: #999;
+}
+
+[data-theme="dark"] .sidebar-toggle,
+[data-theme="dark"] .theme-toggle,
+[data-theme="dark"] .github-link {
+    color: #fff;
+}
+
+[data-theme="dark"] .sidebar-toggle:hover,
+[data-theme="dark"] .theme-toggle:hover,
+[data-theme="dark"] .github-link:hover {
+    background: #333;
+}
