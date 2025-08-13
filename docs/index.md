@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: book
 title: "図解でわかるLinux基礎"
 ---
 
