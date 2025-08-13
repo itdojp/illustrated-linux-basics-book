@@ -1,147 +1,260 @@
 ---
 layout: chapter
-title: "第4章：コンテナ入門"
+title: "第4章：よくあるエラーと対処法"
 chapter: 4
 ---
 
 <div class="section">
-    <h1>第4章：コンテナ入門</h1>
+    <h1>第4章：よくあるエラーと対処法</h1>
     
-    <h2>4.1 仮想化とコンテナの違い</h2>
+    <h2>4.1 初心者が必ず遭遇するエラー TOP 10</h2>
     
     <div class="diagram-container">
         <svg width="850" height="600" viewBox="0 0 850 600">
-            <text x="425" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#2c3e50">アパート vs カプセルホテル</text>
+            <text x="425" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#2c3e50">Linux エラーメッセージ診断チャート</text>
             
-            <!-- 仮想マシン（アパート） -->
+            <!-- Permission denied -->
             <g transform="translate(50, 60)">
-                <text x="175" y="0" font-size="16" font-weight="bold" fill="#2c3e50">仮想マシン = アパート</text>
-                
-                <!-- 建物全体 -->
-                <rect x="50" y="20" width="250" height="400" fill="#95a5a6" stroke="#2c3e50" stroke-width="3"/>
-                <text x="175" y="45" text-anchor="middle" fill="white" font-size="12" font-weight="bold">物理サーバー</text>
-                
-                <!-- ハイパーバイザー -->
-                <rect x="50" y="60" width="250" height="30" fill="#34495e"/>
-                <text x="175" y="80" text-anchor="middle" fill="white" font-size="12">ハイパーバイザー（管理人）</text>
-                
-                <!-- VM1 -->
-                <rect x="60" y="100" width="110" height="100" fill="#3498db" stroke="#2c3e50" stroke-width="2"/>
-                <text x="115" y="120" text-anchor="middle" fill="white" font-size="11" font-weight="bold">VM1</text>
-                <rect x="70" y="130" width="90" height="20" fill="#2980b9"/>
-                <text x="115" y="145" text-anchor="middle" fill="white" font-size="10">ゲストOS</text>
-                <rect x="70" y="160" width="90" height="30" fill="#5dade2"/>
-                <text x="115" y="180" text-anchor="middle" fill="white" font-size="10">アプリ</text>
-                
-                <!-- VM2 -->
-                <rect x="180" y="100" width="110" height="100" fill="#e74c3c" stroke="#2c3e50" stroke-width="2"/>
-                <text x="235" y="120" text-anchor="middle" fill="white" font-size="11" font-weight="bold">VM2</text>
-                <rect x="190" y="130" width="90" height="20" fill="#c0392b"/>
-                <text x="235" y="145" text-anchor="middle" fill="white" font-size="10">ゲストOS</text>
-                <rect x="190" y="160" width="90" height="30" fill="#ec7063"/>
-                <text x="235" y="180" text-anchor="middle" fill="white" font-size="10">アプリ</text>
+                <rect x="0" y="0" width="350" height="100" fill="#e74c3c" rx="10"/>
+                <text x="175" y="30" text-anchor="middle" fill="white" font-size="16" font-weight="bold">1. Permission denied</text>
+                <text x="175" y="50" text-anchor="middle" fill="white" font-size="12">権限がありません</text>
+                <text x="175" y="75" text-anchor="middle" fill="white" font-size="14">解決: sudo を使う</text>
+                <text x="175" y="95" text-anchor="middle" fill="white" font-size="14">または chmod で権限変更</text>
             </g>
             
-            <!-- コンテナ（カプセルホテル） -->
+            <!-- Command not found -->
             <g transform="translate(450, 60)">
-                <text x="175" y="0" font-size="16" font-weight="bold" fill="#2c3e50">コンテナ = カプセルホテル</text>
-                
-                <rect x="50" y="20" width="250" height="400" fill="#95a5a6" stroke="#2c3e50" stroke-width="3"/>
-                <text x="175" y="45" text-anchor="middle" fill="white" font-size="12" font-weight="bold">物理サーバー</text>
-                
-                <!-- ホストOS -->
-                <rect x="50" y="60" width="250" height="40" fill="#34495e"/>
-                <text x="175" y="85" text-anchor="middle" fill="white" font-size="12">ホストOS + Docker Engine</text>
-                
-                <!-- コンテナ群 -->
-                <rect x="60" y="110" width="70" height="60" fill="#f39c12" stroke="#2c3e50"/>
-                <text x="95" y="135" text-anchor="middle" fill="white" font-size="10">App1</text>
-                
-                <rect x="140" y="110" width="70" height="60" fill="#9b59b6" stroke="#2c3e50"/>
-                <text x="175" y="135" text-anchor="middle" fill="white" font-size="10">App2</text>
-                
-                <rect x="220" y="110" width="70" height="60" fill="#1abc9c" stroke="#2c3e50"/>
-                <text x="255" y="135" text-anchor="middle" fill="white" font-size="10">App3</text>
+                <rect x="0" y="0" width="350" height="100" fill="#3498db" rx="10"/>
+                <text x="175" y="30" text-anchor="middle" fill="white" font-size="16" font-weight="bold">2. Command not found</text>
+                <text x="175" y="50" text-anchor="middle" fill="white" font-size="12">コマンドが見つかりません</text>
+                <text x="175" y="75" text-anchor="middle" fill="white" font-size="14">解決: apt/yum でインストール</text>
+                <text x="175" y="95" text-anchor="middle" fill="white" font-size="14">またはPATHを確認</text>
             </g>
             
-            <!-- 比較 -->
-            <g transform="translate(50, 480)">
-                <rect x="0" y="0" width="750" height="100" fill="#ecf0f1" rx="10"/>
-                <text x="20" y="25" font-size="14" font-weight="bold" fill="#2c3e50">主な違い</text>
-                
-                <text x="20" y="50" font-size="12" fill="#3498db">・仮想マシン: 各VMが完全なOSを持つ（重い）</text>
-                <text x="20" y="70" font-size="12" fill="#f39c12">・コンテナ: OSカーネルを共有（軽い）</text>
-                <text x="20" y="90" font-size="12" fill="#27ae60">・コンテナは秒で起動、VMは分単位</text>
-                
-                <text x="400" y="50" font-size="12" fill="#e74c3c">・仮想マシン: 完全に隔離（セキュア）</text>
-                <text x="400" y="70" font-size="12" fill="#9b59b6">・コンテナ: プロセスレベルの隔離</text>
-                <text x="400" y="90" font-size="12" fill="#1abc9c">・コンテナはリソース効率が良い</text>
+            <!-- No such file or directory -->
+            <g transform="translate(50, 180)">
+                <rect x="0" y="0" width="350" height="100" fill="#f39c12" rx="10"/>
+                <text x="175" y="30" text-anchor="middle" fill="white" font-size="16" font-weight="bold">3. No such file or directory</text>
+                <text x="175" y="50" text-anchor="middle" fill="white" font-size="12">ファイルが存在しません</text>
+                <text x="175" y="75" text-anchor="middle" fill="white" font-size="14">解決: パスを確認</text>
+                <text x="175" y="95" text-anchor="middle" fill="white" font-size="14">pwd と ls で現在地確認</text>
+            </g>
+            
+            <!-- Is a directory -->
+            <g transform="translate(450, 180)">
+                <rect x="0" y="0" width="350" height="100" fill="#9b59b6" rx="10"/>
+                <text x="175" y="30" text-anchor="middle" fill="white" font-size="16" font-weight="bold">4. Is a directory</text>
+                <text x="175" y="50" text-anchor="middle" fill="white" font-size="12">ディレクトリです（ファイルではない）</text>
+                <text x="175" y="75" text-anchor="middle" fill="white" font-size="14">解決: cd でディレクトリに移動</text>
+                <text x="175" y="95" text-anchor="middle" fill="white" font-size="14">または正しいファイル名を指定</text>
+            </g>
+            
+            <!-- Device or resource busy -->
+            <g transform="translate(50, 300)">
+                <rect x="0" y="0" width="350" height="100" fill="#1abc9c" rx="10"/>
+                <text x="175" y="30" text-anchor="middle" fill="white" font-size="16" font-weight="bold">5. Device or resource busy</text>
+                <text x="175" y="50" text-anchor="middle" fill="white" font-size="12">使用中のため操作できません</text>
+                <text x="175" y="75" text-anchor="middle" fill="white" font-size="14">解決: lsof でプロセス確認</text>
+                <text x="175" y="95" text-anchor="middle" fill="white" font-size="14">必要なら kill で終了</text>
+            </g>
+            
+            <!-- No space left on device -->
+            <g transform="translate(450, 300)">
+                <rect x="0" y="0" width="350" height="100" fill="#e67e22" rx="10"/>
+                <text x="175" y="30" text-anchor="middle" fill="white" font-size="16" font-weight="bold">6. No space left on device</text>
+                <text x="175" y="50" text-anchor="middle" fill="white" font-size="12">ディスク容量不足</text>
+                <text x="175" y="75" text-anchor="middle" fill="white" font-size="14">解決: df -h で容量確認</text>
+                <text x="175" y="95" text-anchor="middle" fill="white" font-size="14">不要ファイルを削除</text>
+            </g>
+            
+            <!-- Connection refused -->
+            <g transform="translate(50, 420)">
+                <rect x="0" y="0" width="350" height="100" fill="#34495e" rx="10"/>
+                <text x="175" y="30" text-anchor="middle" fill="white" font-size="16" font-weight="bold">7. Connection refused</text>
+                <text x="175" y="50" text-anchor="middle" fill="white" font-size="12">接続が拒否されました</text>
+                <text x="175" y="75" text-anchor="middle" fill="white" font-size="14">解決: サービスが起動しているか確認</text>
+                <text x="175" y="95" text-anchor="middle" fill="white" font-size="14">systemctl status でチェック</text>
+            </g>
+            
+            <!-- Syntax error -->
+            <g transform="translate(450, 420)">
+                <rect x="0" y="0" width="350" height="100" fill="#2ecc71" rx="10"/>
+                <text x="175" y="30" text-anchor="middle" fill="white" font-size="16" font-weight="bold">8. Syntax error</text>
+                <text x="175" y="50" text-anchor="middle" fill="white" font-size="12">構文エラー</text>
+                <text x="175" y="75" text-anchor="middle" fill="white" font-size="14">解決: スペルミスや記号を確認</text>
+                <text x="175" y="95" text-anchor="middle" fill="white" font-size="14">特にスペースや引用符に注意</text>
             </g>
         </svg>
     </div>
     
-    <h2>4.2 Dockerの基本概念</h2>
+    <h2>4.2 エラー別対処法詳細</h2>
     
-    <div class="container-concept">
-        <h3>Docker = アプリの引っ越し業者</h3>
-        <p>Dockerは「アプリケーションとその環境をまとめて梱包」して、どこでも同じように動かせるツールです。</p>
+    <div class="command-grid">
+        <div class="command-card error-card">
+            <h3>🚫 Permission denied</h3>
+            <div class="error-box">bash: /etc/hosts: Permission denied</div>
+            <h4>原因：</h4>
+            <p>ファイルやディレクトリへのアクセス権限がない</p>
+            <h4>解決方法：</h4>
+            <div class="command-box">
+$ sudo nano /etc/hosts  # 管理者権限で実行<br>
+$ ls -l file.txt  # 権限を確認<br>
+$ chmod 644 file.txt  # 権限を変更<br>
+$ sudo chown $USER file.txt  # 所有者を変更
+            </div>
+        </div>
+        
+        <div class="command-card error-card">
+            <h3>❓ Command not found</h3>
+            <div class="error-box">git: command not found</div>
+            <h4>原因：</h4>
+            <p>コマンドがインストールされていない、またはPATHが通っていない</p>
+            <h4>解決方法：</h4>
+            <div class="command-box">
+$ sudo apt install git  # Ubuntu/Debian<br>
+$ sudo yum install git  # CentOS/RHEL<br>
+$ which git  # インストール確認<br>
+$ echo $PATH  # PATH確認<br>
+$ export PATH=$PATH:/new/path  # PATH追加
+            </div>
+        </div>
+        
+        <div class="command-card error-card">
+            <h3>📁 No such file or directory</h3>
+            <div class="error-box">cat: test.txt: No such file or directory</div>
+            <h4>原因：</h4>
+            <p>指定したファイルやディレクトリが存在しない</p>
+            <h4>解決方法：</h4>
+            <div class="command-box">
+$ pwd  # 現在のディレクトリを確認<br>
+$ ls  # ファイル一覧を確認<br>
+$ ls -la  # 隠しファイルも含めて確認<br>
+$ find . -name "test.txt"  # ファイルを検索
+            </div>
+        </div>
+        
+        <div class="command-card error-card">
+            <h3>💾 No space left on device</h3>
+            <div class="error-box">cp: error writing './large.file': No space left on device</div>
+            <h4>原因：</h4>
+            <p>ディスクの空き容量が不足</p>
+            <h4>解決方法：</h4>
+            <div class="command-box">
+$ df -h  # ディスク使用状況確認<br>
+$ du -sh *  # 各ディレクトリのサイズ確認<br>
+$ sudo apt autoremove  # 不要パッケージ削除<br>
+$ sudo apt clean  # キャッシュクリア<br>
+$ find /tmp -type f -delete  # /tmp クリーンアップ
+            </div>
+        </div>
+        
+        <div class="command-card error-card">
+            <h3>🔒 Device or resource busy</h3>
+            <div class="error-box">umount: /mnt: target is busy</div>
+            <h4>原因：</h4>
+            <p>ファイルやディレクトリが使用中</p>
+            <h4>解決方法：</h4>
+            <div class="command-box">
+$ lsof /mnt  # 使用中のプロセスを確認<br>
+$ fuser -v /mnt  # 使用中のプロセスを表示<br>
+$ cd /  # ディレクトリから移動<br>
+$ sudo umount -l /mnt  # 強制アンマウント
+            </div>
+        </div>
+        
+        <div class="command-card error-card">
+            <h3>🌐 Connection refused</h3>
+            <div class="error-box">curl: (7) Failed to connect to localhost port 80: Connection refused</div>
+            <h4>原因：</h4>
+            <p>サービスが起動していない、またはポートが閉じている</p>
+            <h4>解決方法：</h4>
+            <div class="command-box">
+$ sudo systemctl status apache2  # サービス状態確認<br>
+$ sudo systemctl start apache2  # サービス起動<br>
+$ sudo netstat -tlnp  # ポート確認<br>
+$ sudo ufw status  # ファイアウォール確認<br>
+$ sudo ufw allow 80  # ポート開放
+            </div>
+        </div>
     </div>
+    
+    <h2>4.3 エラーメッセージの読み方</h2>
+    
+    <div class="explanation">
+        <h3>エラーメッセージの構造</h3>
+        <div class="error-box">bash: /usr/bin/foo: No such file or directory</div>
+        <p>👆 この例を分解すると：</p>
+        <ul>
+            <li><strong>bash:</strong> エラーを出したプログラム</li>
+            <li><strong>/usr/bin/foo:</strong> 問題のあるファイルやコマンド</li>
+            <li><strong>No such file or directory:</strong> エラーの内容</li>
+        </ul>
+        
+        <h3>デバッグのコツ</h3>
+        <ol>
+            <li><strong>エラーメッセージを最後まで読む</strong> - 重要な情報は最後にあることが多い</li>
+            <li><strong>ファイル名やパスを確認</strong> - タイポが原因の場合が多い</li>
+            <li><strong>権限を確認</strong> - <code>ls -l</code> で確認</li>
+            <li><strong>ログファイルを見る</strong> - <code>/var/log/</code> 以下のログを確認</li>
+            <li><strong>エラーメッセージで検索</strong> - Google検索で解決策が見つかることが多い</li>
+        </ol>
+    </div>
+    
+    <h2>4.4 トラブルシューティングコマンド</h2>
     
     <div class="command-grid">
         <div class="command-card">
-            <h3>docker run - コンテナ実行</h3>
-            <div class="command-box">$ docker run hello-world</div>
-            <p>最初のテスト用コンテナを実行</p>
+            <h3>システム情報確認</h3>
+            <div class="command-box">
+$ uname -a  # システム情報<br>
+$ cat /etc/os-release  # OS情報<br>
+$ free -h  # メモリ使用状況<br>
+$ df -h  # ディスク使用状況<br>
+$ top  # プロセス監視
+            </div>
         </div>
         
         <div class="command-card">
-            <h3>docker ps - コンテナ一覧</h3>
-            <div class="command-box">$ docker ps -a</div>
-            <p>実行中・停止中のコンテナを表示</p>
+            <h3>ログ確認</h3>
+            <div class="command-box">
+$ sudo tail -f /var/log/syslog  # システムログ<br>
+$ sudo journalctl -xe  # systemdログ<br>
+$ dmesg  # カーネルメッセージ<br>
+$ last  # ログイン履歴
+            </div>
         </div>
         
         <div class="command-card">
-            <h3>docker images - イメージ一覧</h3>
-            <div class="command-box">$ docker images</div>
-            <p>ダウンロードしたイメージを表示</p>
+            <h3>ネットワーク診断</h3>
+            <div class="command-box">
+$ ping google.com  # 接続確認<br>
+$ ip addr  # IPアドレス確認<br>
+$ netstat -tlnp  # ポート確認<br>
+$ ss -tlnp  # ソケット確認<br>
+$ traceroute google.com  # 経路確認
+            </div>
         </div>
+    </div>
+    
+    <h2>4.5 よくある質問と回答</h2>
+    
+    <div class="faq-section">
+        <h3>Q: sudoパスワードを忘れました</h3>
+        <p>A: リカバリーモードで起動し、rootでログインしてパスワードをリセット</p>
+        <div class="command-box">$ passwd username</div>
         
-        <div class="command-card">
-            <h3>docker pull - イメージ取得</h3>
-            <div class="command-box">$ docker pull ubuntu</div>
-            <p>Docker Hubからイメージをダウンロード</p>
+        <h3>Q: ファイルを誤って削除しました</h3>
+        <p>A: Linuxでは通常、削除したファイルの復元は困難。定期的なバックアップが重要</p>
+        
+        <h3>Q: システムが重い/遅い</h3>
+        <p>A: topコマンドでCPU/メモリ使用率の高いプロセスを確認</p>
+        <div class="command-box">$ top  # qで終了</div>
+        
+        <h3>Q: パッケージの依存関係エラー</h3>
+        <p>A: パッケージマネージャーの修復コマンドを実行</p>
+        <div class="command-box">
+$ sudo apt --fix-broken install  # Ubuntu/Debian<br>
+$ sudo yum-complete-transaction  # CentOS/RHEL
         </div>
-    </div>
-    
-    <h2>4.3 実際にDockerを使ってみよう</h2>
-    
-    <div class="practice-step">
-        <h4>ステップ1: Webサーバーを起動</h4>
-        <div class="command-box">$ docker run -p 8080:80 nginx</div>
-        <p>ブラウザで http://localhost:8080 にアクセスしてみましょう</p>
-    </div>
-    
-    <div class="practice-step">
-        <h4>ステップ2: バックグラウンド実行</h4>
-        <div class="command-box">$ docker run -d -p 8080:80 --name my-nginx nginx</div>
-        <p><code>-d</code>でバックグラウンド実行、<code>--name</code>で名前を付ける</p>
-    </div>
-    
-    <div class="practice-step">
-        <h4>ステップ3: コンテナ操作</h4>
-        <div class="command-box">$ docker stop my-nginx</div>
-        <div class="command-box">$ docker start my-nginx</div>
-        <div class="command-box">$ docker rm my-nginx</div>
-        <p>コンテナの停止・開始・削除</p>
-    </div>
-    
-    <div class="key-point">
-        <strong>覚えておこう：</strong>
-        <ul>
-            <li><strong>Image</strong> - アプリの設計図（テンプレート）</li>
-            <li><strong>Container</strong> - Imageから作られた実行中のアプリ</li>
-            <li><strong>Port mapping</strong> - ホストとコンテナのポート接続</li>
-            <li><strong>Docker Hub</strong> - イメージの公開リポジトリ</li>
-        </ul>
     </div>
 </div>

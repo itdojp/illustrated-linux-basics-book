@@ -1,395 +1,275 @@
 ---
 layout: chapter
-title: "第2章：基本操作マスター"
+title: "第2章：ファイル権限とユーザー管理"
 chapter: 2
 ---
 
 <div class="section">
-        <h1>第2章：基本操作マスター</h1>
-        
-        <h2>2.1 必須コマンド10選</h2>
-        
-        <div class="diagram-container">
-            <svg width="850" height="600" viewBox="0 0 850 600">
-                <!-- Central Linux Terminal -->
-                <rect x="350" y="250" width="150" height="100" fill="#2c3e50" stroke="#34495e" stroke-width="3" rx="10"/>
-                <text x="425" y="285" text-anchor="middle" fill="#27ae60" font-size="16" font-weight="bold">$ _</text>
-                <text x="425" y="305" text-anchor="middle" fill="#27ae60" font-size="14">Linux Terminal</text>
-                <text x="425" y="325" text-anchor="middle" fill="#ecf0f1" font-size="12">コマンドの中枢</text>
-                
-                <!-- Command boxes arranged around terminal -->
-                <!-- ls -->
-                <rect x="100" y="50" width="120" height="80" fill="#3498db" stroke="#2c3e50" stroke-width="2" rx="5"/>
-                <text x="160" y="80" text-anchor="middle" fill="white" font-size="14" font-weight="bold">ls</text>
-                <text x="160" y="100" text-anchor="middle" fill="white" font-size="11">ファイル一覧</text>
-                <text x="160" y="115" text-anchor="middle" fill="white" font-size="11">表示</text>
-                <line x1="220" y1="90" x2="350" y2="250" stroke="#7f8c8d" stroke-width="2" opacity="0.6"/>
-                
-                <!-- cd -->
-                <rect x="280" y="50" width="120" height="80" fill="#e74c3c" stroke="#2c3e50" stroke-width="2" rx="5"/>
-                <text x="340" y="80" text-anchor="middle" fill="white" font-size="14" font-weight="bold">cd</text>
-                <text x="340" y="100" text-anchor="middle" fill="white" font-size="11">ディレクトリ</text>
-                <text x="340" y="115" text-anchor="middle" fill="white" font-size="11">移動</text>
-                <line x1="340" y1="130" x2="410" y2="250" stroke="#7f8c8d" stroke-width="2" opacity="0.6"/>
-                
-                <!-- mkdir -->
-                <rect x="460" y="50" width="120" height="80" fill="#f39c12" stroke="#2c3e50" stroke-width="2" rx="5"/>
-                <text x="520" y="80" text-anchor="middle" fill="white" font-size="14" font-weight="bold">mkdir</text>
-                <text x="520" y="100" text-anchor="middle" fill="white" font-size="11">ディレクトリ</text>
-                <text x="520" y="115" text-anchor="middle" fill="white" font-size="11">作成</text>
-                <line x1="520" y1="130" x2="440" y2="250" stroke="#7f8c8d" stroke-width="2" opacity="0.6"/>
-                
-                <!-- rm -->
-                <rect x="640" y="50" width="120" height="80" fill="#e67e22" stroke="#2c3e50" stroke-width="2" rx="5"/>
-                <text x="700" y="80" text-anchor="middle" fill="white" font-size="14" font-weight="bold">rm</text>
-                <text x="700" y="100" text-anchor="middle" fill="white" font-size="11">ファイル</text>
-                <text x="700" y="115" text-anchor="middle" fill="white" font-size="11">削除</text>
-                <line x1="640" y1="90" x2="500" y2="250" stroke="#7f8c8d" stroke-width="2" opacity="0.6"/>
-                
-                <!-- cp -->
-                <rect x="100" y="200" width="120" height="80" fill="#9b59b6" stroke="#2c3e50" stroke-width="2" rx="5"/>
-                <text x="160" y="230" text-anchor="middle" fill="white" font-size="14" font-weight="bold">cp</text>
-                <text x="160" y="250" text-anchor="middle" fill="white" font-size="11">ファイル</text>
-                <text x="160" y="265" text-anchor="middle" fill="white" font-size="11">コピー</text>
-                <line x1="220" y1="240" x2="350" y2="280" stroke="#7f8c8d" stroke-width="2" opacity="0.6"/>
-                
-                <!-- mv -->
-                <rect x="640" y="200" width="120" height="80" fill="#1abc9c" stroke="#2c3e50" stroke-width="2" rx="5"/>
-                <text x="700" y="230" text-anchor="middle" fill="white" font-size="14" font-weight="bold">mv</text>
-                <text x="700" y="250" text-anchor="middle" fill="white" font-size="11">ファイル</text>
-                <text x="700" y="265" text-anchor="middle" fill="white" font-size="11">移動・名前変更</text>
-                <line x1="640" y1="240" x2="500" y2="280" stroke="#7f8c8d" stroke-width="2" opacity="0.6"/>
-                
-                <!-- pwd -->
-                <rect x="100" y="400" width="120" height="80" fill="#27ae60" stroke="#2c3e50" stroke-width="2" rx="5"/>
-                <text x="160" y="430" text-anchor="middle" fill="white" font-size="14" font-weight="bold">pwd</text>
-                <text x="160" y="450" text-anchor="middle" fill="white" font-size="11">現在位置</text>
-                <text x="160" y="465" text-anchor="middle" fill="white" font-size="11">表示</text>
-                <line x1="220" y1="440" x2="350" y2="350" stroke="#7f8c8d" stroke-width="2" opacity="0.6"/>
-                
-                <!-- find -->
-                <rect x="280" y="400" width="120" height="80" fill="#d35400" stroke="#2c3e50" stroke-width="2" rx="5"/>
-                <text x="340" y="430" text-anchor="middle" fill="white" font-size="14" font-weight="bold">find</text>
-                <text x="340" y="450" text-anchor="middle" fill="white" font-size="11">ファイル</text>
-                <text x="340" y="465" text-anchor="middle" fill="white" font-size="11">検索</text>
-                <line x1="340" y1="400" x2="410" y2="350" stroke="#7f8c8d" stroke-width="2" opacity="0.6"/>
-                
-                <!-- grep -->
-                <rect x="460" y="400" width="120" height="80" fill="#8e44ad" stroke="#2c3e50" stroke-width="2" rx="5"/>
-                <text x="520" y="430" text-anchor="middle" fill="white" font-size="14" font-weight="bold">grep</text>
-                <text x="520" y="450" text-anchor="middle" fill="white" font-size="11">文字列</text>
-                <text x="520" y="465" text-anchor="middle" fill="white" font-size="11">検索</text>
-                <line x1="520" y1="400" x2="440" y2="350" stroke="#7f8c8d" stroke-width="2" opacity="0.6"/>
-                
-                <!-- ps -->
-                <rect x="640" y="400" width="120" height="80" fill="#c0392b" stroke="#2c3e50" stroke-width="2" rx="5"/>
-                <text x="700" y="430" text-anchor="middle" fill="white" font-size="14" font-weight="bold">ps</text>
-                <text x="700" y="450" text-anchor="middle" fill="white" font-size="11">プロセス</text>
-                <text x="700" y="465" text-anchor="middle" fill="white" font-size="11">表示</text>
-                <line x1="640" y1="440" x2="500" y2="350" stroke="#7f8c8d" stroke-width="2" opacity="0.6"/>
-                
-                <!-- Title -->
-                <text x="425" y="30" text-anchor="middle" font-size="24" font-weight="bold" fill="#2c3e50">Linux 必須コマンド10選</text>
-                
-                <!-- Usage indicator -->
-                <text x="50" y="570" font-size="12" fill="#7f8c8d">使用頻度: 高 ← → 低</text>
-            </svg>
-        </div>
-        
-        <div class="command-grid">
-            <div class="command-card">
-                <h3>ls - ファイル一覧</h3>
-                <div class="command-box">$ ls -la</div>
-                <div class="output-box">
-drwxr-xr-x  5 user user 4096 Jan 15 10:30 .<br>
-drwxr-xr-x  3 user user 4096 Jan 10 09:15 ..<br>
--rw-r--r--  1 user user  220 Jan 12 14:22 file.txt
-                </div>
-                <p><code>-l</code>: 詳細表示　<code>-a</code>: 隠しファイルも表示</p>
-            </div>
+    <h1>第2章：ファイル権限とユーザー管理</h1>
+    
+    <h2>2.1 ファイル権限の仕組み</h2>
+    
+    <div class="diagram-container">
+        <svg width="850" height="500" viewBox="0 0 850 500">
+            <text x="425" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#2c3e50">Linuxの権限システム</text>
             
-            <div class="command-card">
-                <h3>cd - ディレクトリ移動</h3>
-                <div class="command-box">$ cd /home/user/Documents</div>
-                <p>便利な使い方：</p>
-                <ul>
-                    <li><code>cd ~</code>: ホームディレクトリへ</li>
-                    <li><code>cd ..</code>: 親ディレクトリへ</li>
-                    <li><code>cd -</code>: 直前のディレクトリへ</li>
-                </ul>
-            </div>
+            <!-- ls -l の出力例 -->
+            <rect x="50" y="60" width="750" height="80" fill="#f5f5f5" stroke="#333" stroke-width="2" rx="5"/>
+            <text x="70" y="90" font-family="monospace" font-size="16" fill="#333">-rwxr-xr--  1  user  group  1024  Jan 15 10:30  script.sh</text>
             
-            <div class="command-card">
-                <h3>mkdir - ディレクトリ作成</h3>
-                <div class="command-box">$ mkdir new_folder</div>
-                <div class="command-box">$ mkdir -p parent/child/grandchild</div>
-                <p><code>-p</code>: 親ディレクトリも同時に作成</p>
-            </div>
+            <!-- 各部分の説明 -->
+            <!-- ファイルタイプ -->
+            <line x1="70" y1="100" x2="70" y2="160" stroke="#e74c3c" stroke-width="2"/>
+            <rect x="20" y="160" width="100" height="60" fill="#e74c3c" rx="5"/>
+            <text x="70" y="185" text-anchor="middle" fill="white" font-size="12" font-weight="bold">ファイルタイプ</text>
+            <text x="70" y="205" text-anchor="middle" fill="white" font-size="10">- = ファイル</text>
+            <text x="70" y="215" text-anchor="middle" fill="white" font-size="10">d = ディレクトリ</text>
             
-            <div class="command-card">
-                <h3>rm - ファイル削除</h3>
-                <div class="command-box">$ rm file.txt</div>
-                <div class="command-box">$ rm -rf directory</div>
-                <p><code>-r</code>: ディレクトリも削除　<code>-f</code>: 強制削除</p>
-                <p><strong>注意：</strong>削除したファイルは復元困難</p>
+            <!-- 所有者権限 -->
+            <line x1="110" y1="100" x2="110" y2="160" stroke="#3498db" stroke-width="2"/>
+            <rect x="130" y="160" width="120" height="80" fill="#3498db" rx="5"/>
+            <text x="190" y="185" text-anchor="middle" fill="white" font-size="12" font-weight="bold">所有者権限</text>
+            <text x="190" y="205" text-anchor="middle" fill="white" font-size="10">r = 読み取り(4)</text>
+            <text x="190" y="215" text-anchor="middle" fill="white" font-size="10">w = 書き込み(2)</text>
+            <text x="190" y="225" text-anchor="middle" fill="white" font-size="10">x = 実行(1)</text>
+            
+            <!-- グループ権限 -->
+            <line x1="155" y1="100" x2="190" y2="160" stroke="#2ecc71" stroke-width="2"/>
+            <rect x="260" y="160" width="120" height="80" fill="#2ecc71" rx="5"/>
+            <text x="320" y="185" text-anchor="middle" fill="white" font-size="12" font-weight="bold">グループ権限</text>
+            <text x="320" y="205" text-anchor="middle" fill="white" font-size="10">r = 読み取り(4)</text>
+            <text x="320" y="215" text-anchor="middle" fill="white" font-size="10">- = なし(0)</text>
+            <text x="320" y="225" text-anchor="middle" fill="white" font-size="10">x = 実行(1)</text>
+            
+            <!-- その他権限 -->
+            <line x1="200" y1="100" x2="270" y2="160" stroke="#f39c12" stroke-width="2"/>
+            <rect x="390" y="160" width="120" height="80" fill="#f39c12" rx="5"/>
+            <text x="450" y="185" text-anchor="middle" fill="white" font-size="12" font-weight="bold">その他権限</text>
+            <text x="450" y="205" text-anchor="middle" fill="white" font-size="10">r = 読み取り(4)</text>
+            <text x="450" y="215" text-anchor="middle" fill="white" font-size="10">- = なし(0)</text>
+            <text x="450" y="225" text-anchor="middle" fill="white" font-size="10">- = なし(0)</text>
+            
+            <!-- 数値表記 -->
+            <g transform="translate(550, 160)">
+                <rect x="0" y="0" width="250" height="80" fill="#9b59b6" rx="5"/>
+                <text x="125" y="25" text-anchor="middle" fill="white" font-size="14" font-weight="bold">数値表記</text>
+                <text x="125" y="45" text-anchor="middle" fill="white" font-size="12">rwx r-x r-- = 754</text>
+                <text x="125" y="60" text-anchor="middle" fill="white" font-size="10">7(4+2+1) 5(4+0+1) 4(4+0+0)</text>
+            </g>
+            
+            <!-- よく使う権限パターン -->
+            <g transform="translate(50, 280)">
+                <rect x="0" y="0" width="750" height="180" fill="#ecf0f1" rx="10"/>
+                <text x="20" y="30" font-size="16" font-weight="bold" fill="#2c3e50">よく使う権限パターン</text>
+                
+                <text x="20" y="60" font-family="monospace" font-size="14" fill="#333">755 (rwxr-xr-x)</text>
+                <text x="200" y="60" font-size="12" fill="#555">→ 実行ファイル、スクリプト（所有者は全権限、他は読み実行のみ）</text>
+                
+                <text x="20" y="90" font-family="monospace" font-size="14" fill="#333">644 (rw-r--r--)</text>
+                <text x="200" y="90" font-size="12" fill="#555">→ 通常のファイル（所有者は読み書き、他は読み取りのみ）</text>
+                
+                <text x="20" y="120" font-family="monospace" font-size="14" fill="#333">600 (rw-------)</text>
+                <text x="200" y="120" font-size="12" fill="#555">→ 秘密鍵など（所有者のみアクセス可能）</text>
+                
+                <text x="20" y="150" font-family="monospace" font-size="14" fill="#333">777 (rwxrwxrwx)</text>
+                <text x="200" y="150" font-size="12" fill="#e74c3c">→ ⚠️ 危険！全員が全権限（避けるべき）</text>
+            </g>
+        </svg>
+    </div>
+    
+    <h2>2.2 権限の変更コマンド</h2>
+    
+    <div class="command-grid">
+        <div class="command-card">
+            <h3>chmod - 権限変更</h3>
+            <div class="command-box">
+$ chmod 755 script.sh<br>
+$ chmod u+x file.txt<br>
+$ chmod go-w important.txt
             </div>
-        </div>
-        
-        <h2>2.2 パイプとリダイレクト</h2>
-        
-        <div class="diagram-container">
-            <svg width="800" height="400" viewBox="0 0 800 400">
-                <!-- Pipeline concept -->
-                <text x="400" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#2c3e50">パイプライン（|）の概念</text>
-                
-                <!-- Command 1 -->
-                <rect x="50" y="80" width="120" height="60" fill="#3498db" stroke="#2c3e50" stroke-width="2" rx="5"/>
-                <text x="110" y="100" text-anchor="middle" fill="white" font-size="14" font-weight="bold">ls -la</text>
-                <text x="110" y="120" text-anchor="middle" fill="white" font-size="12">ファイル一覧</text>
-                
-                <!-- Pipe symbol -->
-                <rect x="200" y="100" width="40" height="20" fill="#e74c3c"/>
-                <text x="220" y="115" text-anchor="middle" fill="white" font-size="16" font-weight="bold">|</text>
-                
-                <!-- Command 2 -->
-                <rect x="270" y="80" width="120" height="60" fill="#f39c12" stroke="#2c3e50" stroke-width="2" rx="5"/>
-                <text x="330" y="100" text-anchor="middle" fill="white" font-size="14" font-weight="bold">grep "txt"</text>
-                <text x="330" y="120" text-anchor="middle" fill="white" font-size="12">文字列検索</text>
-                
-                <!-- Pipe symbol -->
-                <rect x="420" y="100" width="40" height="20" fill="#e74c3c"/>
-                <text x="440" y="115" text-anchor="middle" fill="white" font-size="16" font-weight="bold">|</text>
-                
-                <!-- Command 3 -->
-                <rect x="490" y="80" width="120" height="60" fill="#27ae60" stroke="#2c3e50" stroke-width="2" rx="5"/>
-                <text x="550" y="100" text-anchor="middle" fill="white" font-size="14" font-weight="bold">sort</text>
-                <text x="550" y="120" text-anchor="middle" fill="white" font-size="12">並び替え</text>
-                
-                <!-- Arrow -->
-                <path d="M 650 110 L 700 110" stroke="#2c3e50" stroke-width="3" marker-end="url(#arrowhead)"/>
-                <text x="725" y="115" font-size="14" fill="#2c3e50">結果出力</text>
-                
-                <!-- Data flow arrows -->
-                <path d="M 170 110 L 200 110" stroke="#7f8c8d" stroke-width="2" marker-end="url(#smallarrow)"/>
-                <path d="M 240 110 L 270 110" stroke="#7f8c8d" stroke-width="2" marker-end="url(#smallarrow)"/>
-                <path d="M 390 110 L 420 110" stroke="#7f8c8d" stroke-width="2" marker-end="url(#smallarrow)"/>
-                <path d="M 460 110 L 490 110" stroke="#7f8c8d" stroke-width="2" marker-end="url(#smallarrow)"/>
-                
-                <!-- リダイレクト説明 -->
-                <text x="400" y="200" text-anchor="middle" font-size="20" font-weight="bold" fill="#2c3e50">リダイレクト（>　>>）</text>
-                
-                <!-- Output redirection -->
-                <rect x="150" y="230" width="150" height="50" fill="#9b59b6" stroke="#2c3e50" stroke-width="2" rx="5"/>
-                <text x="225" y="250" text-anchor="middle" fill="white" font-size="14" font-weight="bold">ls -la > file.txt</text>
-                <text x="225" y="270" text-anchor="middle" fill="white" font-size="12">ファイルに出力（上書き）</text>
-                
-                <!-- Append redirection -->
-                <rect x="500" y="230" width="150" height="50" fill="#8e44ad" stroke="#2c3e50" stroke-width="2" rx="5"/>
-                <text x="575" y="250" text-anchor="middle" fill="white" font-size="14" font-weight="bold">echo "text" >> file.txt</text>
-                <text x="575" y="270" text-anchor="middle" fill="white" font-size="12">ファイルに追記</text>
-                
-                <!-- Example terminal output -->
-                <rect x="100" y="320" width="600" height="60" fill="#2c3e50" stroke="#34495e" stroke-width="2"/>
-                <text x="110" y="340" fill="#27ae60" font-family="monospace" font-size="12">$ ls -la | grep "\.txt" | wc -l</text>
-                <text x="110" y="360" fill="#95a5a6" font-family="monospace" font-size="12">5</text>
-                <text x="110" y="375" fill="#7f8c8d" font-size="10">（.txt ファイルの数をカウント）</text>
-                
-                <!-- Arrow definitions -->
-                <defs>
-                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
-                        <polygon points="0 0, 10 3.5, 0 7" fill="#2c3e50"/>
-                    </marker>
-                    <marker id="smallarrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-                        <polygon points="0 0, 8 3, 0 6" fill="#7f8c8d"/>
-                    </marker>
-                </defs>
-            </svg>
-        </div>
-        
-        <div class="explanation">
-            <strong>パイプの便利な組み合わせ：</strong>
+            <p><strong>数値指定：</strong></p>
             <ul>
-                <li><code>ps aux | grep プロセス名</code> - 特定プロセスを検索</li>
-                <li><code>history | grep コマンド名</code> - コマンド履歴を検索</li>
-                <li><code>cat ファイル名 | sort | uniq</code> - 重複除去して並び替え</li>
-                <li><code>find . -name "*.log" | xargs rm</code> - 検索結果を削除</li>
+                <li>4 = 読み取り (r)</li>
+                <li>2 = 書き込み (w)</li>
+                <li>1 = 実行 (x)</li>
+            </ul>
+            <p><strong>記号指定：</strong></p>
+            <ul>
+                <li>u = 所有者 (user)</li>
+                <li>g = グループ (group)</li>
+                <li>o = その他 (others)</li>
+                <li>a = 全員 (all)</li>
             </ul>
         </div>
         
-        <h2>2.3 ファイル権限とアクセス制御</h2>
-        
-        <div class="diagram-container">
-            <svg width="800" height="500" viewBox="0 0 800 500">
-                <!-- Permission display example -->
-                <text x="400" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#2c3e50">ファイル権限の見方</text>
-                
-                <!-- Terminal output simulation -->
-                <rect x="100" y="50" width="600" height="100" fill="#2c3e50" stroke="#34495e" stroke-width="2"/>
-                <text x="110" y="75" fill="#27ae60" font-family="monospace" font-size="14">$ ls -la</text>
-                <text x="110" y="95" fill="#95a5a6" font-family="monospace" font-size="12">-rw-r--r--  1 user group  1024 Jan 15 10:30 file.txt</text>
-                <text x="110" y="115" fill="#95a5a6" font-family="monospace" font-size="12">drwxr-xr-x  2 user group  4096 Jan 15 10:30 folder</text>
-                <text x="110" y="135" fill="#95a5a6" font-family="monospace" font-size="12">-rwx------  1 user group   512 Jan 15 10:30 script.sh</text>
-                
-                <!-- Permission breakdown -->
-                <text x="400" y="180" text-anchor="middle" font-size="18" font-weight="bold" fill="#2c3e50">権限の構成</text>
-                
-                <!-- File type -->
-                <rect x="120" y="200" width="40" height="40" fill="#e74c3c"/>
-                <text x="140" y="225" text-anchor="middle" fill="white" font-size="16" font-weight="bold">-</text>
-                <text x="140" y="260" text-anchor="middle" font-size="12" fill="#2c3e50">ファイル種別</text>
-                <text x="140" y="275" text-anchor="middle" font-size="10" fill="#7f8c8d">- : 通常ファイル</text>
-                <text x="140" y="290" text-anchor="middle" font-size="10" fill="#7f8c8d">d : ディレクトリ</text>
-                
-                <!-- Owner permissions -->
-                <rect x="200" y="200" width="120" height="40" fill="#3498db"/>
-                <text x="260" y="225" text-anchor="middle" fill="white" font-size="16" font-weight="bold">rwx</text>
-                <text x="260" y="260" text-anchor="middle" font-size="12" fill="#2c3e50">所有者の権限</text>
-                <text x="230" y="280" text-anchor="middle" font-size="10" fill="#7f8c8d">r:読み</text>
-                <text x="260" y="280" text-anchor="middle" font-size="10" fill="#7f8c8d">w:書き</text>
-                <text x="290" y="280" text-anchor="middle" font-size="10" fill="#7f8c8d">x:実行</text>
-                
-                <!-- Group permissions -->
-                <rect x="360" y="200" width="120" height="40" fill="#f39c12"/>
-                <text x="420" y="225" text-anchor="middle" fill="white" font-size="16" font-weight="bold">r-x</text>
-                <text x="420" y="260" text-anchor="middle" font-size="12" fill="#2c3e50">グループの権限</text>
-                <text x="390" y="280" text-anchor="middle" font-size="10" fill="#7f8c8d">r:読み</text>
-                <text x="420" y="280" text-anchor="middle" font-size="10" fill="#7f8c8d">-:書込不可</text>
-                <text x="450" y="280" text-anchor="middle" font-size="10" fill="#7f8c8d">x:実行</text>
-                
-                <!-- Other permissions -->
-                <rect x="520" y="200" width="120" height="40" fill="#27ae60"/>
-                <text x="580" y="225" text-anchor="middle" fill="white" font-size="16" font-weight="bold">r--</text>
-                <text x="580" y="260" text-anchor="middle" font-size="12" fill="#2c3e50">その他の権限</text>
-                <text x="550" y="280" text-anchor="middle" font-size="10" fill="#7f8c8d">r:読み</text>
-                <text x="580" y="280" text-anchor="middle" font-size="10" fill="#7f8c8d">-:書込不可</text>
-                <text x="610" y="280" text-anchor="middle" font-size="10" fill="#7f8c8d">-:実行不可</text>
-                
-                <!-- Numeric representation -->
-                <text x="400" y="330" text-anchor="middle" font-size="18" font-weight="bold" fill="#2c3e50">数値表記</text>
-                
-                <!-- chmod examples -->
-                <rect x="150" y="350" width="150" height="60" fill="#9b59b6"/>
-                <text x="225" y="375" text-anchor="middle" fill="white" font-size="14" font-weight="bold">chmod 755</text>
-                <text x="225" y="395" text-anchor="middle" fill="white" font-size="12">rwxr-xr-x</text>
-                
-                <rect x="350" y="350" width="150" height="60" fill="#e67e22"/>
-                <text x="425" y="375" text-anchor="middle" fill="white" font-size="14" font-weight="bold">chmod 644</text>
-                <text x="425" y="395" text-anchor="middle" fill="white" font-size="12">rw-r--r--</text>
-                
-                <rect x="550" y="350" width="150" height="60" fill="#1abc9c"/>
-                <text x="625" y="375" text-anchor="middle" fill="white" font-size="14" font-weight="bold">chmod 600</text>
-                <text x="625" y="395" text-anchor="middle" fill="white" font-size="12">rw-------</text>
-                
-                <!-- Number meanings -->
-                <text x="400" y="440" text-anchor="middle" font-size="14" fill="#2c3e50">4=読み　2=書き　1=実行</text>
-                <text x="400" y="460" text-anchor="middle" font-size="12" fill="#7f8c8d">7=4+2+1(全権限)　5=4+1(読み・実行)　4=読みのみ</text>
-            </svg>
-        </div>
-        
-        <div class="command-grid">
-            <div class="command-card">
-                <h3>chmod - 権限変更</h3>
-                <div class="command-box">$ chmod 755 script.sh</div>
-                <div class="command-box">$ chmod +x program</div>
-                <p>よく使う権限：</p>
-                <ul>
-                    <li>755: 実行可能ファイル</li>
-                    <li>644: 通常ファイル</li>
-                    <li>600: 秘密ファイル（自分のみ）</li>
-                </ul>
+        <div class="command-card">
+            <h3>chown - 所有者変更</h3>
+            <div class="command-box">
+$ sudo chown user file.txt<br>
+$ sudo chown user:group file.txt<br>
+$ sudo chown -R user:group directory/
             </div>
-            
-            <div class="command-card">
-                <h3>chown - 所有者変更</h3>
-                <div class="command-box">$ chown user:group file.txt</div>
-                <div class="command-box">$ chown -R user:group directory/</div>
-                <p><code>-R</code>: 再帰的に変更（ディレクトリ内すべて）</p>
-                <p><strong>注意：</strong>通常は管理者権限（sudo）が必要</p>
-            </div>
-        </div>
-        
-        <h2>2.4 プロセス管理</h2>
-        
-        <div class="diagram-container">
-            <svg width="800" height="450" viewBox="0 0 800 450">
-                <!-- Process overview -->
-                <text x="400" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#2c3e50">プロセス管理の全体像</text>
-                
-                <!-- Terminal showing ps output -->
-                <rect x="50" y="50" width="700" height="120" fill="#2c3e50" stroke="#34495e" stroke-width="2"/>
-                <text x="60" y="75" fill="#27ae60" font-family="monospace" font-size="12">$ ps aux</text>
-                <text x="60" y="95" fill="#95a5a6" font-family="monospace" font-size="10">USER       PID  %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND</text>
-                <text x="60" y="110" fill="#95a5a6" font-family="monospace" font-size="10">root         1   0.0  0.1  225344  4624 ?        Ss   10:30   0:01 /sbin/init</text>
-                <text x="60" y="125" fill="#95a5a6" font-family="monospace" font-size="10">user      1234   1.5  2.1  123456 12345 pts/0    S+   10:45   0:03 python app.py</text>
-                <text x="60" y="140" fill="#95a5a6" font-family="monospace" font-size="10">user      5678   0.2  0.5   45678  2345 pts/1    R+   10:50   0:00 top</text>
-                <text x="60" y="155" fill="#95a5a6" font-family="monospace" font-size="10">user      9999  25.3  5.8  987654 56789 ?        R    10:52   1:23 heavy_process</text>
-                
-                <!-- Process states -->
-                <text x="400" y="200" text-anchor="middle" font-size="16" font-weight="bold" fill="#2c3e50">プロセスの状態</text>
-                
-                <!-- Running -->
-                <rect x="100" y="220" width="100" height="50" fill="#27ae60"/>
-                <text x="150" y="240" text-anchor="middle" fill="white" font-size="12" font-weight="bold">実行中</text>
-                <text x="150" y="255" text-anchor="middle" fill="white" font-size="10">Running (R)</text>
-                
-                <!-- Sleeping -->
-                <rect x="250" y="220" width="100" height="50" fill="#3498db"/>
-                <text x="300" y="240" text-anchor="middle" fill="white" font-size="12" font-weight="bold">待機中</text>
-                <text x="300" y="255" text-anchor="middle" fill="white" font-size="10">Sleeping (S)</text>
-                
-                <!-- Stopped -->
-                <rect x="400" y="220" width="100" height="50" fill="#f39c12"/>
-                <text x="450" y="240" text-anchor="middle" fill="white" font-size="12" font-weight="bold">停止</text>
-                <text x="450" y="255" text-anchor="middle" fill="white" font-size="10">Stopped (T)</text>
-                
-                <!-- Zombie -->
-                <rect x="550" y="220" width="100" height="50" fill="#e74c3c"/>
-                <text x="600" y="240" text-anchor="middle" fill="white" font-size="12" font-weight="bold">ゾンビ</text>
-                <text x="600" y="255" text-anchor="middle" fill="white" font-size="10">Zombie (Z)</text>
-                
-                <!-- Process control -->
-                <text x="400" y="300" text-anchor="middle" font-size="16" font-weight="bold" fill="#2c3e50">プロセス制御</text>
-                
-                <!-- Kill process -->
-                <rect x="150" y="320" width="150" height="40" fill="#c0392b"/>
-                <text x="225" y="345" text-anchor="middle" fill="white" font-size="12">kill 1234</text>
-                
-                <!-- Force kill -->
-                <rect x="350" y="320" width="150" height="40" fill="#8e44ad"/>
-                <text x="425" y="345" text-anchor="middle" fill="white" font-size="12">kill -9 1234</text>
-                
-                <!-- Background job -->
-                <rect x="550" y="320" width="150" height="40" fill="#16a085"/>
-                <text x="625" y="345" text-anchor="middle" fill="white" font-size="12">command &</text>
-                
-                <!-- Arrows showing process lifecycle -->
-                <path d="M 200 245 L 250 245" stroke="#7f8c8d" stroke-width="2" marker-end="url(#arrowhead)"/>
-                <path d="M 350 245 L 400 245" stroke="#7f8c8d" stroke-width="2" marker-end="url(#arrowhead)"/>
-                <path d="M 500 245 L 550 245" stroke="#7f8c8d" stroke-width="2" marker-end="url(#arrowhead)"/>
-                
-                <!-- Labels -->
-                <text x="225" y="285" text-anchor="middle" font-size="10" fill="#7f8c8d">I/O待ち</text>
-                <text x="375" y="285" text-anchor="middle" font-size="10" fill="#7f8c8d">シグナル</text>
-                <text x="525" y="285" text-anchor="middle" font-size="10" fill="#7f8c8d">親プロセス待ち</text>
-                
-                <!-- Real-time monitoring -->
-                <text x="400" y="400" text-anchor="middle" font-size="14" font-weight="bold" fill="#2c3e50">リアルタイム監視: top / htop</text>
-            </svg>
-        </div>
-        
-        <div class="explanation">
-            <strong>重要コマンド：</strong>
+            <p>オプション：</p>
             <ul>
-                <li><code>ps aux</code> - 全プロセス表示</li>
-                <li><code>top</code> / <code>htop</code> - リアルタイム監視</li>
-                <li><code>kill PID</code> - プロセス終了</li>
-                <li><code>kill -9 PID</code> - 強制終了</li>
-                <li><code>jobs</code> - バックグラウンドジョブ表示</li>
-                <li><code>&</code> - コマンドをバックグラウンド実行</li>
+                <li><code>-R</code> ディレクトリ内を再帰的に変更</li>
             </ul>
         </div>
         
-        <div class="key-point">
-            <strong>PID（Process ID）：</strong>各プロセスに割り当てられる一意の識別番号。プロセス管理の際はこの番号を使用。
+        <div class="command-card">
+            <h3>chgrp - グループ変更</h3>
+            <div class="command-box">
+$ sudo chgrp developers project/<br>
+$ sudo chgrp -R www-data /var/www/
+            </div>
+            <p>グループのみを変更したい時に使用</p>
         </div>
+    </div>
+    
+    <h2>2.3 ユーザーとグループ管理</h2>
+    
+    <div class="diagram-container">
+        <svg width="800" height="400" viewBox="0 0 800 400">
+            <text x="400" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#2c3e50">ユーザーとグループの関係</text>
+            
+            <!-- ユーザー -->
+            <g transform="translate(100, 60)">
+                <circle cx="50" cy="50" r="40" fill="#3498db"/>
+                <text x="50" y="55" text-anchor="middle" fill="white" font-size="14" font-weight="bold">alice</text>
+                <text x="50" y="110" text-anchor="middle" font-size="12">ユーザー</text>
+            </g>
+            
+            <g transform="translate(250, 60)">
+                <circle cx="50" cy="50" r="40" fill="#3498db"/>
+                <text x="50" y="55" text-anchor="middle" fill="white" font-size="14" font-weight="bold">bob</text>
+                <text x="50" y="110" text-anchor="middle" font-size="12">ユーザー</text>
+            </g>
+            
+            <g transform="translate(400, 60)">
+                <circle cx="50" cy="50" r="40" fill="#3498db"/>
+                <text x="50" y="55" text-anchor="middle" fill="white" font-size="14" font-weight="bold">carol</text>
+                <text x="50" y="110" text-anchor="middle" font-size="12">ユーザー</text>
+            </g>
+            
+            <!-- グループ -->
+            <g transform="translate(100, 200)">
+                <rect x="0" y="0" width="200" height="80" fill="#2ecc71" rx="10" opacity="0.7"/>
+                <text x="100" y="40" text-anchor="middle" fill="white" font-size="16" font-weight="bold">developers</text>
+                <text x="100" y="60" text-anchor="middle" fill="white" font-size="12">グループ</text>
+            </g>
+            
+            <g transform="translate(350, 200)">
+                <rect x="0" y="0" width="200" height="80" fill="#e74c3c" rx="10" opacity="0.7"/>
+                <text x="100" y="40" text-anchor="middle" fill="white" font-size="16" font-weight="bold">admin</text>
+                <text x="100" y="60" text-anchor="middle" fill="white" font-size="12">グループ</text>
+            </g>
+            
+            <!-- 矢印（所属関係） -->
+            <line x1="150" y1="140" x2="180" y2="200" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+            <line x1="300" y1="140" x2="250" y2="200" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+            <line x1="300" y1="140" x2="400" y2="200" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+            <line x1="450" y1="140" x2="480" y2="200" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+            
+            <defs>
+                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+                    <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+                </marker>
+            </defs>
+            
+            <!-- 説明 -->
+            <text x="400" y="320" text-anchor="middle" font-size="14" fill="#555">1人のユーザーは複数のグループに所属できる</text>
+            <text x="400" y="345" text-anchor="middle" font-size="14" fill="#555">ファイルやディレクトリはユーザーとグループで管理される</text>
+        </svg>
+    </div>
+    
+    <h2>2.4 ユーザー管理コマンド</h2>
+    
+    <div class="command-grid">
+        <div class="command-card">
+            <h3>useradd - ユーザー追加</h3>
+            <div class="command-box">
+$ sudo useradd newuser<br>
+$ sudo useradd -m -s /bin/bash john<br>
+$ sudo useradd -G developers alice
+            </div>
+            <p>オプション：</p>
+            <ul>
+                <li><code>-m</code> ホームディレクトリ作成</li>
+                <li><code>-s</code> デフォルトシェル指定</li>
+                <li><code>-G</code> 追加グループ指定</li>
+            </ul>
+        </div>
+        
+        <div class="command-card">
+            <h3>passwd - パスワード設定</h3>
+            <div class="command-box">
+$ sudo passwd newuser<br>
+$ passwd  # 自分のパスワード変更
+            </div>
+            <p>強力なパスワードを設定しよう</p>
+        </div>
+        
+        <div class="command-card">
+            <h3>usermod - ユーザー情報変更</h3>
+            <div class="command-box">
+$ sudo usermod -aG sudo alice<br>
+$ sudo usermod -s /bin/zsh bob<br>
+$ sudo usermod -L baduser  # ロック
+            </div>
+            <p><code>-aG</code> グループに追加（-a なしだと置換）</p>
+        </div>
+        
+        <div class="command-card">
+            <h3>userdel - ユーザー削除</h3>
+            <div class="command-box">
+$ sudo userdel olduser<br>
+$ sudo userdel -r olduser  # ホームも削除
+            </div>
+            <p>⚠️ <code>-r</code> はホームディレクトリも削除</p>
+        </div>
+        
+        <div class="command-card">
+            <h3>groupadd - グループ追加</h3>
+            <div class="command-box">
+$ sudo groupadd developers<br>
+$ sudo groupadd -g 1500 special
+            </div>
+            <p><code>-g</code> グループID指定</p>
+        </div>
+        
+        <div class="command-card">
+            <h3>groups - 所属グループ確認</h3>
+            <div class="command-box">
+$ groups<br>
+$ groups alice<br>
+$ id alice  # より詳細な情報
+            </div>
+            <p>ユーザーの所属グループを確認</p>
+        </div>
+    </div>
+    
+    <h2>2.5 特殊な権限</h2>
+    
+    <div class="explanation">
+        <h3>SUID (Set User ID)</h3>
+        <div class="command-box">$ chmod u+s program</div>
+        <p>実行時に所有者の権限で動作（例：passwd コマンド）</p>
+        
+        <h3>SGID (Set Group ID)</h3>
+        <div class="command-box">$ chmod g+s directory/</div>
+        <p>ディレクトリ内の新規ファイルが同じグループになる</p>
+        
+        <h3>スティッキービット</h3>
+        <div class="command-box">$ chmod +t /tmp</div>
+        <p>所有者以外はファイル削除不可（共有ディレクトリ用）</p>
+    </div>
+    
+    <div class="important-note">
+        <h3>⚠️ セキュリティの基本原則</h3>
+        <ul>
+            <li><strong>最小権限の原則</strong>：必要最小限の権限のみを付与</li>
+            <li><strong>777は避ける</strong>：全員に全権限は危険</li>
+            <li><strong>sudoの適切な使用</strong>：管理者権限は必要な時だけ</li>
+            <li><strong>定期的な確認</strong>：不要なユーザーや権限を定期的に見直す</li>
+        </ul>
+    </div>
 </div>
