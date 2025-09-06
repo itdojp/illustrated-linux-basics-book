@@ -12,19 +12,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Ensure PyYAML available
-        run: |
-          python3 -V || true
-          python3 - << 'PY'
-import pkgutil, sys
-sys.exit(0 if pkgutil.find_loader('yaml') else 1)
-PY
-        continue-on-error: true
-
-      - name: Install PyYAML if missing
-        if: ${{ failure() }}
-        run: |
-          python3 -m pip install --user pyyaml
+      - name: Install PyYAML
+        run: python3 -m pip install --user pyyaml
 
       - name: Build URL list
         id: build
