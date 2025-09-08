@@ -119,10 +119,11 @@ display ToC titles even when order falls back to site.pages.
           {%- assign prev_data = data_items | where: "url", prev_url_n | first -%}
         {%- endif -%}
       {%- endif -%}
+      {%- assign prev_page = site.pages | where: "url", prev_url_n | first -%}
       <a href="{{ prev_url | relative_url }}" class="nav-prev" rel="prev">
         <span class="arrow">←</span>
         <span class="label">前へ</span>
-        <span class="title">{{ prev_data.title | default: prev_data.label | default: previous_item.title | default: previous_item.name | default: "前のページ" }}</span>
+        <span class="title">{{ prev_page.title | default: prev_data.title | default: prev_data.label | default: previous_item.title | default: previous_item.name | default: "前のページ" }}</span>
       </a>
     {% else %}
       <span class="nav-disabled nav-prev">
@@ -150,9 +151,10 @@ display ToC titles even when order falls back to site.pages.
           {%- assign next_data = data_items | where: "url", next_url_n | first -%}
         {%- endif -%}
       {%- endif -%}
+      {%- assign next_page = site.pages | where: "url", next_url_n | first -%}
       <a href="{{ next_url | relative_url }}" class="nav-next" rel="next">
         <span class="label">次へ</span>
-        <span class="title">{{ next_data.title | default: next_data.label | default: next_item.title | default: next_item.name | default: "次のページ" }}</span>
+        <span class="title">{{ next_page.title | default: next_data.title | default: next_data.label | default: next_item.title | default: next_item.name | default: "次のページ" }}</span>
         <span class="arrow">→</span>
       </a>
     {% else %}
