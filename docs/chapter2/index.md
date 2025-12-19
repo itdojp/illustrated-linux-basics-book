@@ -7,6 +7,16 @@ chapter: 2
 <div class="section">
     <h1>第2章：ファイル権限とユーザー管理</h1>
     
+    <h2>2.0 この章で学ぶこと</h2>
+    
+    <div class="explanation">
+        <ul>
+            <li><code>ls -l</code> の出力から、権限（r/w/x）と所有者/グループを読み取れる</li>
+            <li><code>chmod</code>/<code>chown</code>/<code>chgrp</code> で権限と所有者を変更できる</li>
+            <li>ユーザー/グループ管理の基本コマンドを把握できる</li>
+        </ul>
+    </div>
+    
     <h2>2.1 ファイル権限の仕組み</h2>
     
     <div class="diagram-container">
@@ -270,6 +280,16 @@ $ id alice  # より詳細な情報
             <li><strong>777は避ける</strong>：全員に全権限は危険</li>
             <li><strong>sudoの適切な使用</strong>：管理者権限は必要な時だけ</li>
             <li><strong>定期的な確認</strong>：不要なユーザーや権限を定期的に見直す</li>
+        </ul>
+    </div>
+    
+    <h2>2.6 まとめ</h2>
+    
+    <div class="explanation">
+        <ul>
+            <li>権限は「所有者/グループ/その他」に対して r/w/x を設定する</li>
+            <li><code>chmod</code> は数値指定と記号指定の両方がある</li>
+            <li>安易な <code>777</code> は避け、必要最小限の権限にする</li>
         </ul>
     </div>
 </div>
