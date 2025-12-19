@@ -7,6 +7,16 @@ chapter: 5
 <div class="section">
     <h1>第5章：実践演習 - 簡単なスクリプト作成</h1>
     
+    <h2>5.0 この章で学ぶこと</h2>
+    
+    <div class="explanation">
+        <ul>
+            <li>シェルスクリプトの最小構成（shebang/コメント/コマンド実行）を作れる</li>
+            <li><code>tar</code> や <code>find</code> を使った簡単な自動化の例を理解できる</li>
+            <li><code>cron</code> で定期実行できる</li>
+        </ul>
+    </div>
+    
     <h2>5.1 はじめてのシェルスクリプト</h2>
     
     <div class="explanation">

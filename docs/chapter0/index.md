@@ -7,6 +7,16 @@ chapter: 0
 <div class="section">
         <h1>第0章：コンピュータの仕組み</h1>
         
+        <h2>0.0 この章で学ぶこと</h2>
+        
+        <div class="explanation">
+            <ul>
+                <li>CPU・メモリ・ストレージなど、PCの主要パーツの役割を説明できる</li>
+                <li>OSが「アプリとハードウェアの間」をつなぐ理由を説明できる</li>
+                <li>サーバーが「役割」であること（通常のPCとの違い）を説明できる</li>
+            </ul>
+        </div>
+        
         <h2>0.1 PCの中身を図解</h2>
         
         <div class="diagram-container">
@@ -210,5 +220,19 @@ chapter: 0
         
         <div class="key-point">
             <strong>重要：</strong>サーバーは「役割」であり、通常のPCでもサーバーソフトウェアを動かせばサーバーになる
+        </div>
+        
+        <h2>0.4 まとめ</h2>
+        
+        <div class="explanation">
+            <ul>
+                <li>PCはCPU（計算）・メモリ（作業）・ストレージ（保存）が連携して動く</li>
+                <li>OSはアプリがハードウェアを直接操作しなくて済むようにする</li>
+                <li>サーバーは「役割」であり、停止しづらい・リモートで管理することが多い</li>
+            </ul>
+        </div>
+        
+        <div class="key-point">
+            <strong>次章予告：</strong>次章では、Linuxを操作するための「必須コマンド」をまとめて学びます。
         </div>
 </div>

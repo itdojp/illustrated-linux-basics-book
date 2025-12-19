@@ -7,6 +7,16 @@ chapter: 3
 <div class="section">
     <h1>第3章：テキスト処理とパッケージ管理</h1>
     
+    <h2>3.0 この章で学ぶこと</h2>
+    
+    <div class="explanation">
+        <ul>
+            <li><code>vi</code> の基本操作（編集・保存・終了）を把握できる</li>
+            <li>テキスト処理コマンドで「必要な行だけを抜き出す」流れを作れる</li>
+            <li>パッケージ管理（APT/YUM(DNF)）でインストール・更新・削除ができる</li>
+        </ul>
+    </div>
+    
     <h2>3.1 viエディタの基本操作</h2>
     
     <div class="diagram-container">
@@ -340,6 +350,16 @@ $ sudo yum upgrade  # 古いパッケージも削除
             <li><code>apt install -y</code> でスクリプト化しやすく</li>
             <li><code>which command</code> でコマンドの場所確認</li>
             <li><code>dpkg -L package</code> でインストールファイル一覧</li>
+        </ul>
+    </div>
+    
+    <h2>3.7 まとめ</h2>
+    
+    <div class="explanation">
+        <ul>
+            <li><code>vi</code> は「モード」の切り替えが基本（まずは編集→保存→終了を押さえる）</li>
+            <li>テキスト処理は <code>grep</code> とパイプを起点にすると理解しやすい</li>
+            <li>パッケージ管理は「更新（update）→インストール/アップグレード」の順を意識する</li>
         </ul>
     </div>
 </div>
