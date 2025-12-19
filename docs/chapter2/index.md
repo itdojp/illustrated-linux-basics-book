@@ -131,7 +131,7 @@ $ sudo chown -R user:group directory/
 $ sudo chgrp developers project/<br>
 $ sudo chgrp -R www-data /var/www/
             </div>
-            <p>グループのみを変更したい時に使用</p>
+            <p>グループのみを変更したいときに使用します。</p>
         </div>
     </div>
     
@@ -234,7 +234,7 @@ $ sudo usermod -L baduser  # ロック
 $ sudo userdel olduser<br>
 $ sudo userdel -r olduser  # ホームも削除
             </div>
-            <p>⚠️ <code>-r</code> はホームディレクトリも削除</p>
+            <p>⚠️ <code>-r</code> はホームディレクトリも削除します。</p>
         </div>
         
         <div class="command-card">
@@ -243,7 +243,7 @@ $ sudo userdel -r olduser  # ホームも削除
 $ sudo groupadd developers<br>
 $ sudo groupadd -g 1500 special
             </div>
-            <p><code>-g</code> グループID指定</p>
+            <p><code>-g</code> グループIDを指定します。</p>
         </div>
         
         <div class="command-card">
@@ -253,7 +253,7 @@ $ groups<br>
 $ groups alice<br>
 $ id alice  # より詳細な情報
             </div>
-            <p>ユーザーの所属グループを確認</p>
+            <p>ユーザーの所属グループを確認します。</p>
         </div>
     </div>
     
@@ -262,15 +262,15 @@ $ id alice  # より詳細な情報
     <div class="explanation">
         <h3>SUID (Set User ID)</h3>
         <div class="command-box">$ chmod u+s program</div>
-        <p>実行時に所有者の権限で動作（例：passwd コマンド）</p>
+        <p>実行時に所有者の権限で動作します（例：passwd コマンド）。</p>
         
         <h3>SGID (Set Group ID)</h3>
         <div class="command-box">$ chmod g+s directory/</div>
-        <p>ディレクトリ内の新規ファイルが同じグループになる</p>
+        <p>ディレクトリ内の新規ファイルは同じグループになります。</p>
         
         <h3>スティッキービット</h3>
         <div class="command-box">$ chmod +t /tmp</div>
-        <p>所有者以外はファイル削除不可（共有ディレクトリ用）</p>
+        <p>所有者以外はファイルを削除できません（共有ディレクトリ用）。</p>
     </div>
     
     <div class="important-note">
@@ -278,7 +278,7 @@ $ id alice  # より詳細な情報
         <ul>
             <li><strong>最小権限の原則</strong>：必要最小限の権限のみを付与</li>
             <li><strong>777は避ける</strong>：全員に全権限は危険</li>
-            <li><strong>sudoの適切な使用</strong>：管理者権限は必要な時だけ</li>
+            <li><strong>sudoの適切な使用</strong>：管理者権限は必要なときだけ</li>
             <li><strong>定期的な確認</strong>：不要なユーザーや権限を定期的に見直す</li>
         </ul>
     </div>
