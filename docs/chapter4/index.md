@@ -7,6 +7,16 @@ chapter: 4
 <div class="section">
     <h1>第4章：よくあるエラーと対処法</h1>
     
+    <h2>4.0 この章で学ぶこと</h2>
+    
+    <div class="explanation">
+        <ul>
+            <li>よくあるエラーの「原因の当たり」を付けられる</li>
+            <li>エラーメッセージから次に取るべき行動を判断できる</li>
+            <li>トラブルシューティング用コマンドで状況を確認できる</li>
+        </ul>
+    </div>
+    
     <h2>4.1 初心者が必ず遭遇するエラー TOP 10</h2>
     
     <div class="diagram-container">
@@ -240,21 +250,31 @@ $ traceroute google.com  # 経路確認
     
     <div class="faq-section">
         <h3>Q: sudoパスワードを忘れました</h3>
-        <p>A: リカバリーモードで起動し、rootでログインしてパスワードをリセット</p>
+        <p>A: リカバリーモードで起動し、rootでログインしてパスワードをリセットします。</p>
         <div class="command-box">$ passwd username</div>
         
         <h3>Q: ファイルを誤って削除しました</h3>
-        <p>A: Linuxでは通常、削除したファイルの復元は困難。定期的なバックアップが重要</p>
+        <p>A: Linuxでは通常、削除したファイルの復元は困難です。定期的なバックアップが重要です。</p>
         
         <h3>Q: システムが重い/遅い</h3>
-        <p>A: topコマンドでCPU/メモリ使用率の高いプロセスを確認</p>
+        <p>A: topコマンドでCPU/メモリ使用率の高いプロセスを確認します。</p>
         <div class="command-box">$ top  # qで終了</div>
         
         <h3>Q: パッケージの依存関係エラー</h3>
-        <p>A: パッケージマネージャーの修復コマンドを実行</p>
+        <p>A: パッケージマネージャーの修復コマンドを実行します。</p>
         <div class="command-box">
 $ sudo apt --fix-broken install  # Ubuntu/Debian<br>
 $ sudo yum-complete-transaction  # CentOS/RHEL
         </div>
+    </div>
+    
+    <h2>4.6 まとめ</h2>
+    
+    <div class="explanation">
+        <ul>
+            <li>まずは「エラーメッセージを読む」→「何が無い/権限が無い/場所が違う」を切り分ける</li>
+            <li>困ったら <code>top</code>/<code>df</code>/<code>journalctl</code> などで状況確認する</li>
+            <li>再発防止には、手順の記録とバックアップが有効</li>
+        </ul>
     </div>
 </div>

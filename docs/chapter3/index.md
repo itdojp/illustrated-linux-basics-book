@@ -7,6 +7,16 @@ chapter: 3
 <div class="section">
     <h1>第3章：テキスト処理とパッケージ管理</h1>
     
+    <h2>3.0 この章で学ぶこと</h2>
+    
+    <div class="explanation">
+        <ul>
+            <li><code>vi</code> の基本操作（編集・保存・終了）を把握できる</li>
+            <li>テキスト処理コマンドで「必要な行だけを抜き出す」流れを作れる</li>
+            <li>パッケージ管理（APT/YUM(DNF)）でインストール・更新・削除ができる</li>
+        </ul>
+    </div>
+    
     <h2>3.1 viエディタの基本操作</h2>
     
     <div class="diagram-container">
@@ -131,7 +141,7 @@ $ cat file.txt<br>
 $ cat -n file.txt  # 行番号付き<br>
 $ cat file1.txt file2.txt > merged.txt
             </div>
-            <p>複数ファイルの結合にも使用</p>
+            <p>複数ファイルの結合にも使用します。</p>
         </div>
         
         <div class="command-card">
@@ -150,7 +160,7 @@ $ head -n 10 file.txt  # 先頭10行<br>
 $ tail -n 20 file.txt  # 末尾20行<br>
 $ tail -f /var/log/syslog  # リアルタイム監視
             </div>
-            <p><code>-f</code> はログ監視に便利</p>
+            <p><code>-f</code> はログ監視に便利です。</p>
         </div>
         
         <div class="command-card">
@@ -161,7 +171,7 @@ $ grep -i "Error" log.txt  # 大文字小文字無視<br>
 $ grep -r "TODO" ./src/  # 再帰検索<br>
 $ grep -v "debug" log.txt  # 除外
             </div>
-            <p>正規表現も使用可能</p>
+            <p>正規表現も使用できます。</p>
         </div>
         
         <div class="command-card">
@@ -171,7 +181,7 @@ $ sed 's/old/new/g' file.txt  # 置換<br>
 $ sed -i 's/old/new/g' file.txt  # 直接編集<br>
 $ sed '5d' file.txt  # 5行目削除
             </div>
-            <p>一括置換に便利</p>
+            <p>一括置換に便利です。</p>
         </div>
         
         <div class="command-card">
@@ -181,7 +191,7 @@ $ awk '{print $1}' file.txt  # 1列目表示<br>
 $ awk -F: '{print $1}' /etc/passwd  # 区切り文字指定<br>
 $ ps aux | awk '{print $2, $11}'  # PIDとコマンド
             </div>
-            <p>列単位の処理に強力</p>
+            <p>列単位の処理に強力です。</p>
         </div>
     </div>
     
@@ -254,7 +264,7 @@ $ ps aux | awk '{print $2, $11}'  # PIDとコマンド
 $ sudo apt install nginx<br>
 $ sudo apt install vim git curl -y
             </div>
-            <p><code>-y</code> で確認をスキップ</p>
+            <p><code>-y</code> で確認をスキップします。</p>
         </div>
         
         <div class="command-card">
@@ -264,7 +274,7 @@ $ sudo apt remove package-name<br>
 $ sudo apt purge package-name  # 設定も削除<br>
 $ sudo apt autoremove  # 不要な依存削除
             </div>
-            <p><code>purge</code> は設定ファイルも削除</p>
+            <p><code>purge</code> は設定ファイルも削除します。</p>
         </div>
         
         <div class="command-card">
@@ -273,7 +283,7 @@ $ sudo apt autoremove  # 不要な依存削除
 $ sudo apt update && sudo apt upgrade<br>
 $ sudo apt full-upgrade  # カーネルも更新
             </div>
-            <p>定期的な更新でセキュリティを保つ</p>
+            <p>定期的な更新でセキュリティを保ちます。</p>
         </div>
         
         <div class="command-card">
@@ -283,7 +293,7 @@ $ apt search keyword<br>
 $ apt show package-name  # 詳細情報<br>
 $ apt list --installed  # インストール済み一覧
             </div>
-            <p>必要なパッケージを探す</p>
+            <p>必要なパッケージを探します。</p>
         </div>
     </div>
     
@@ -296,7 +306,7 @@ $ apt list --installed  # インストール済み一覧
 $ sudo yum install httpd<br>
 $ sudo dnf install postgresql  # Fedora/RHEL8+
             </div>
-            <p>CentOS 7はyum、8以降はdnf推奨</p>
+            <p>CentOS 7 は yum、8 以降は dnf を推奨します。</p>
         </div>
         
         <div class="command-card">
@@ -305,7 +315,7 @@ $ sudo dnf install postgresql  # Fedora/RHEL8+
 $ sudo yum remove package-name<br>
 $ sudo yum autoremove
             </div>
-            <p>依存関係も考慮して削除</p>
+            <p>依存関係も考慮して削除します。</p>
         </div>
         
         <div class="command-card">
@@ -314,7 +324,7 @@ $ sudo yum autoremove
 $ sudo yum update<br>
 $ sudo yum upgrade  # 古いパッケージも削除
             </div>
-            <p>セキュリティアップデートを含む</p>
+            <p>セキュリティアップデートを含みます。</p>
         </div>
     </div>
     
@@ -340,6 +350,16 @@ $ sudo yum upgrade  # 古いパッケージも削除
             <li><code>apt install -y</code> でスクリプト化しやすく</li>
             <li><code>which command</code> でコマンドの場所確認</li>
             <li><code>dpkg -L package</code> でインストールファイル一覧</li>
+        </ul>
+    </div>
+    
+    <h2>3.7 まとめ</h2>
+    
+    <div class="explanation">
+        <ul>
+            <li><code>vi</code> は「モード」の切り替えが基本（まずは編集→保存→終了を押さえる）</li>
+            <li>テキスト処理は <code>grep</code> とパイプを起点にすると理解しやすい</li>
+            <li>パッケージ管理は「更新（update）→インストール/アップグレード」の順を意識する</li>
         </ul>
     </div>
 </div>

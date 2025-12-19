@@ -7,6 +7,20 @@ chapter: 1
 <div class="section">
     <h1>第1章：必須コマンド15選</h1>
     
+    <h2>1.0 この章で学ぶこと</h2>
+    
+    <div class="explanation">
+        <ul>
+            <li>Linuxで頻出するコマンドを「まず俯瞰」できる</li>
+            <li>ファイル操作・検索など、基本用途を押さえた上で実際に試せる</li>
+            <li>パイプ（<code>|</code>）とリダイレクト（<code>&gt;</code>/<code>&gt;&gt;</code>）でコマンドを組み合わせられる</li>
+        </ul>
+    </div>
+    
+    <div class="key-point">
+        <strong>読み方：</strong>本章は全体の俯瞰です。権限は <a href="../chapter2/">第2章</a>、テキスト処理・パッケージ管理は <a href="../chapter3/">第3章</a> で詳しく扱います。
+    </div>
+    
     <h2>1.1 これだけは覚えよう！最重要コマンド</h2>
     
     <div class="diagram-container">
@@ -247,5 +261,15 @@ drwxr-xr-x  3 user user 4096 Jan 10 09:15 ..<br>
         
         <div class="command-box">$ echo "新しい行" >> existing.txt</div>
         <p>→ 既存ファイルに追記（>>は追記、>は上書き）</p>
+    </div>
+    
+    <h2>1.4 まとめ</h2>
+    
+    <div class="explanation">
+        <ul>
+            <li>まずは <code>ls</code>/<code>cd</code>/<code>pwd</code> で「今どこにいて、何があるか」を確認する</li>
+            <li><code>grep</code> やパイプで「必要な情報だけを抜き出す」流れを作れる</li>
+            <li>権限やユーザーの話が出てきたら <a href="../chapter2/">第2章</a> を参照する</li>
+        </ul>
     </div>
 </div>
