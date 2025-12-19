@@ -250,18 +250,18 @@ $ traceroute google.com  # 経路確認
     
     <div class="faq-section">
         <h3>Q: sudoパスワードを忘れました</h3>
-        <p>A: リカバリーモードで起動し、rootでログインしてパスワードをリセット</p>
+        <p>A: リカバリーモードで起動し、rootでログインしてパスワードをリセットします。</p>
         <div class="command-box">$ passwd username</div>
         
         <h3>Q: ファイルを誤って削除しました</h3>
-        <p>A: Linuxでは通常、削除したファイルの復元は困難。定期的なバックアップが重要</p>
+        <p>A: Linuxでは通常、削除したファイルの復元は困難です。定期的なバックアップが重要です。</p>
         
         <h3>Q: システムが重い/遅い</h3>
-        <p>A: topコマンドでCPU/メモリ使用率の高いプロセスを確認</p>
+        <p>A: topコマンドでCPU/メモリ使用率の高いプロセスを確認します。</p>
         <div class="command-box">$ top  # qで終了</div>
         
         <h3>Q: パッケージの依存関係エラー</h3>
-        <p>A: パッケージマネージャーの修復コマンドを実行</p>
+        <p>A: パッケージマネージャーの修復コマンドを実行します。</p>
         <div class="command-box">
 $ sudo apt --fix-broken install  # Ubuntu/Debian<br>
 $ sudo yum-complete-transaction  # CentOS/RHEL
