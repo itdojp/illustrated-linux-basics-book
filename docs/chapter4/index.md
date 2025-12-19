@@ -162,7 +162,7 @@ $ find /tmp -type f -delete  # /tmp クリーンアップ
             <h3>🔒 Device or resource busy</h3>
             <div class="error-box">umount: /mnt: target is busy</div>
             <h4>原因：</h4>
-            <p>ファイルやディレクトリが使用中です。</p>
+            <p>ファイルやディレクトリが使用中</p>
             <h4>解決方法：</h4>
             <div class="command-box">
 $ lsof /mnt  # 使用中のプロセスを確認<br>
