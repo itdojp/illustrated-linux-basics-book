@@ -181,7 +181,7 @@ drwxr-xr-x  3 user user 4096 Jan 10 09:15 ..<br>
         <div class="command-card">
             <h3>5. rm - ファイル削除</h3>
             <div class="command-box">$ rm file.txt<br>$ rm -rf directory</div>
-            <p>⚠️ <code>-rf</code> は強制削除（取り消し不可）</p>
+            <p>⚠️ <code>-rf</code> は強制削除（取り消し不可）です。練習では必ずテスト用ディレクトリ内で試し、<code>/</code> やホームディレクトリ直下など重要な場所では実行しないでください。</p>
         </div>
         
         <div class="command-card">
