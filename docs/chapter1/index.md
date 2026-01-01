@@ -272,4 +272,8 @@ drwxr-xr-x  3 user user 4096 Jan 10 09:15 ..<br>
             <li>権限やユーザーの話が出てきたら <a href="../chapter2/">第2章</a> を参照する</li>
         </ul>
     </div>
+
+    <div class="key-point">
+        <strong>次章予告：</strong>次章では、Linux の権限（r/w/x）とユーザー／グループ管理の基本を整理します。
+    </div>
 </div>
