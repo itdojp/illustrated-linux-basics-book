@@ -159,4 +159,12 @@ $ ./backup.sh
             <li>rm -rf などの危険なコマンドは慎重に</li>
         </ul>
     </div>
+
+    <div class="key-point">
+        <strong>次に読む：</strong>
+        <ul>
+            <li><a href="../appendix/">付録：コマンド一覧表</a>（困ったときにコマンドを引く）</li>
+            <li><a href="../">目次</a>（復習したい章へ戻る）</li>
+        </ul>
+    </div>
 </div>

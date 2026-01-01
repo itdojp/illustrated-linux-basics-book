@@ -398,4 +398,8 @@ chapter: appendix
             <li><code>..</code> - 親ディレクトリ</li>
         </ul>
     </div>
+
+    <div class="key-point">
+        <strong>目次へ：</strong><a href="../">目次</a>に戻って、復習したい章を選びましょう。
+    </div>
 </div>
