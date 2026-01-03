@@ -292,4 +292,8 @@ $ id alice  # より詳細な情報
             <li>安易な <code>777</code> は避け、必要最小限の権限にする</li>
         </ul>
     </div>
+
+    <div class="key-point">
+        <strong>次章予告：</strong>次章では、テキスト編集（<code>vi</code>）とテキスト処理、パッケージ管理の基本をまとめて扱います。
+    </div>
 </div>

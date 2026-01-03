@@ -277,4 +277,8 @@ $ sudo yum-complete-transaction  # CentOS/RHEL
             <li>再発防止には、手順の記録とバックアップが有効</li>
         </ul>
     </div>
+
+    <div class="key-point">
+        <strong>次章予告：</strong>次章では、これまでのコマンドを組み合わせて簡単なシェルスクリプトを作り、定期実行まで試します。
+    </div>
 </div>
