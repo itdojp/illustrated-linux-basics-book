@@ -1,0 +1,29 @@
+{
+  "title": "図解でわかるLinux基礎",
+  "description": "図解とイラストでLinuxの基礎をやさしく学ぶ技術書",
+  "author": "株式会社アイティードゥ",
+  "version": "1.0.0",
+  "language": "ja",
+  "license": "CC BY-NC-SA 4.0",
+  "repository": {
+    "url": "https://github.com/itdojp/illustrated-linux-basics-book",
+    "branch": "main"
+  },
+  "ux": {
+    "profile": "A",
+    "modules": {
+      "quickStart": true,
+      "readingGuide": true,
+      "checklistPack": false,
+      "troubleshootingFlow": false,
+      "conceptMap": true,
+      "figureIndex": false,
+      "legalNotice": false,
+      "glossary": true
+    }
+  },
+  "shared": {
+    "version": "3.2.0",
+    "lastSync": "2026-02-02T23:54:18.885Z"
+  }
+}
