@@ -1,0 +1,13 @@
+chapters:
+- title: 第0章：コンピュータの仕組み
+  path: /chapter0/
+- title: 第1章：必須コマンド15選
+  path: /chapter1/
+- title: 第2章：ファイル権限とユーザー管理
+  path: /chapter2/
+- title: 第3章：テキスト処理とパッケージ管理
+  path: /chapter3/
+- title: 第4章：よくあるエラーと対処法
+  path: /chapter4/
+- title: 第5章：実践演習 - 簡単なスクリプト作成
+  path: /chapter5/
