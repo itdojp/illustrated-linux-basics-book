@@ -306,7 +306,7 @@ $ apt list --installed  # インストール済み一覧
 $ sudo yum install httpd<br>
 $ sudo dnf install postgresql  # Fedora/RHEL8+
             </div>
-            <p>RHEL系（RHEL/CentOS互換）では、7系は yum、8+ は dnf を利用します。</p>
+            <p>RHEL系（RHEL/CentOS互換）では、7系は主に yum、8 以降は dnf が標準（推奨）ですが、yum コマンドも dnf への互換ラッパーとして利用できます。</p>
         </div>
         
         <div class="command-card">
