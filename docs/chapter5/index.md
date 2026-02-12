@@ -32,7 +32,7 @@ $ nano hello.sh
             </div>
             <div class="code-box">
 #!/bin/bash
-# これはコメントです
+&#35; これはコメントです
 echo "Hello, Linux World!"
 echo "今日は $(date) です"
             </div>
@@ -55,20 +55,20 @@ Hello, Linux World!<br>
             <div class="code-box">
 #!/bin/bash
 
-# バックアップ元とバックアップ先
+&#35; バックアップ元とバックアップ先
 SOURCE="$HOME/Documents"
 BACKUP_DIR="$HOME/backups"
 DATE=$(date +%Y%m%d_%H%M%S)
 BACKUP_FILE="backup_${DATE}.tar.gz"
 
-# バックアップディレクトリ作成
+&#35; バックアップディレクトリ作成
 mkdir -p "$BACKUP_DIR"
 
-# バックアップ実行
+&#35; バックアップ実行
 echo "バックアップを開始します..."
 tar -czf "$BACKUP_DIR/$BACKUP_FILE" "$SOURCE" 2>/dev/null
 
-# 結果確認
+&#35; 結果確認
 if [ $? -eq 0 ]; then
     echo "✅ バックアップ成功: $BACKUP_FILE"
     ls -lh "$BACKUP_DIR/$BACKUP_FILE"
@@ -77,7 +77,7 @@ else
     exit 1
 fi
 
-# 古いバックアップを削除（7日以上前）
+&#35; 古いバックアップを削除（7日以上前）
 find "$BACKUP_DIR" -name "backup_*.tar.gz" -mtime +7 -delete
 echo "7日以上前のバックアップを削除しました"
             </div>
@@ -96,13 +96,13 @@ $ ./backup.sh
             <h3>定期バックアップの設定</h3>
             <div class="command-box">$ crontab -e</div>
             <div class="code-box">
-# 毎日午前3時にバックアップ実行
+&#35; 毎日午前3時にバックアップ実行
 0 3 * * * /home/user/scripts/backup.sh
 
-# 毎週月曜日にシステムレポート作成
+&#35; 毎週月曜日にシステムレポート作成
 0 9 * * 1 /home/user/scripts/sysinfo.sh > /home/user/weekly_report.txt
 
-# 毎月1日に古いログを削除
+&#35; 毎月1日に古いログを削除
 0 0 1 * * find /home/user/logs -name "*.log" -mtime +30 -delete
             </div>
             <h4>cron記法の説明</h4>
