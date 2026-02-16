@@ -1,5 +1,10 @@
 <!-- Sidebar Navigation (data-driven) -->
 {% assign navigation = site.data.navigation %}
+{%- assign _baseurl = site.baseurl | default: '' -%}
+{%- assign _page_url_n = page.url -%}
+{%- if _baseurl and _baseurl != '' -%}
+  {%- assign _page_url_n = _page_url_n | remove_first: _baseurl -%}
+{%- endif -%}
 
 <div class="sidebar-content">
     <div class="book-info">
@@ -17,7 +22,7 @@
         <div class="toc-section">
             <ul class="toc-list">
                 <li class="toc-item">
-                    <a href="{{ '/' | relative_url }}" class="toc-link {% if page.url == '/' %}active{% endif %}">
+                    <a href="{{ '/' | relative_url }}" class="toc-link {% if _page_url_n == '/' or _page_url_n == '' %}active{% endif %}">
                         はじめに
                     </a>
                 </li>
@@ -31,8 +36,18 @@
                 <ul class="toc-list">
                     {% for item in navigation.introduction %}
                     {% assign item_url = item.path | default: item.url %}
+                    {% assign item_url_n = item_url %}
+                    {% if _baseurl and _baseurl != '' %}
+                      {% assign item_url_n = item_url_n | remove_first: _baseurl %}
+                    {% endif %}
+                    {% assign item_active = false %}
+                    {% if item_url_n and item_url_n != '' %}
+                      {% if _page_url_n == item_url_n or _page_url_n contains item_url_n %}
+                        {% assign item_active = true %}
+                      {% endif %}
+                    {% endif %}
                     <li class="toc-item">
-                        <a href="{{ item_url | relative_url }}" class="toc-link {% if page.url == item_url %}active{% endif %}" {% if page.url == item_url %}aria-current="page"{% endif %}>
+                        <a href="{{ item_url | relative_url }}" class="toc-link {% if item_active %}active{% endif %}" {% if item_active %}aria-current="page"{% endif %}>
                             {{ item.title }}
                         </a>
                     </li>
@@ -47,9 +62,13 @@
                 <ul class="toc-list">
                     {% for chapter in navigation.chapters %}
                     {% assign chapter_url = chapter.path | default: chapter.url %}
+                    {% assign chapter_url_n = chapter_url %}
+                    {% if _baseurl and _baseurl != '' %}
+                      {% assign chapter_url_n = chapter_url_n | remove_first: _baseurl %}
+                    {% endif %}
                     {% assign chapter_active = false %}
-                    {% if chapter_url and chapter_url != '' %}
-                      {% if page.url == chapter_url or page.url contains chapter_url %}
+                    {% if chapter_url_n and chapter_url_n != '' %}
+                      {% if _page_url_n == chapter_url_n or _page_url_n contains chapter_url_n %}
                         {% assign chapter_active = true %}
                       {% endif %}
                     {% endif %}
@@ -69,9 +88,13 @@
                 <ul class="toc-list">
                     {% for item in navigation.additional %}
                     {% assign item_url = item.path | default: item.url %}
+                    {% assign item_url_n = item_url %}
+                    {% if _baseurl and _baseurl != '' %}
+                      {% assign item_url_n = item_url_n | remove_first: _baseurl %}
+                    {% endif %}
                     {% assign item_active = false %}
-                    {% if item_url and item_url != '' %}
-                      {% if page.url == item_url or page.url contains item_url %}
+                    {% if item_url_n and item_url_n != '' %}
+                      {% if _page_url_n == item_url_n or _page_url_n contains item_url_n %}
                         {% assign item_active = true %}
                       {% endif %}
                     {% endif %}
@@ -91,9 +114,13 @@
                 <ul class="toc-list">
                     {% for item in navigation.resources %}
                     {% assign item_url = item.path | default: item.url %}
+                    {% assign item_url_n = item_url %}
+                    {% if _baseurl and _baseurl != '' %}
+                      {% assign item_url_n = item_url_n | remove_first: _baseurl %}
+                    {% endif %}
                     {% assign item_active = false %}
-                    {% if item_url and item_url != '' %}
-                      {% if page.url == item_url or page.url contains item_url %}
+                    {% if item_url_n and item_url_n != '' %}
+                      {% if _page_url_n == item_url_n or _page_url_n contains item_url_n %}
                         {% assign item_active = true %}
                       {% endif %}
                     {% endif %}
@@ -113,9 +140,13 @@
                 <ul class="toc-list">
                     {% for item in navigation.appendices %}
                     {% assign item_url = item.path | default: item.url %}
+                    {% assign item_url_n = item_url %}
+                    {% if _baseurl and _baseurl != '' %}
+                      {% assign item_url_n = item_url_n | remove_first: _baseurl %}
+                    {% endif %}
                     {% assign item_active = false %}
-                    {% if item_url and item_url != '' %}
-                      {% if page.url == item_url or page.url contains item_url %}
+                    {% if item_url_n and item_url_n != '' %}
+                      {% if _page_url_n == item_url_n or _page_url_n contains item_url_n %}
                         {% assign item_active = true %}
                       {% endif %}
                     {% endif %}
@@ -135,9 +166,13 @@
                 <ul class="toc-list">
                     {% for item in navigation.afterword %}
                     {% assign item_url = item.path | default: item.url %}
+                    {% assign item_url_n = item_url %}
+                    {% if _baseurl and _baseurl != '' %}
+                      {% assign item_url_n = item_url_n | remove_first: _baseurl %}
+                    {% endif %}
                     {% assign item_active = false %}
-                    {% if item_url and item_url != '' %}
-                      {% if page.url == item_url or page.url contains item_url %}
+                    {% if item_url_n and item_url_n != '' %}
+                      {% if _page_url_n == item_url_n or _page_url_n contains item_url_n %}
                         {% assign item_active = true %}
                       {% endif %}
                     {% endif %}
