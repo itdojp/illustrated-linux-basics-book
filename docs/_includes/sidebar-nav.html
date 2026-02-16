@@ -1,5 +1,10 @@
 <!-- Sidebar Navigation (data-driven) -->
 {% assign navigation = site.data.navigation %}
+{%- assign _baseurl = site.baseurl | default: '' -%}
+{%- assign _page_url_n = page.url -%}
+{%- if _baseurl and _baseurl != '' -%}
+  {%- assign _page_url_n = _page_url_n | remove_first: _baseurl -%}
+{%- endif -%}
 
 <div class="sidebar-content">
     <div class="book-info">
@@ -17,7 +22,7 @@
         <div class="toc-section">
             <ul class="toc-list">
                 <li class="toc-item">
-                    <a href="{{ '/' | relative_url }}" class="toc-link {% if page.url == '/' %}active{% endif %}">
+                    <a href="{{ '/' | relative_url }}" class="toc-link {% if _page_url_n == '/' or _page_url_n == '' %}active{% endif %}">
                         はじめに
                     </a>
                 </li>
@@ -30,8 +35,19 @@
                 <h4 class="toc-section-title">導入</h4>
                 <ul class="toc-list">
                     {% for item in navigation.introduction %}
+                    {% assign item_url = item.path | default: item.url %}
+                    {% assign item_url_n = item_url %}
+                    {% if _baseurl and _baseurl != '' %}
+                      {% assign item_url_n = item_url_n | remove_first: _baseurl %}
+                    {% endif %}
+                    {% assign item_active = false %}
+                    {% if item_url_n and item_url_n != '' %}
+                      {% if _page_url_n == item_url_n or _page_url_n contains item_url_n %}
+                        {% assign item_active = true %}
+                      {% endif %}
+                    {% endif %}
                     <li class="toc-item">
-                        <a href="{{ item.path | relative_url }}" class="toc-link {% if page.url == item.path %}active{% endif %}" {% if page.url == item.path %}aria-current="page"{% endif %}>
+                        <a href="{{ item_url | relative_url }}" class="toc-link {% if item_active %}active{% endif %}" {% if item_active %}aria-current="page"{% endif %}>
                             {{ item.title }}
                         </a>
                     </li>
@@ -45,8 +61,19 @@
                 <h4 class="toc-section-title">本編</h4>
                 <ul class="toc-list">
                     {% for chapter in navigation.chapters %}
+                    {% assign chapter_url = chapter.path | default: chapter.url %}
+                    {% assign chapter_url_n = chapter_url %}
+                    {% if _baseurl and _baseurl != '' %}
+                      {% assign chapter_url_n = chapter_url_n | remove_first: _baseurl %}
+                    {% endif %}
+                    {% assign chapter_active = false %}
+                    {% if chapter_url_n and chapter_url_n != '' %}
+                      {% if _page_url_n == chapter_url_n or _page_url_n contains chapter_url_n %}
+                        {% assign chapter_active = true %}
+                      {% endif %}
+                    {% endif %}
                     <li class="toc-item toc-chapter">
-                        <a href="{{ chapter.path | relative_url }}" class="toc-link {% if page.url == chapter.path or page.url contains chapter.path %}active{% endif %}" {% if page.url == chapter.path or page.url contains chapter.path %}aria-current="page"{% endif %}>
+                        <a href="{{ chapter_url | relative_url }}" class="toc-link {% if chapter_active %}active{% endif %}" {% if chapter_active %}aria-current="page"{% endif %}>
                             {{ chapter.title }}
                         </a>
                     </li>
@@ -60,8 +87,19 @@
                 <h4 class="toc-section-title">追加</h4>
                 <ul class="toc-list">
                     {% for item in navigation.additional %}
+                    {% assign item_url = item.path | default: item.url %}
+                    {% assign item_url_n = item_url %}
+                    {% if _baseurl and _baseurl != '' %}
+                      {% assign item_url_n = item_url_n | remove_first: _baseurl %}
+                    {% endif %}
+                    {% assign item_active = false %}
+                    {% if item_url_n and item_url_n != '' %}
+                      {% if _page_url_n == item_url_n or _page_url_n contains item_url_n %}
+                        {% assign item_active = true %}
+                      {% endif %}
+                    {% endif %}
                     <li class="toc-item">
-                        <a href="{{ item.path | relative_url }}" class="toc-link {% if page.url == item.path or page.url contains item.path %}active{% endif %}" {% if page.url == item.path or page.url contains item.path %}aria-current="page"{% endif %}>
+                        <a href="{{ item_url | relative_url }}" class="toc-link {% if item_active %}active{% endif %}" {% if item_active %}aria-current="page"{% endif %}>
                             {{ item.title }}
                         </a>
                     </li>
@@ -75,8 +113,19 @@
                 <h4 class="toc-section-title">リソース</h4>
                 <ul class="toc-list">
                     {% for item in navigation.resources %}
+                    {% assign item_url = item.path | default: item.url %}
+                    {% assign item_url_n = item_url %}
+                    {% if _baseurl and _baseurl != '' %}
+                      {% assign item_url_n = item_url_n | remove_first: _baseurl %}
+                    {% endif %}
+                    {% assign item_active = false %}
+                    {% if item_url_n and item_url_n != '' %}
+                      {% if _page_url_n == item_url_n or _page_url_n contains item_url_n %}
+                        {% assign item_active = true %}
+                      {% endif %}
+                    {% endif %}
                     <li class="toc-item">
-                        <a href="{{ item.path | relative_url }}" class="toc-link {% if page.url == item.path or page.url contains item.path %}active{% endif %}" {% if page.url == item.path or page.url contains item.path %}aria-current="page"{% endif %}>
+                        <a href="{{ item_url | relative_url }}" class="toc-link {% if item_active %}active{% endif %}" {% if item_active %}aria-current="page"{% endif %}>
                             {{ item.title }}
                         </a>
                     </li>
@@ -90,8 +139,19 @@
                 <h4 class="toc-section-title">付録</h4>
                 <ul class="toc-list">
                     {% for item in navigation.appendices %}
+                    {% assign item_url = item.path | default: item.url %}
+                    {% assign item_url_n = item_url %}
+                    {% if _baseurl and _baseurl != '' %}
+                      {% assign item_url_n = item_url_n | remove_first: _baseurl %}
+                    {% endif %}
+                    {% assign item_active = false %}
+                    {% if item_url_n and item_url_n != '' %}
+                      {% if _page_url_n == item_url_n or _page_url_n contains item_url_n %}
+                        {% assign item_active = true %}
+                      {% endif %}
+                    {% endif %}
                     <li class="toc-item">
-                        <a href="{{ item.path | relative_url }}" class="toc-link {% if page.url == item.path or page.url contains item.path %}active{% endif %}" {% if page.url == item.path or page.url contains item.path %}aria-current="page"{% endif %}>
+                        <a href="{{ item_url | relative_url }}" class="toc-link {% if item_active %}active{% endif %}" {% if item_active %}aria-current="page"{% endif %}>
                             {{ item.title }}
                         </a>
                     </li>
@@ -105,8 +165,19 @@
                 <h4 class="toc-section-title">あとがき</h4>
                 <ul class="toc-list">
                     {% for item in navigation.afterword %}
+                    {% assign item_url = item.path | default: item.url %}
+                    {% assign item_url_n = item_url %}
+                    {% if _baseurl and _baseurl != '' %}
+                      {% assign item_url_n = item_url_n | remove_first: _baseurl %}
+                    {% endif %}
+                    {% assign item_active = false %}
+                    {% if item_url_n and item_url_n != '' %}
+                      {% if _page_url_n == item_url_n or _page_url_n contains item_url_n %}
+                        {% assign item_active = true %}
+                      {% endif %}
+                    {% endif %}
                     <li class="toc-item">
-                        <a href="{{ item.path | relative_url }}" class="toc-link {% if page.url == item.path or page.url contains item.path %}active{% endif %}" {% if page.url == item.path or page.url contains item.path %}aria-current="page"{% endif %}>
+                        <a href="{{ item_url | relative_url }}" class="toc-link {% if item_active %}active{% endif %}" {% if item_active %}aria-current="page"{% endif %}>
                             {{ item.title }}
                         </a>
                     </li>
@@ -135,4 +206,3 @@
         </div>
     </div>
 </div>
-
