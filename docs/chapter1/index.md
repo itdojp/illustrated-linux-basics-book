@@ -145,10 +145,10 @@ chapter: 1
     <div class="command-grid">
         <div class="command-card">
             <h3>1. ls - ファイル一覧表示</h3>
-            <div class="command-box">$ ls -la</div>
+            <div class="command-box">$ ls -lah</div>
             <div class="output-box">
-drwxr-xr-x  5 user user 4096 Jan 15 10:30 .<br>
-drwxr-xr-x  3 user user 4096 Jan 10 09:15 ..<br>
+drwxr-xr-x  5 user user 4.0K Jan 15 10:30 .<br>
+drwxr-xr-x  3 user user 4.0K Jan 10 09:15 ..<br>
 -rw-r--r--  1 user user  220 Jan 12 14:22 file.txt
             </div>
             <p>オプション: <code>-l</code> 詳細表示、<code>-a</code> 隠しファイルも表示、<code>-h</code> サイズを読みやすく</p>
@@ -185,59 +185,59 @@ drwxr-xr-x  3 user user 4096 Jan 10 09:15 ..<br>
         </div>
         
         <div class="command-card">
-            <h3>6. cp - コピー</h3>
-            <div class="command-box">$ cp source.txt dest.txt<br>$ cp -r source_dir dest_dir</div>
-            <p><code>-r</code> ディレクトリを丸ごとコピー</p>
+            <h3>6. cp / mv - コピー/移動</h3>
+            <div class="command-box">$ cp source.txt dest.txt<br>$ cp -r source_dir dest_dir<br>$ mv old.txt new.txt<br>$ mv file.txt ~/</div>
+            <p>コピー（cp）と移動/名前変更（mv）に使用</p>
         </div>
         
         <div class="command-card">
-            <h3>7. mv - 移動/名前変更</h3>
-            <div class="command-box">$ mv old.txt new.txt<br>$ mv file.txt /home/user/</div>
-            <p>名前変更と移動の両方に使用</p>
-        </div>
-        
-        <div class="command-card">
-            <h3>8. chmod - 権限変更</h3>
+            <h3>7. chmod - 権限変更</h3>
             <div class="command-box">$ chmod 755 script.sh<br>$ chmod +x script.sh</div>
             <p>755 = 所有者:全権限、他:読み実行のみ</p>
         </div>
         
         <div class="command-card">
-            <h3>9. chown - 所有者変更</h3>
+            <h3>8. chown - 所有者変更</h3>
             <div class="command-box">$ sudo chown user:group file.txt</div>
             <p>ファイルの所有者とグループを変更</p>
         </div>
         
         <div class="command-card">
-            <h3>10. sudo - 管理者権限で実行</h3>
+            <h3>9. sudo - 管理者権限で実行</h3>
             <div class="command-box">$ sudo apt update<br>$ sudo systemctl restart apache2</div>
             <p>システム変更時に必要</p>
         </div>
         
         <div class="command-card">
-            <h3>11. cat - ファイル内容表示</h3>
+            <h3>10. cat - ファイル内容表示</h3>
             <div class="command-box">$ cat file.txt<br>$ cat file1.txt file2.txt > merged.txt</div>
             <p>ファイルの結合にも使用可能</p>
         </div>
         
         <div class="command-card">
-            <h3>12. grep - 文字列検索</h3>
+            <h3>11. grep - 文字列検索</h3>
             <div class="command-box">$ grep "error" log.txt<br>$ ps aux | grep apache</div>
             <p>パイプと組み合わせて強力に</p>
         </div>
         
         <div class="command-card">
-            <h3>13. echo - 文字列出力</h3>
+            <h3>12. echo - 文字列出力</h3>
             <div class="command-box">$ echo "Hello World"<br>$ echo $PATH</div>
             <p>変数の確認にも便利</p>
         </div>
         
         <div class="command-card">
-            <h3>14. ps - プロセス表示</h3>
+            <h3>13. ps - プロセス表示</h3>
             <div class="command-box">$ ps aux<br>$ ps -ef</div>
-            <p>実行中のプログラムを確認</p>
+            <p>実行中のプログラムを確認（<code>aux</code>はBSD形式、<code>-ef</code>はSystem V形式）</p>
         </div>
-        
+
+        <div class="command-card">
+            <h3>14. kill - プロセス終了</h3>
+            <div class="command-box">$ kill 1234<br>$ kill -TERM 1234<br>$ kill -KILL 1234</div>
+            <p>基本はTERM（穏やかに終了）。KILL（-9）は最終手段</p>
+        </div>
+
         <div class="command-card">
             <h3>15. man - マニュアル表示</h3>
             <div class="command-box">$ man ls<br>$ man chmod</div>

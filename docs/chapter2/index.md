@@ -86,6 +86,10 @@ chapter: 2
             </g>
         </svg>
     </div>
+
+    <div class="key-point">
+        <strong>補足：</strong>ディレクトリの <code>x</code> は「実行」ではなく「入れる/探索できる（パスをたどれる）」権限です。<code>r</code> は一覧表示、<code>w</code> は作成/削除/名前変更に関係します。
+    </div>
     
     <h2>2.2 権限の変更コマンド</h2>
     
@@ -190,6 +194,10 @@ $ sudo chgrp -R www-data /var/www/
             <text x="400" y="345" text-anchor="middle" font-size="14" fill="#555">ファイルやディレクトリはユーザーとグループで管理される</text>
         </svg>
     </div>
+
+    <div class="key-point">
+        <strong>補足：</strong>管理者権限（<code>sudo</code>）を使えるユーザーは、ディストリビューションにより <code>sudo</code> グループ（Debian/Ubuntu系）や <code>wheel</code> グループ（RHEL系）に所属することが多いです。
+    </div>
     
     <h2>2.4 ユーザー管理コマンド</h2>
     
@@ -270,7 +278,7 @@ $ id alice  # より詳細な情報
         
         <h3>スティッキービット</h3>
         <div class="command-box">$ chmod +t /tmp</div>
-        <p>所有者以外はファイルを削除できません（共有ディレクトリ用）。</p>
+        <p>共有ディレクトリで、他人のファイルを削除できないようにする（削除できるのはファイル所有者/ディレクトリ所有者/root など）。</p>
     </div>
     
     <div class="important-note">

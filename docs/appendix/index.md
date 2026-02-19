@@ -104,7 +104,7 @@ chapter: appendix
                 <td><code>tail</code></td>
                 <td>末尾行表示</td>
                 <td>-n, -f</td>
-                <td><code>tail -f /var/log/messages</code></td>
+                <td><code>tail -f /var/log/syslog</code><br><code>tail -f /var/log/messages</code></td>
             </tr>
             <tr>
                 <td><code>grep</code></td>
@@ -132,6 +132,10 @@ chapter: appendix
             </tr>
         </tbody>
     </table>
+
+    <div class="key-point">
+        <strong>補足：</strong>ログのパスはディストリビューションで異なります（例: Debian/Ubuntuは <code>/var/log/syslog</code>、RHEL系は <code>/var/log/messages</code>）。systemd環境では <code>journalctl</code> でも確認できます。
+    </div>
     
     <h2>権限・所有者</h2>
     
@@ -199,8 +203,8 @@ chapter: appendix
             <tr>
                 <td><code>kill</code></td>
                 <td>プロセス終了</td>
-                <td>-9, -15</td>
-                <td><code>kill -9 1234</code></td>
+                <td>-15 (TERM), -9 (KILL)</td>
+                <td><code>kill -TERM 1234</code></td>
             </tr>
             <tr>
                 <td><code>killall</code></td>

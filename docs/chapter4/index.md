@@ -17,7 +17,7 @@ chapter: 4
         </ul>
     </div>
     
-    <h2>4.1 初心者が必ず遭遇するエラー TOP 10</h2>
+    <h2>4.1 初心者が必ず遭遇するエラー TOP 8</h2>
     
     <div class="diagram-container">
         <svg width="850" height="600" viewBox="0 0 850 600">
@@ -142,6 +142,19 @@ $ ls -la  # 隠しファイルも含めて確認<br>
 $ find . -name "test.txt"  # ファイルを検索
             </div>
         </div>
+
+        <div class="command-card error-card">
+            <h3>📂 Is a directory</h3>
+            <div class="error-box">cat: mydir: Is a directory</div>
+            <h4>原因：</h4>
+            <p>ディレクトリをファイルとして扱おうとした（例: <code>cat</code> や <code>cp</code> の引数にディレクトリを指定）</p>
+            <h4>解決方法：</h4>
+            <div class="command-box">
+$ ls -la mydir  # 種類（ファイル/ディレクトリ）を確認<br>
+$ cd mydir  # ディレクトリなら移動して中身を見る<br>
+$ ls -la  # 中のファイルを確認して正しいファイル名を指定
+            </div>
+        </div>
         
         <div class="command-card error-card">
             <h3>💾 No space left on device</h3>
@@ -154,7 +167,7 @@ $ df -h  # ディスク使用状況確認<br>
 $ du -sh *  # 各ディレクトリのサイズ確認<br>
 $ sudo apt autoremove  # 不要パッケージ削除<br>
 $ sudo apt clean  # キャッシュクリア<br>
-$ find /tmp -type f -delete  # /tmp クリーンアップ
+$ find /tmp -type f -mtime +7 -delete  # 例: 7日より古いファイルのみ（慎重に）
             </div>
         </div>
         
@@ -168,7 +181,8 @@ $ find /tmp -type f -delete  # /tmp クリーンアップ
 $ lsof /mnt  # 使用中のプロセスを確認<br>
 $ fuser -v /mnt  # 使用中のプロセスを表示<br>
 $ cd /  # ディレクトリから移動<br>
-$ sudo umount -l /mnt  # 強制アンマウント
+$ sudo umount /mnt  # 通常のアンマウント<br>
+$ sudo umount -l /mnt  # 最終手段（遅延アンマウント）
             </div>
         </div>
         
@@ -179,11 +193,27 @@ $ sudo umount -l /mnt  # 強制アンマウント
             <p>サービスが起動していない、またはポートが閉じている</p>
             <h4>解決方法：</h4>
             <div class="command-box">
-$ sudo systemctl status apache2  # サービス状態確認<br>
-$ sudo systemctl start apache2  # サービス起動<br>
+$ sudo systemctl status apache2  # Debian/Ubuntu<br>
+$ sudo systemctl status httpd  # RHEL系<br>
+$ sudo systemctl start apache2  # Debian/Ubuntu<br>
+$ sudo systemctl start httpd  # RHEL系<br>
 $ sudo netstat -tlnp  # ポート確認<br>
-$ sudo ufw status  # ファイアウォール確認<br>
-$ sudo ufw allow 80  # ポート開放
+$ sudo ufw status  # Debian/Ubuntu（UFW）<br>
+$ sudo firewall-cmd --state  # RHEL系（firewalld）<br>
+$ sudo ufw allow 80/tcp  # Debian/Ubuntu<br>
+$ sudo firewall-cmd --permanent --add-service=http && sudo firewall-cmd --reload  # RHEL系
+            </div>
+        </div>
+
+        <div class="command-card error-card">
+            <h3>🧩 Syntax error</h3>
+            <div class="error-box">bash: syntax error near unexpected token `then'</div>
+            <h4>原因：</h4>
+            <p>スペルミス、引用符（<code>'</code>/<code>"</code>）の閉じ忘れ、<code>if</code>/<code>fi</code> の対応漏れなど</p>
+            <h4>解決方法：</h4>
+            <div class="command-box">
+$ bash -n script.sh  # 実行せず構文だけチェック<br>
+$ nl -ba script.sh | sed -n '1,120p'  # 行番号付きで該当箇所を確認
             </div>
         </div>
     </div>
