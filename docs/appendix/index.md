@@ -104,7 +104,7 @@ chapter: appendix
                 <td><code>tail</code></td>
                 <td>末尾行表示</td>
                 <td>-n, -f</td>
-                <td><code>tail -f /var/log/messages</code></td>
+                <td><code>tail -f /var/log/syslog</code><br><code>tail -f /var/log/messages</code></td>
             </tr>
             <tr>
                 <td><code>grep</code></td>

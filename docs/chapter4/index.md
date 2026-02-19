@@ -142,6 +142,19 @@ $ ls -la  # 隠しファイルも含めて確認<br>
 $ find . -name "test.txt"  # ファイルを検索
             </div>
         </div>
+
+        <div class="command-card error-card">
+            <h3>📂 Is a directory</h3>
+            <div class="error-box">cat: mydir: Is a directory</div>
+            <h4>原因：</h4>
+            <p>ディレクトリをファイルとして扱おうとした（例: <code>cat</code> や <code>cp</code> の引数にディレクトリを指定）</p>
+            <h4>解決方法：</h4>
+            <div class="command-box">
+$ ls -la mydir  # 種類（ファイル/ディレクトリ）を確認<br>
+$ cd mydir  # ディレクトリなら移動して中身を見る<br>
+$ ls -la  # 中のファイルを確認して正しいファイル名を指定
+            </div>
+        </div>
         
         <div class="command-card error-card">
             <h3>💾 No space left on device</h3>
@@ -180,11 +193,27 @@ $ sudo umount -l /mnt  # 最終手段（遅延アンマウント）
             <p>サービスが起動していない、またはポートが閉じている</p>
             <h4>解決方法：</h4>
             <div class="command-box">
-$ sudo systemctl status apache2  # Debian/Ubuntu（RHEL系は httpd）<br>
-$ sudo systemctl start apache2  # Debian/Ubuntu（RHEL系は httpd）<br>
+$ sudo systemctl status apache2  # Debian/Ubuntu<br>
+$ sudo systemctl status httpd  # RHEL系<br>
+$ sudo systemctl start apache2  # Debian/Ubuntu<br>
+$ sudo systemctl start httpd  # RHEL系<br>
 $ sudo netstat -tlnp  # ポート確認<br>
-$ sudo ufw status  # Debian/Ubuntu（RHEL系は firewalld）<br>
-$ sudo ufw allow 80  # Debian/Ubuntu（RHEL系は firewall-cmd など）
+$ sudo ufw status  # Debian/Ubuntu（UFW）<br>
+$ sudo firewall-cmd --state  # RHEL系（firewalld）<br>
+$ sudo ufw allow 80/tcp  # Debian/Ubuntu<br>
+$ sudo firewall-cmd --permanent --add-service=http && sudo firewall-cmd --reload  # RHEL系
+            </div>
+        </div>
+
+        <div class="command-card error-card">
+            <h3>🧩 Syntax error</h3>
+            <div class="error-box">bash: syntax error near unexpected token `then'</div>
+            <h4>原因：</h4>
+            <p>スペルミス、引用符（<code>'</code>/<code>"</code>）の閉じ忘れ、<code>if</code>/<code>fi</code> の対応漏れなど</p>
+            <h4>解決方法：</h4>
+            <div class="command-box">
+$ bash -n script.sh  # 実行せず構文だけチェック<br>
+$ nl -ba script.sh | sed -n '1,120p'  # 行番号付きで該当箇所を確認
             </div>
         </div>
     </div>
