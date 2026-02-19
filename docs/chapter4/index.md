@@ -17,7 +17,7 @@ chapter: 4
         </ul>
     </div>
     
-    <h2>4.1 初心者が必ず遭遇するエラー TOP 10</h2>
+    <h2>4.1 初心者が必ず遭遇するエラー TOP 8</h2>
     
     <div class="diagram-container">
         <svg width="850" height="600" viewBox="0 0 850 600">
@@ -154,7 +154,7 @@ $ df -h  # ディスク使用状況確認<br>
 $ du -sh *  # 各ディレクトリのサイズ確認<br>
 $ sudo apt autoremove  # 不要パッケージ削除<br>
 $ sudo apt clean  # キャッシュクリア<br>
-$ find /tmp -type f -delete  # /tmp クリーンアップ
+$ find /tmp -type f -mtime +7 -delete  # 例: 7日より古いファイルのみ（慎重に）
             </div>
         </div>
         
@@ -168,7 +168,8 @@ $ find /tmp -type f -delete  # /tmp クリーンアップ
 $ lsof /mnt  # 使用中のプロセスを確認<br>
 $ fuser -v /mnt  # 使用中のプロセスを表示<br>
 $ cd /  # ディレクトリから移動<br>
-$ sudo umount -l /mnt  # 強制アンマウント
+$ sudo umount /mnt  # 通常のアンマウント<br>
+$ sudo umount -l /mnt  # 最終手段（遅延アンマウント）
             </div>
         </div>
         
@@ -179,11 +180,11 @@ $ sudo umount -l /mnt  # 強制アンマウント
             <p>サービスが起動していない、またはポートが閉じている</p>
             <h4>解決方法：</h4>
             <div class="command-box">
-$ sudo systemctl status apache2  # サービス状態確認<br>
-$ sudo systemctl start apache2  # サービス起動<br>
+$ sudo systemctl status apache2  # Debian/Ubuntu（RHEL系は httpd）<br>
+$ sudo systemctl start apache2  # Debian/Ubuntu（RHEL系は httpd）<br>
 $ sudo netstat -tlnp  # ポート確認<br>
-$ sudo ufw status  # ファイアウォール確認<br>
-$ sudo ufw allow 80  # ポート開放
+$ sudo ufw status  # Debian/Ubuntu（RHEL系は firewalld）<br>
+$ sudo ufw allow 80  # Debian/Ubuntu（RHEL系は firewall-cmd など）
             </div>
         </div>
     </div>
