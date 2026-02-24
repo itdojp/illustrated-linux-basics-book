@@ -262,7 +262,7 @@ $ ps aux | awk '{print $2, $11}'  # PIDとコマンド
             <h3>パッケージインストール</h3>
             <div class="command-box">
 $ sudo apt install nginx<br>
-$ sudo apt install vim git curl -y
+$ sudo apt install -y vim git curl
             </div>
             <p><code>-y</code> で確認をスキップします。</p>
         </div>
@@ -281,7 +281,7 @@ $ sudo apt autoremove  # 不要な依存削除
             <h3>システム更新</h3>
             <div class="command-box">
 $ sudo apt update && sudo apt upgrade<br>
-$ sudo apt full-upgrade  # カーネルも更新
+$ sudo apt full-upgrade  # 依存関係の変更（追加/削除）を許容
             </div>
             <p>定期的な更新でセキュリティを保ちます。</p>
         </div>
@@ -343,6 +343,7 @@ $ sudo yum upgrade  # 古いパッケージも削除
             <li>大規模更新前はバックアップを取る</li>
             <li>本番環境では事前にテスト環境で確認</li>
             <li><code>apt-mark hold package-name</code> で特定バージョン固定</li>
+            <li><code>dpkg -i</code> / <code>rpm -ivh</code> は依存解決をしないため、基本は <code>apt</code> / <code>dnf</code> / <code>yum</code> 経由でインストールする</li>
         </ul>
         
         <h3>🚀 便利な使い方</h3>

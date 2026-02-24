@@ -167,7 +167,8 @@ $ df -h  # ディスク使用状況確認<br>
 $ du -sh *  # 各ディレクトリのサイズ確認<br>
 $ sudo apt autoremove  # 不要パッケージ削除<br>
 $ sudo apt clean  # キャッシュクリア<br>
-$ find /tmp -type f -mtime +7 -delete  # 例: 7日より古いファイルのみ（慎重に）
+$ find /tmp -type f -mtime +7 -print  # 例: 7日より古いファイルをまず確認<br>
+$ find /tmp -type f -mtime +7 -delete  # 確認後に削除（慎重に）
             </div>
         </div>
         

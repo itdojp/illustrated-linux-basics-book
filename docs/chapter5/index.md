@@ -31,7 +31,7 @@ chapter: 5
 $ nano hello.sh
             </div>
             <div class="code-box">
-#!/bin/bash
+#!/usr/bin/env bash
 &#35; これはコメントです
 echo "Hello, Linux World!"
 echo "今日は $(date) です"
@@ -53,7 +53,7 @@ Hello, Linux World!<br>
         <div class="command-card">
             <h3>backup.sh - 重要ファイルのバックアップ</h3>
             <div class="code-box">
-#!/bin/bash
+#!/usr/bin/env bash
 
 &#35; バックアップ元とバックアップ先
 SOURCE="$HOME/Documents"
@@ -66,7 +66,7 @@ mkdir -p "$BACKUP_DIR"
 
 &#35; バックアップ実行
 echo "バックアップを開始します..."
-tar -czf "$BACKUP_DIR/$BACKUP_FILE" "$SOURCE" 2>/dev/null
+tar -czf "$BACKUP_DIR/$BACKUP_FILE" "$SOURCE"
 
 &#35; 結果確認
 if [ $? -eq 0 ]; then
@@ -78,6 +78,9 @@ else
 fi
 
 &#35; 古いバックアップを削除（7日以上前）
+&#35; [注意] まずは削除対象を確認したい場合は、以下の確認用コマンドを実行する
+find "$BACKUP_DIR" -name "backup_*.tar.gz" -mtime +7 -print
+&#35; 確認後に削除したい場合は、次のコマンドを実行する
 find "$BACKUP_DIR" -name "backup_*.tar.gz" -mtime +7 -delete
 echo "7日以上前のバックアップを削除しました"
             </div>
@@ -103,7 +106,7 @@ $ ./backup.sh
 0 9 * * 1 /home/user/scripts/sysinfo.sh > /home/user/weekly_report.txt
 
 &#35; 毎月1日に古いログを削除
-0 0 1 * * find /home/user/logs -name "*.log" -mtime +30 -delete
+0 0 1 * * find /home/user/logs -name "*.log" ! -name "cron.log" -mtime +30 -print -delete >> /home/user/logs/cron.log 2>&1
             </div>
             <h4>cron記法の説明</h4>
             <div class="explanation">
@@ -117,6 +120,14 @@ $ ./backup.sh
 0 9-17 * * 1-5  平日9-17時の毎時0分
                 </pre>
             </div>
+            <div class="key-point">
+                <strong>補足：</strong>cron は対話シェルと実行環境が異なります。つまずきやすい点は次のとおりです。
+                <ul>
+                    <li>PATH が最小限のため、必要ならフルパス（例: <code>/usr/bin/python3</code>）を使う</li>
+                    <li>環境変数が引き継がれないため、必要な変数は crontab 側で定義する</li>
+                    <li>標準出力/標準エラーはログへリダイレクトし、失敗時に追跡できるようにする</li>
+                </ul>
+            </div>
         </div>
     </div>
     
@@ -125,7 +136,7 @@ $ ./backup.sh
     <div class="explanation">
         <h3>🎯 この章で学んだこと</h3>
         <ul>
-            <li>シェルスクリプトの基本構造（#!/bin/bash）</li>
+            <li>シェルスクリプトの基本構造（shebang/コメント/実行権限）</li>
             <li>変数の定義と使用方法</li>
             <li>条件分岐（if文）による処理制御</li>
             <li>コマンド置換（$(command)）の活用</li>
