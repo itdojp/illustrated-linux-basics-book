@@ -78,8 +78,10 @@ else
 fi
 
 &#35; 古いバックアップを削除（7日以上前）
-&#35; [注意] まずは削除対象を確認したい場合は、-delete を外して実行する
-find "$BACKUP_DIR" -name "backup_*.tar.gz" -mtime +7 -print -delete
+&#35; [注意] まずは削除対象を確認したい場合は、以下の確認用コマンドを実行する
+find "$BACKUP_DIR" -name "backup_*.tar.gz" -mtime +7 -print
+&#35; 確認後に削除したい場合は、次のコマンドを実行する
+find "$BACKUP_DIR" -name "backup_*.tar.gz" -mtime +7 -delete
 echo "7日以上前のバックアップを削除しました"
             </div>
             <p><strong>使い方：</strong></p>
@@ -104,7 +106,7 @@ $ ./backup.sh
 0 9 * * 1 /home/user/scripts/sysinfo.sh > /home/user/weekly_report.txt
 
 &#35; 毎月1日に古いログを削除
-0 0 1 * * find /home/user/logs -name "*.log" -mtime +30 -print -delete >> /home/user/logs/cron.log 2>&1
+0 0 1 * * find /home/user/logs -name "*.log" ! -name "cron.log" -mtime +30 -print -delete >> /home/user/logs/cron.log 2>&1
             </div>
             <h4>cron記法の説明</h4>
             <div class="explanation">
