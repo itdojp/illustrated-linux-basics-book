@@ -209,7 +209,7 @@ chapter: appendix
             <tr>
                 <td><code>killall</code></td>
                 <td>プロセス名で終了</td>
-                <td>-9</td>
+                <td>-TERM（既定）, -KILL</td>
                 <td><code>killall firefox</code></td>
             </tr>
             <tr>
