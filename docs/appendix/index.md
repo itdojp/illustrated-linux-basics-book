@@ -200,12 +200,12 @@ chapter: appendix
                 <td>-</td>
                 <td><code>htop</code></td>
             </tr>
-            <tr>
-                <td><code>kill</code></td>
-                <td>プロセス終了</td>
-                <td>-15 (TERM), -9 (KILL)</td>
-                <td><code>kill -TERM 1234</code></td>
-            </tr>
+	            <tr>
+	                <td><code>kill</code></td>
+	                <td>プロセス終了</td>
+	                <td>-TERM（既定）, -KILL</td>
+	                <td><code>kill -TERM 1234</code></td>
+	            </tr>
             <tr>
                 <td><code>killall</code></td>
                 <td>プロセス名で終了</td>

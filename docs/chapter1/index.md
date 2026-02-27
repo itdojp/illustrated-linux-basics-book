@@ -255,10 +255,11 @@ drwxr-xr-x  3 user user 4.0K Jan 10 09:15 ..<br>
         <div class="command-box">$ ps aux | grep python | grep -v grep</div>
         <p>→ Python関連のプロセスを表示（grep自身は除外）</p>
 
-        <div class="key-point">
-            <strong>補足：</strong><code>ps | grep</code> 以外に、<code>pgrep</code> でプロセス名から検索する方法もあります。
-            <div class="command-box">$ pgrep -a python</div>
-        </div>
+	        <div class="key-point">
+	            <strong>補足：</strong><code>ps | grep</code> 以外に、<code>pgrep</code> でプロセス名から検索する方法もあります。
+	            <div class="command-box">$ pgrep -a python</div>
+	            <p>（<code>-a</code> は PID とコマンドライン全体を表示）</p>
+	        </div>
         
         <h3>リダイレクト（>）で結果を保存</h3>
         <div class="command-box">$ ls -la > file_list.txt</div>
