@@ -258,7 +258,8 @@ $ top  # プロセス監視
         <div class="command-card">
             <h3>ログ確認</h3>
             <div class="command-box">
-$ sudo tail -f /var/log/syslog  # システムログ<br>
+$ sudo tail -f /var/log/syslog  # システムログ（Debian/Ubuntu）<br>
+$ sudo tail -f /var/log/messages  # システムログ（RHEL系）<br>
 $ sudo journalctl -xe  # systemdログ<br>
 $ dmesg  # カーネルメッセージ<br>
 $ last  # ログイン履歴

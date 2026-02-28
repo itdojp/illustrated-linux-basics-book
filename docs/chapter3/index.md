@@ -158,7 +158,8 @@ $ cat file.txt | less
             <div class="command-box">
 $ head -n 10 file.txt  # 先頭10行<br>
 $ tail -n 20 file.txt  # 末尾20行<br>
-$ tail -f /var/log/syslog  # リアルタイム監視
+$ tail -f /var/log/syslog  # リアルタイム監視（Debian/Ubuntu）<br>
+$ tail -f /var/log/messages  # リアルタイム監視（RHEL系）
             </div>
             <p><code>-f</code> はログ監視に便利です。</p>
         </div>
