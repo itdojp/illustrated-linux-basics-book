@@ -1,6 +1,6 @@
 ---
 layout: chapter
-title: "第3章：テキスト処理とパッケージ管理"  
+title: "第3章：テキスト処理とパッケージ管理"
 chapter: 3
 ---
 
@@ -158,8 +158,9 @@ $ cat file.txt | less
             <div class="command-box">
 $ head -n 10 file.txt  # 先頭10行<br>
 $ tail -n 20 file.txt  # 末尾20行<br>
-$ sudo tail -f /var/log/syslog  # リアルタイム監視（Debian/Ubuntu）<br>
-$ sudo tail -f /var/log/messages  # リアルタイム監視（RHEL系）
+$ tail -f /var/log/syslog  # Debian/Ubuntu系の例<br>
+$ tail -f /var/log/messages  # RHEL系の例<br>
+$ journalctl -f  # systemd-journald（多くのディストロで有効）
             </div>
             <p><code>-f</code> はログ監視に便利です（権限が必要な場合は <code>sudo</code> を付けます）。</p>
         </div>
@@ -323,7 +324,7 @@ $ sudo yum autoremove
             <h3>システム更新</h3>
             <div class="command-box">
 $ sudo yum update<br>
-$ sudo yum upgrade  # 古いパッケージも削除
+$ sudo yum upgrade  # update と同義
             </div>
             <p>セキュリティアップデートを含みます。</p>
         </div>
@@ -334,7 +335,7 @@ $ sudo yum upgrade  # 古いパッケージも削除
     <div class="explanation">
         <h3>🔒 セキュリティ対策</h3>
         <ul>
-            <li>定期的に <code>apt update && apt upgrade</code> を実行</li>
+            <li>定期的に <code>sudo apt update && sudo apt upgrade</code> を実行</li>
             <li>不要なパッケージは削除（攻撃対象を減らす）</li>
             <li>信頼できるリポジトリのみ使用</li>
         </ul>
