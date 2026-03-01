@@ -27,23 +27,15 @@ chapter: 5
     <div class="command-grid">
         <div class="command-card">
             <h3>最初のスクリプト: hello.sh</h3>
-            <div class="command-box">
-$ nano hello.sh
-            </div>
-            <div class="code-box">
-#!/usr/bin/env bash
+            <pre class="command-box"><code class="language-bash">$ nano hello.sh</code></pre>
+            <pre class="code-box"><code class="language-bash">&#35;!/usr/bin/env bash
 &#35; これはコメントです
 echo "Hello, Linux World!"
-echo "今日は $(date) です"
-            </div>
-            <div class="command-box">
-$ chmod +x hello.sh  # 実行権限を付与<br>
-$ ./hello.sh  # 実行
-            </div>
-            <div class="output-box">
-Hello, Linux World!<br>
-今日は Mon Jan 15 10:30:45 JST 2025 です
-            </div>
+echo "今日は $(date) です"</code></pre>
+            <pre class="command-box"><code class="language-bash">$ chmod +x hello.sh  # 実行権限を付与
+$ ./hello.sh  # 実行</code></pre>
+            <pre class="output-box"><code class="language-text">Hello, Linux World!
+今日は Mon Jan 15 10:30:45 JST 2025 です</code></pre>
         </div>
     </div>
     
@@ -52,8 +44,7 @@ Hello, Linux World!<br>
     <div class="command-grid">
         <div class="command-card">
             <h3>backup.sh - 重要ファイルのバックアップ</h3>
-            <div class="code-box">
-#!/usr/bin/env bash
+            <pre class="code-box"><code class="language-bash">&#35;!/usr/bin/env bash
 
 &#35; バックアップ元とバックアップ先
 SOURCE="$HOME/Documents"
@@ -82,13 +73,10 @@ fi
 find "$BACKUP_DIR" -name "backup_*.tar.gz" -mtime +7 -print
 &#35; 確認後に削除したい場合は、次のコマンドを実行する
 find "$BACKUP_DIR" -name "backup_*.tar.gz" -mtime +7 -delete
-echo "7日以上前のバックアップを削除しました"
-            </div>
+echo "7日以上前のバックアップを削除しました"</code></pre>
             <p><strong>使い方：</strong></p>
-            <div class="command-box">
-$ chmod +x backup.sh<br>
-$ ./backup.sh
-            </div>
+            <pre class="command-box"><code class="language-bash">$ chmod +x backup.sh
+$ ./backup.sh</code></pre>
         </div>
     </div>
     
@@ -97,17 +85,15 @@ $ ./backup.sh
     <div class="command-grid">
         <div class="command-card">
             <h3>定期バックアップの設定</h3>
-            <div class="command-box">$ crontab -e</div>
-            <div class="code-box">
-&#35; 毎日午前3時にバックアップ実行
+            <pre class="command-box"><code class="language-bash">$ crontab -e</code></pre>
+            <pre class="code-box"><code class="language-text">&#35; 毎日午前3時にバックアップ実行
 0 3 * * * /home/user/scripts/backup.sh
 
 &#35; 毎週月曜日にシステムレポート作成
 0 9 * * 1 /home/user/scripts/sysinfo.sh > /home/user/weekly_report.txt
 
 &#35; 毎月1日に古いログを削除
-0 0 1 * * find /home/user/logs -name "*.log" ! -name "cron.log" -mtime +30 -print -delete >> /home/user/logs/cron.log 2>&1
-            </div>
+0 0 1 * * find /home/user/logs -name "*.log" ! -name "cron.log" -mtime +30 -print -delete >> /home/user/logs/cron.log 2>&1</code></pre>
             <h4>cron記法の説明</h4>
             <div class="explanation">
                 <pre>
