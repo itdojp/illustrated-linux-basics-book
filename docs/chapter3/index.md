@@ -162,7 +162,7 @@ $ tail -f /var/log/syslog  # Debian/Ubuntu系の例<br>
 $ tail -f /var/log/messages  # RHEL系の例<br>
 $ journalctl -f  # systemd-journald（多くのディストロで有効）
             </div>
-            <p><code>-f</code> はログ監視に便利です。</p>
+            <p><code>-f</code> はログ監視に便利です（権限が必要な場合は <code>sudo</code> を付けます）。</p>
         </div>
         
         <div class="command-card">

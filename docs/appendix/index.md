@@ -52,8 +52,8 @@ chapter: appendix
             <tr>
                 <td><code>rm</code></td>
                 <td>ファイル・ディレクトリ削除</td>
-                <td>-r, -f</td>
-                <td><code>rm -rf directory</code></td>
+                <td>-r (ディレクトリ削除), -i (確認削除)</td>
+                <td><code>rm -r directory</code></td>
             </tr>
             <tr>
                 <td><code>cp</code></td>
