@@ -296,7 +296,7 @@ $ traceroute google.com  # 経路確認
         <p>A: パッケージマネージャーの修復コマンドを実行します。</p>
         <div class="command-box">
 $ sudo apt --fix-broken install  # Ubuntu/Debian<br>
-$ sudo yum-complete-transaction  # CentOS/RHEL
+$ sudo yum-complete-transaction  # CentOS/RHEL（必要なら yum-utils を導入）
         </div>
     </div>
     
