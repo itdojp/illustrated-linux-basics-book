@@ -168,6 +168,17 @@ code {
     color: #e91e63;
 }
 
+/* Avoid applying inline-code styling to block code inside the pre-based boxes. */
+.command-box code,
+.code-box code,
+.output-box code {
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    color: inherit;
+    font-family: inherit;
+}
+
 /* Tables */
 .comparison-table {
     width: 100%;
