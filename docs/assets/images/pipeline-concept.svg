@@ -8,7 +8,7 @@
   
   <!-- 工場のアナロジー -->
   <rect x="50" y="80" width="800" height="120" fill="#fff" stroke="#3498db" stroke-width="2" rx="5"/>
-  <text x="450" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'" font-size="16" font-weight="bold" text-anchor="middle" fill="#3498db">💡 工場のベルトコンベアーのイメージ</text>
+  <text x="450" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'" font-size="16" font-weight="bold" text-anchor="middle" fill="#3498db">工場のベルトコンベアーのイメージ</text>
   <text x="100" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'" font-size="14" fill="#333">1. 原材料（ファイル）を最初の工程に投入</text>
   <text x="100" y="165" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'" font-size="14" fill="#333">2. 各工程（コマンド）で加工</text>
   <text x="100" y="190" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'" font-size="14" fill="#333">3. 次の工程へ自動的に流れる（パイプ）</text>

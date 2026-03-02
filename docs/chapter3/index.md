@@ -12,8 +12,8 @@ chapter: 3
     <div class="explanation">
         <ul>
             <li><code>vi</code> の基本操作（編集・保存・終了）を把握できる</li>
-            <li>テキスト処理コマンドで「必要な行だけを抜き出す」流れを作れる</li>
-            <li>パッケージ管理（APT/YUM(DNF)）でインストール・更新・削除ができる</li>
+            <li>テキスト処理コマンドで必要な行だけを抽出できる</li>
+            <li>パッケージ管理（APT / YUM / DNF）でインストール・更新・削除ができる</li>
         </ul>
     </div>
     
@@ -170,7 +170,7 @@ $ journalctl -f  # systemd-journald（多くのディストロで有効）
             <div class="command-box">
 $ grep "error" log.txt<br>
 $ grep -i "Error" log.txt  # 大文字小文字無視<br>
-$ grep -r "TODO" ./src/  # 再帰検索<br>
+$ grep -r "TODO" .  # 再帰検索<br>
 $ grep -v "debug" log.txt  # 除外
             </div>
             <p>正規表現も使用できます。</p>
@@ -285,7 +285,7 @@ $ sudo apt autoremove  # 不要な依存削除
 $ sudo apt update && sudo apt upgrade<br>
 $ sudo apt full-upgrade  # 依存関係の変更（追加/削除）を許容
             </div>
-            <p>定期的な更新でセキュリティを保ちます。</p>
+            <p>定期的に更新し、セキュリティリスクを低減します。</p>
         </div>
         
         <div class="command-card">
@@ -333,14 +333,14 @@ $ sudo yum upgrade  # update と同義
     <h2>3.6 パッケージ管理のベストプラクティス</h2>
     
     <div class="explanation">
-        <h3>🔒 セキュリティ対策</h3>
+        <h3>セキュリティ対策</h3>
         <ul>
             <li>定期的に <code>sudo apt update && sudo apt upgrade</code> を実行</li>
             <li>不要なパッケージは削除（攻撃対象を減らす）</li>
             <li>信頼できるリポジトリのみ使用</li>
         </ul>
         
-        <h3>💡 トラブル回避のコツ</h3>
+        <h3>トラブル回避の要点</h3>
         <ul>
             <li>大規模更新前はバックアップを取る</li>
             <li>本番環境では事前にテスト環境で確認</li>
@@ -348,7 +348,7 @@ $ sudo yum upgrade  # update と同義
             <li><code>dpkg -i</code> / <code>rpm -ivh</code> は依存解決をしないため、基本は <code>apt</code> / <code>dnf</code> / <code>yum</code> 経由でインストールする</li>
         </ul>
         
-        <h3>🚀 便利な使い方</h3>
+        <h3>便利な使い方</h3>
         <ul>
             <li><code>apt install -y</code> でスクリプト化しやすく</li>
             <li><code>which command</code> でコマンドの場所確認</li>

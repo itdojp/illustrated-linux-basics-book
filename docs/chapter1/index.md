@@ -11,17 +11,17 @@ chapter: 1
     
     <div class="explanation">
         <ul>
-            <li>Linuxで頻出するコマンドを「まず俯瞰」できる</li>
-            <li>ファイル操作・検索など、基本用途を押さえた上で実際に試せる</li>
+            <li>Linuxで頻出するコマンドを俯瞰できる</li>
+            <li>ファイル操作や検索など、基本用途を押さえたうえで実行例を試せる</li>
             <li>パイプ（<code>|</code>）とリダイレクト（<code>&gt;</code>/<code>&gt;&gt;</code>）でコマンドを組み合わせられる</li>
         </ul>
     </div>
     
     <div class="key-point">
-        <strong>読み方：</strong>本章は全体の俯瞰です。権限は <a href="../chapter2/">第2章</a>、テキスト処理・パッケージ管理は <a href="../chapter3/">第3章</a> で詳しく扱います。
+        <strong>読み方：</strong>本章はコマンドの全体像を整理する章です。権限は <a href="../chapter2/">第2章</a>、テキスト処理・パッケージ管理は <a href="../chapter3/">第3章</a> で扱います。
     </div>
     
-    <h2>1.1 これだけは覚えよう！最重要コマンド</h2>
+    <h2>1.1 まず押さえる必須コマンド</h2>
     
     <div class="diagram-container">
         <svg width="850" height="700" viewBox="0 0 850 700">
@@ -169,7 +169,7 @@ drwxr-xr-x  3 user user 4.0K Jan 10 09:15 ..<br>
             <h3>3. pwd - 現在地表示</h3>
             <div class="command-box">$ pwd</div>
             <div class="output-box">/home/user/Documents</div>
-            <p>迷子になったらこのコマンド！</p>
+            <p>現在の作業ディレクトリが不明な場合は、このコマンドで確認します。</p>
         </div>
         
         <div class="command-card">
@@ -181,7 +181,7 @@ drwxr-xr-x  3 user user 4.0K Jan 10 09:15 ..<br>
         <div class="command-card">
             <h3>5. rm - ファイル削除</h3>
             <div class="command-box">$ rm file.txt<br>$ rm -rf directory</div>
-            <p>⚠️ <code>-rf</code> は強制削除（取り消し不可）です。練習では必ずテスト用ディレクトリ内で試し、<code>/</code> やホームディレクトリ直下など重要な場所では実行しないでください。</p>
+            <p><strong>注意：</strong><code>-rf</code> は強制削除であり、元に戻せません。練習ではテスト用ディレクトリ内で試し、<code>/</code> やホームディレクトリ直下など重要な場所では実行しないでください。</p>
         </div>
         
         <div class="command-card">
@@ -235,13 +235,13 @@ drwxr-xr-x  3 user user 4.0K Jan 10 09:15 ..<br>
         <div class="command-card">
             <h3>14. kill - プロセス終了</h3>
             <div class="command-box">$ kill 1234<br>$ kill -TERM 1234<br>$ kill -KILL 1234</div>
-            <p>基本はTERM（穏やかに終了）。KILL（-9）は最終手段</p>
+            <p>基本は TERM（穏やかに終了）です。KILL（-9）は最終手段です。</p>
         </div>
 
         <div class="command-card">
             <h3>15. man - マニュアル表示</h3>
             <div class="command-box">$ man ls<br>$ man chmod</div>
-            <p>困ったらマニュアルを読もう（qで終了）</p>
+            <p>不明点はマニュアルで確認します（終了は <code>q</code>）。</p>
         </div>
     </div>
     
@@ -255,11 +255,11 @@ drwxr-xr-x  3 user user 4.0K Jan 10 09:15 ..<br>
         <div class="command-box">$ ps aux | grep python | grep -v grep</div>
         <p>→ Python関連のプロセスを表示（grep自身は除外）</p>
 
-	        <div class="key-point">
-	            <strong>補足：</strong><code>ps | grep</code> 以外に、<code>pgrep</code> でプロセス名から検索する方法もあります。
-	            <div class="command-box">$ pgrep -a python</div>
-	            <p>（<code>-a</code> は PID とコマンドライン全体を表示）</p>
-	        </div>
+        <div class="key-point">
+            <strong>補足：</strong><code>ps | grep</code> 以外に、<code>pgrep</code> でプロセス名から検索する方法もあります。
+            <div class="command-box">$ pgrep -a python</div>
+            <p>（<code>-a</code> は PID とコマンドライン全体を表示）</p>
+        </div>
         
         <h3>リダイレクト（>）で結果を保存</h3>
         <div class="command-box">$ ls -la > file_list.txt</div>
@@ -273,8 +273,8 @@ drwxr-xr-x  3 user user 4.0K Jan 10 09:15 ..<br>
     
     <div class="explanation">
         <ul>
-            <li>まずは <code>ls</code>/<code>cd</code>/<code>pwd</code> で「今どこにいて、何があるか」を確認する</li>
-            <li><code>grep</code> やパイプで「必要な情報だけを抜き出す」流れを作れる</li>
+            <li>まずは <code>ls</code>/<code>cd</code>/<code>pwd</code> で現在位置と内容を確認する</li>
+            <li><code>grep</code> やパイプで必要な情報だけを抽出できる</li>
             <li>権限やユーザーの話が出てきたら <a href="../chapter2/">第2章</a> を参照する</li>
         </ul>
     </div>
