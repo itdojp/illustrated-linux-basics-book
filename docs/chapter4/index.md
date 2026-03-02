@@ -11,13 +11,13 @@ chapter: 4
     
     <div class="explanation">
         <ul>
-            <li>よくあるエラーの「原因の当たり」を付けられる</li>
+            <li>よくあるエラーの原因の見当を付けられる</li>
             <li>エラーメッセージから次に取るべき行動を判断できる</li>
             <li>トラブルシューティング用コマンドで状況を確認できる</li>
         </ul>
     </div>
     
-    <h2>4.1 初心者が必ず遭遇するエラー TOP 8</h2>
+    <h2>4.1 初心者が遭遇しやすいエラー TOP 8</h2>
     
     <div class="diagram-container">
         <svg width="850" height="600" viewBox="0 0 850 600">
@@ -101,7 +101,7 @@ chapter: 4
     
     <div class="command-grid">
         <div class="command-card error-card">
-            <h3>🚫 Permission denied</h3>
+	            <h3>Permission denied</h3>
             <div class="error-box">bash: /etc/hosts: Permission denied</div>
             <h4>原因：</h4>
             <p>ファイルやディレクトリへのアクセス権限がない</p>
@@ -115,7 +115,7 @@ $ sudo chown $USER file.txt  # 所有者を変更
         </div>
         
         <div class="command-card error-card">
-            <h3>❓ Command not found</h3>
+	            <h3>Command not found</h3>
             <div class="error-box">git: command not found</div>
             <h4>原因：</h4>
             <p>コマンドがインストールされていない、またはPATHが通っていない</p>
@@ -130,7 +130,7 @@ $ export PATH=$PATH:/new/path  # PATH追加
         </div>
         
         <div class="command-card error-card">
-            <h3>📁 No such file or directory</h3>
+	            <h3>No such file or directory</h3>
             <div class="error-box">cat: test.txt: No such file or directory</div>
             <h4>原因：</h4>
             <p>指定したファイルやディレクトリが存在しない</p>
@@ -144,7 +144,7 @@ $ find . -name "test.txt"  # ファイルを検索
         </div>
 
         <div class="command-card error-card">
-            <h3>📂 Is a directory</h3>
+	            <h3>Is a directory</h3>
             <div class="error-box">cat: mydir: Is a directory</div>
             <h4>原因：</h4>
             <p>ディレクトリをファイルとして扱おうとした（例: <code>cat</code> や <code>cp</code> の引数にディレクトリを指定）</p>
@@ -157,7 +157,7 @@ $ ls -la  # 中のファイルを確認して正しいファイル名を指定
         </div>
         
         <div class="command-card error-card">
-            <h3>💾 No space left on device</h3>
+	            <h3>No space left on device</h3>
             <div class="error-box">cp: error writing './large.file': No space left on device</div>
             <h4>原因：</h4>
             <p>ディスクの空き容量が不足</p>
@@ -173,7 +173,7 @@ $ find /tmp -type f -mtime +7 -delete  # 確認後に削除（慎重に）
         </div>
         
         <div class="command-card error-card">
-            <h3>🔒 Device or resource busy</h3>
+            <h3>Device or resource busy</h3>
             <div class="error-box">umount: /mnt: target is busy</div>
             <h4>原因：</h4>
             <p>ファイルやディレクトリが使用中</p>
@@ -188,7 +188,7 @@ $ sudo umount -l /mnt  # 最終手段（遅延アンマウント）
         </div>
         
         <div class="command-card error-card">
-            <h3>🌐 Connection refused</h3>
+            <h3>Connection refused</h3>
             <div class="error-box">curl: (7) Failed to connect to localhost port 80: Connection refused</div>
             <h4>原因：</h4>
             <p>サービスが起動していない、またはポートが閉じている</p>
@@ -207,7 +207,7 @@ $ sudo firewall-cmd --permanent --add-service=http && sudo firewall-cmd --reload
         </div>
 
         <div class="command-card error-card">
-            <h3>🧩 Syntax error</h3>
+            <h3>Syntax error</h3>
             <div class="error-box">bash: syntax error near unexpected token `then'</div>
             <h4>原因：</h4>
             <p>スペルミス、引用符（<code>'</code>/<code>"</code>）の閉じ忘れ、<code>if</code>/<code>fi</code> の対応漏れなど</p>
@@ -224,7 +224,7 @@ $ nl -ba script.sh | sed -n '1,120p'  # 行番号付きで該当箇所を確認
     <div class="explanation">
         <h3>エラーメッセージの構造</h3>
         <div class="error-box">bash: /usr/bin/foo: No such file or directory</div>
-        <p>👆 この例を分解すると：</p>
+        <p>この例を分解すると：</p>
         <ul>
             <li><strong>bash:</strong> エラーを出したプログラム</li>
             <li><strong>/usr/bin/foo:</strong> 問題のあるファイルやコマンド</li>
@@ -237,7 +237,7 @@ $ nl -ba script.sh | sed -n '1,120p'  # 行番号付きで該当箇所を確認
             <li><strong>ファイル名やパスを確認</strong> - タイポが原因の場合が多い</li>
             <li><strong>権限を確認</strong> - <code>ls -l</code> で確認</li>
             <li><strong>ログファイルを見る</strong> - <code>/var/log/</code> 以下のログを確認</li>
-            <li><strong>エラーメッセージで検索</strong> - Google検索で解決策が見つかることが多い</li>
+            <li><strong>エラーメッセージで検索</strong> - Web検索や公式ドキュメントで情報を確認する</li>
         </ol>
     </div>
     
@@ -266,30 +266,30 @@ $ last  # ログイン履歴
             </div>
         </div>
         
-        <div class="command-card">
-            <h3>ネットワーク診断</h3>
-            <div class="command-box">
-$ ping google.com  # 接続確認<br>
-$ ip addr  # IPアドレス確認<br>
-$ netstat -tlnp  # ポート確認<br>
-$ ss -tlnp  # ソケット確認<br>
-$ traceroute google.com  # 経路確認
-            </div>
-        </div>
+	        <div class="command-card">
+	            <h3>ネットワーク診断</h3>
+	            <div class="command-box">
+	$ ping -c 4 1.1.1.1  # 接続確認（環境により ICMP が遮断されることがある）<br>
+	$ ip addr  # IPアドレス確認<br>
+	$ netstat -tlnp  # ポート確認<br>
+	$ ss -tlnp  # ソケット確認<br>
+	$ traceroute 1.1.1.1  # 経路確認（環境により UDP/ICMP が遮断されることがある）
+	            </div>
+	        </div>
     </div>
     
     <h2>4.5 よくある質問と回答</h2>
     
-    <div class="faq-section">
-        <h3>Q: sudoパスワードを忘れました</h3>
-        <p>A: リカバリーモードで起動し、rootでログインしてパスワードをリセットします。</p>
-        <div class="command-box">$ passwd username</div>
+	    <div class="faq-section">
+	        <h3>Q: sudoパスワードを忘れました</h3>
+	        <p>A: ディストリビューションや設定により手順は異なりますが、一般的にはリカバリーモード等で root 権限を取得し、パスワードを再設定します。</p>
+	        <div class="command-box">$ passwd username</div>
         
         <h3>Q: ファイルを誤って削除しました</h3>
         <p>A: Linuxでは通常、削除したファイルの復元は困難です。定期的なバックアップが重要です。</p>
         
         <h3>Q: システムが重い/遅い</h3>
-        <p>A: topコマンドでCPU/メモリ使用率の高いプロセスを確認します。</p>
+        <p>A: <code>top</code> コマンドでCPU/メモリ使用率の高いプロセスを確認します。</p>
         <div class="command-box">$ top  # qで終了</div>
         
         <h3>Q: パッケージの依存関係エラー</h3>
@@ -304,13 +304,13 @@ $ sudo yum-complete-transaction  # CentOS/RHEL（必要なら yum-utils を導�
     
     <div class="explanation">
         <ul>
-            <li>まずは「エラーメッセージを読む」→「何が無い/権限が無い/場所が違う」を切り分ける</li>
-            <li>困ったら <code>top</code>/<code>df</code>/<code>journalctl</code> などで状況確認する</li>
+            <li>まずはエラーメッセージを読み、「存在しない」「権限不足」「場所が違う」などを切り分ける</li>
+            <li>必要に応じて <code>top</code>/<code>df</code>/<code>journalctl</code> などで状況を確認する</li>
             <li>再発防止には、手順の記録とバックアップが有効</li>
         </ul>
     </div>
 
     <div class="key-point">
-        <strong>次章予告：</strong>次章では、これまでのコマンドを組み合わせて簡単なシェルスクリプトを作り、定期実行まで試します。
+        <strong>次章予告：</strong>次章では、これまでのコマンドを組み合わせて簡単なシェルスクリプトを作成し、定期実行まで扱います。
     </div>
 </div>
