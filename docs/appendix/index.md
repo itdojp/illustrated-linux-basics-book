@@ -239,12 +239,12 @@ chapter: appendix
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td><code>ping</code></td>
-                <td>疎通確認</td>
-                <td>-c</td>
-                <td><code>ping -c 4 example.com</code></td>
-            </tr>
+	            <tr>
+	                <td><code>ping</code></td>
+	                <td>疎通確認</td>
+	                <td>-c</td>
+	                <td><code>ping -c 4 1.1.1.1</code></td>
+	            </tr>
             <tr>
                 <td><code>curl</code></td>
                 <td>HTTP通信</td>

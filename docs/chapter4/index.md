@@ -101,7 +101,7 @@ chapter: 4
     
     <div class="command-grid">
         <div class="command-card error-card">
-            <h3>🚫 Permission denied</h3>
+	            <h3>Permission denied</h3>
             <div class="error-box">bash: /etc/hosts: Permission denied</div>
             <h4>原因：</h4>
             <p>ファイルやディレクトリへのアクセス権限がない</p>
@@ -115,7 +115,7 @@ $ sudo chown $USER file.txt  # 所有者を変更
         </div>
         
         <div class="command-card error-card">
-            <h3>❓ Command not found</h3>
+	            <h3>Command not found</h3>
             <div class="error-box">git: command not found</div>
             <h4>原因：</h4>
             <p>コマンドがインストールされていない、またはPATHが通っていない</p>
@@ -130,7 +130,7 @@ $ export PATH=$PATH:/new/path  # PATH追加
         </div>
         
         <div class="command-card error-card">
-            <h3>📁 No such file or directory</h3>
+	            <h3>No such file or directory</h3>
             <div class="error-box">cat: test.txt: No such file or directory</div>
             <h4>原因：</h4>
             <p>指定したファイルやディレクトリが存在しない</p>
@@ -144,7 +144,7 @@ $ find . -name "test.txt"  # ファイルを検索
         </div>
 
         <div class="command-card error-card">
-            <h3>📂 Is a directory</h3>
+	            <h3>Is a directory</h3>
             <div class="error-box">cat: mydir: Is a directory</div>
             <h4>原因：</h4>
             <p>ディレクトリをファイルとして扱おうとした（例: <code>cat</code> や <code>cp</code> の引数にディレクトリを指定）</p>
@@ -157,7 +157,7 @@ $ ls -la  # 中のファイルを確認して正しいファイル名を指定
         </div>
         
         <div class="command-card error-card">
-            <h3>💾 No space left on device</h3>
+	            <h3>No space left on device</h3>
             <div class="error-box">cp: error writing './large.file': No space left on device</div>
             <h4>原因：</h4>
             <p>ディスクの空き容量が不足</p>
@@ -266,24 +266,24 @@ $ last  # ログイン履歴
             </div>
         </div>
         
-        <div class="command-card">
-            <h3>ネットワーク診断</h3>
-            <div class="command-box">
-$ ping example.com  # 接続確認<br>
-$ ip addr  # IPアドレス確認<br>
-$ netstat -tlnp  # ポート確認<br>
-$ ss -tlnp  # ソケット確認<br>
-$ traceroute example.com  # 経路確認
-            </div>
-        </div>
+	        <div class="command-card">
+	            <h3>ネットワーク診断</h3>
+	            <div class="command-box">
+	$ ping -c 4 1.1.1.1  # 接続確認（環境により ICMP が遮断されることがある）<br>
+	$ ip addr  # IPアドレス確認<br>
+	$ netstat -tlnp  # ポート確認<br>
+	$ ss -tlnp  # ソケット確認<br>
+	$ traceroute 1.1.1.1  # 経路確認（環境により UDP/ICMP が遮断されることがある）
+	            </div>
+	        </div>
     </div>
     
     <h2>4.5 よくある質問と回答</h2>
     
-    <div class="faq-section">
-        <h3>Q: sudoパスワードを忘れました</h3>
-        <p>A: 要確認: ディストリビューションや設定により手順は異なります。一般的には、リカバリーモード等で root 権限を取得し、パスワードを再設定します。</p>
-        <div class="command-box">$ passwd username</div>
+	    <div class="faq-section">
+	        <h3>Q: sudoパスワードを忘れました</h3>
+	        <p>A: ディストリビューションや設定により手順は異なりますが、一般的にはリカバリーモード等で root 権限を取得し、パスワードを再設定します。</p>
+	        <div class="command-box">$ passwd username</div>
         
         <h3>Q: ファイルを誤って削除しました</h3>
         <p>A: Linuxでは通常、削除したファイルの復元は困難です。定期的なバックアップが重要です。</p>

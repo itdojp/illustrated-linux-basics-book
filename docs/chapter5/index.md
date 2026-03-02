@@ -68,12 +68,11 @@ else
     exit 1
 fi
 
-&#35; 古いバックアップを削除（7日以上前）
-&#35; [注意] まずは削除対象を確認したい場合は、以下の確認用コマンドを実行する
-find "$BACKUP_DIR" -name "backup_*.tar.gz" -mtime +7 -print
-&#35; 確認後に削除したい場合は、次のコマンドを実行する
-find "$BACKUP_DIR" -name "backup_*.tar.gz" -mtime +7 -delete
-echo "7日以上前のバックアップを削除しました（該当がある場合）"</code></pre>
+	&#35; 古いバックアップを削除（7日以上前）
+	&#35; [注意] 以下は削除対象を表示したうえで削除します。削除したくない場合は、-delete の行をコメントアウトしてください。
+	find "$BACKUP_DIR" -name "backup_*.tar.gz" -mtime +7 -print
+	find "$BACKUP_DIR" -name "backup_*.tar.gz" -mtime +7 -delete
+	echo "7日以上前のバックアップを削除しました（該当がある場合）"</code></pre>
             <p><strong>使い方：</strong></p>
             <pre class="command-box"><code class="language-bash">$ chmod +x backup.sh
 $ ./backup.sh</code></pre>
