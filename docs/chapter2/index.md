@@ -82,7 +82,7 @@ chapter: 2
                 <text x="200" y="120" font-size="12" fill="#555">→ 秘密鍵など（所有者のみアクセス可能）</text>
                 
                 <text x="20" y="150" font-family="monospace" font-size="14" fill="#333">777 (rwxrwxrwx)</text>
-                <text x="200" y="150" font-size="12" fill="#e74c3c">→ ⚠️ 危険！全員が全権限（避けるべき）</text>
+                <text x="200" y="150" font-size="12" fill="#e74c3c">→ 危険: 全員が全権限（原則として避ける）</text>
             </g>
         </svg>
     </div>
@@ -223,7 +223,7 @@ $ sudo useradd -G developers alice
 $ sudo passwd newuser<br>
 $ passwd  # 自分のパスワード変更
             </div>
-            <p>強力なパスワードを設定しよう</p>
+            <p>推測されにくいパスワードを設定します。</p>
         </div>
         
         <div class="command-card">
@@ -242,7 +242,7 @@ $ sudo usermod -L baduser  # ロック
 $ sudo userdel olduser<br>
 $ sudo userdel -r olduser  # ホームも削除
             </div>
-            <p>⚠️ <code>-r</code> はホームディレクトリも削除します。</p>
+            <p><strong>注意：</strong><code>-r</code> はホームディレクトリも削除します。</p>
         </div>
         
         <div class="command-card">
@@ -282,11 +282,11 @@ $ id alice  # より詳細な情報
     </div>
     
     <div class="important-note">
-        <h3>⚠️ セキュリティの基本原則</h3>
+        <h3>セキュリティの基本原則</h3>
         <ul>
             <li><strong>最小権限の原則</strong>：必要最小限の権限のみを付与</li>
-            <li><strong>777は避ける</strong>：全員に全権限は危険</li>
-            <li><strong>sudoの適切な使用</strong>：管理者権限は必要なときだけ</li>
+            <li><strong>777は避ける</strong>：全員に全権限の付与は避ける</li>
+            <li><strong>sudoの適切な使用</strong>：管理者権限は必要なときに限定する</li>
             <li><strong>定期的な確認</strong>：不要なユーザーや権限を定期的に見直す</li>
         </ul>
     </div>
