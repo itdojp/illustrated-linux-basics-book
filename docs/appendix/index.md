@@ -243,7 +243,7 @@ chapter: appendix
                 <td><code>ping</code></td>
                 <td>疎通確認</td>
                 <td>-c</td>
-                <td><code>ping -c 4 google.com</code></td>
+                <td><code>ping -c 4 example.com</code></td>
             </tr>
             <tr>
                 <td><code>curl</code></td>
@@ -265,7 +265,7 @@ chapter: appendix
             </tr>
             <tr>
                 <td><code>ss</code></td>
-                <td>socket統計</td>
+                <td>ソケット統計</td>
                 <td>-tuln</td>
                 <td><code>ss -tuln</code></td>
             </tr>
@@ -273,13 +273,13 @@ chapter: appendix
                 <td><code>nslookup</code></td>
                 <td>DNS問い合わせ</td>
                 <td>-</td>
-                <td><code>nslookup google.com</code></td>
+                <td><code>nslookup example.com</code></td>
             </tr>
             <tr>
                 <td><code>dig</code></td>
                 <td>DNS詳細問い合わせ</td>
                 <td>+short</td>
-                <td><code>dig +short google.com</code></td>
+                <td><code>dig +short example.com</code></td>
             </tr>
         </tbody>
     </table>
@@ -404,6 +404,6 @@ chapter: appendix
     </div>
 
     <div class="key-point">
-        <strong>目次へ：</strong><a href="../">目次</a>に戻って、復習したい章を選びましょう。
+        <strong>目次へ：</strong><a href="../">目次</a>に戻り、必要な章を参照してください。
     </div>
 </div>

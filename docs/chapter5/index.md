@@ -20,14 +20,14 @@ chapter: 5
     <h2>5.1 はじめてのシェルスクリプト</h2>
     
     <div class="explanation">
-        <h3>シェルスクリプトとは？</h3>
+        <h3>シェルスクリプトの概要</h3>
         <p>コマンドを順番に実行するプログラムです。繰り返し作業を自動化できます。</p>
     </div>
     
     <div class="command-grid">
         <div class="command-card">
             <h3>最初のスクリプト: hello.sh</h3>
-            <pre class="command-box"><code class="language-bash">$ nano hello.sh</code></pre>
+            <pre class="command-box"><code class="language-bash">$ vi hello.sh</code></pre>
             <pre class="code-box"><code class="language-bash">&#35;!/usr/bin/env bash
 &#35; これはコメントです
 echo "Hello, Linux World!"
@@ -39,7 +39,7 @@ $ ./hello.sh  # 実行</code></pre>
         </div>
     </div>
     
-    <h2>5.2 実践！バックアップスクリプト</h2>
+    <h2>5.2 実践: バックアップスクリプト</h2>
     
     <div class="command-grid">
         <div class="command-card">
@@ -56,15 +56,15 @@ BACKUP_FILE="backup_${DATE}.tar.gz"
 mkdir -p "$BACKUP_DIR"
 
 &#35; バックアップ実行
-echo "バックアップを開始します..."
+echo "バックアップを開始します"
 tar -czf "$BACKUP_DIR/$BACKUP_FILE" "$SOURCE"
 
 &#35; 結果確認
 if [ $? -eq 0 ]; then
-    echo "✅ バックアップ成功: $BACKUP_FILE"
+    echo "バックアップ成功: $BACKUP_FILE"
     ls -lh "$BACKUP_DIR/$BACKUP_FILE"
 else
-    echo "❌ バックアップ失敗"
+    echo "バックアップ失敗"
     exit 1
 fi
 
@@ -73,7 +73,7 @@ fi
 find "$BACKUP_DIR" -name "backup_*.tar.gz" -mtime +7 -print
 &#35; 確認後に削除したい場合は、次のコマンドを実行する
 find "$BACKUP_DIR" -name "backup_*.tar.gz" -mtime +7 -delete
-echo "7日以上前のバックアップを削除しました"</code></pre>
+echo "7日以上前のバックアップを削除しました（該当がある場合）"</code></pre>
             <p><strong>使い方：</strong></p>
             <pre class="command-box"><code class="language-bash">$ chmod +x backup.sh
 $ ./backup.sh</code></pre>
@@ -107,7 +107,7 @@ $ ./backup.sh</code></pre>
                 </pre>
             </div>
             <div class="key-point">
-                <strong>補足：</strong>cron は対話シェルと実行環境が異なります。つまずきやすい点は次のとおりです。
+                <strong>補足：</strong>cron は対話シェルと実行環境が異なります。注意点は次のとおりです。
                 <ul>
                     <li>PATH が最小限のため、必要ならフルパス（例: <code>/usr/bin/python3</code>）を使う</li>
                     <li>環境変数が引き継がれないため、必要な変数は crontab 側で定義する</li>
@@ -120,7 +120,7 @@ $ ./backup.sh</code></pre>
     <h2>5.4 学習のまとめ</h2>
     
     <div class="explanation">
-        <h3>🎯 この章で学んだこと</h3>
+        <h3>この章で学んだこと</h3>
         <ul>
             <li>シェルスクリプトの基本構造（shebang/コメント/実行権限）</li>
             <li>変数の定義と使用方法</li>
@@ -129,7 +129,7 @@ $ ./backup.sh</code></pre>
             <li>cronによる定期実行の設定</li>
         </ul>
         
-        <h3>📚 次のステップ</h3>
+        <h3>次のステップ</h3>
         <ul>
             <li>ループ処理（for, while文）の学習</li>
             <li>関数の定義と活用</li>
@@ -137,18 +137,18 @@ $ ./backup.sh</code></pre>
             <li>エラーハンドリングの実装</li>
         </ul>
         
-        <h3>💡 スクリプト作成のコツ</h3>
+        <h3>スクリプト作成の要点</h3>
         <ul>
             <li><strong>小さく始める</strong>：まず簡単な処理から作る</li>
-            <li><strong>コメントを書く</strong>：後で見返した時のために</li>
+            <li><strong>コメントを書く</strong>：後で見返したときのために</li>
             <li><strong>エラー処理を入れる</strong>：想定外の状況に備える</li>
             <li><strong>テストする</strong>：本番前に必ずテスト環境で実行</li>
-            <li><strong>バージョン管理</strong>：gitなどで管理する</li>
+            <li><strong>バージョン管理</strong>：Git などで管理する</li>
         </ul>
     </div>
     
     <div class="important-note">
-        <h3>⚠️ セキュリティの注意点</h3>
+        <h3>セキュリティの注意点</h3>
         <ul>
             <li>パスワードをスクリプトに直接書かない</li>
             <li>実行権限は必要最小限に</li>
@@ -160,8 +160,8 @@ $ ./backup.sh</code></pre>
     <div class="key-point">
         <strong>次に読む：</strong>
         <ul>
-            <li><a href="../appendix/">付録：コマンド一覧表</a>（困ったときにコマンドを引く）</li>
-            <li><a href="../">目次</a>（復習したい章へ戻る）</li>
+            <li><a href="../appendix/">付録：コマンド一覧表</a>（必要に応じてコマンドを確認する）</li>
+            <li><a href="../">目次</a>（目的の章に戻る）</li>
         </ul>
     </div>
 </div>
