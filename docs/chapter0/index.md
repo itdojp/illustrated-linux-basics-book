@@ -24,7 +24,7 @@ chapter: 0
                 <!-- CPU -->
                 <rect x="50" y="50" width="150" height="150" fill="#3498db" stroke="#2c3e50" stroke-width="2"/>
                 <text x="125" y="130" text-anchor="middle" fill="white" font-size="20" font-weight="bold">CPU</text>
-                <text x="125" y="150" text-anchor="middle" fill="white" font-size="12">脳みそ</text>
+                <text x="125" y="150" text-anchor="middle" fill="white" font-size="12">中枢</text>
                 <text x="125" y="170" text-anchor="middle" fill="white" font-size="12">（計算担当）</text>
                 
                 <!-- Memory -->
@@ -47,7 +47,7 @@ chapter: 0
                 
                 <!-- 料理の例え -->
                 <g transform="translate(0, 250)">
-                    <text x="50" y="0" font-size="18" font-weight="bold" fill="#2c3e50">料理に例えると...</text>
+                    <text x="50" y="0" font-size="18" font-weight="bold" fill="#2c3e50">料理に例えると</text>
                     
                     <!-- CPU = シェフ -->
                     <circle cx="125" cy="80" r="40" fill="#3498db" opacity="0.8"/>
@@ -156,7 +156,7 @@ chapter: 0
                     <text x="100" y="95" text-anchor="middle" fill="white" font-size="12">1人が使用</text>
                     
                     <rect x="20" y="110" width="160" height="20" fill="white" opacity="0.3"/>
-                    <text x="100" y="125" text-anchor="middle" fill="white" font-size="12">電源OFF OK</text>
+                    <text x="100" y="125" text-anchor="middle" fill="white" font-size="12">電源OFF可</text>
                 </g>
                 
                 <!-- サーバー -->
@@ -165,7 +165,7 @@ chapter: 0
                     <text x="100" y="30" text-anchor="middle" fill="white" font-size="18" font-weight="bold">サーバー</text>
                     
                     <rect x="20" y="50" width="160" height="20" fill="white" opacity="0.3"/>
-                    <text x="100" y="65" text-anchor="middle" fill="white" font-size="12">画面なしでOK</text>
+                    <text x="100" y="65" text-anchor="middle" fill="white" font-size="12">画面なしで運用可</text>
                     
                     <rect x="20" y="80" width="160" height="20" fill="white" opacity="0.3"/>
                     <text x="100" y="95" text-anchor="middle" fill="white" font-size="12">多数が同時利用</text>
@@ -213,8 +213,8 @@ chapter: 0
             <ul>
                 <li><strong>サービス提供者：</strong>クライアントからの要求に応答</li>
                 <li><strong>高可用性：</strong>停止すると多くのユーザーに影響</li>
-                <li><strong>リモート管理：</strong>SSH等でネットワーク経由で操作</li>
-                <li><strong>専用OS：</strong>Linux、Windows Server等のサーバー向けOS</li>
+                <li><strong>リモート管理：</strong>SSH などを用いてネットワーク経由で操作</li>
+                <li><strong>専用OS：</strong>Linux、Windows Server などのサーバー向け OS</li>
             </ul>
         </div>
         
@@ -228,11 +228,11 @@ chapter: 0
             <ul>
                 <li>PCはCPU（計算）・メモリ（作業）・ストレージ（保存）が連携して動く</li>
                 <li>OSはアプリがハードウェアを直接操作しなくて済むようにする</li>
-                <li>サーバーは「サービスを提供する役割」を持ったコンピュータであり、停止しづらい・リモートで管理することが多い</li>
+                <li>サーバーは「サービスを提供する役割」を持ったコンピュータであり、停止しにくい・リモートで管理することが多い</li>
             </ul>
         </div>
         
         <div class="key-point">
-            <strong>次章予告：</strong>次章では、Linuxを操作するための「必須コマンド」をまとめて学びます。
+            <strong>次章予告：</strong>次章では、Linux を操作するための必須コマンドをまとめて学びます。
         </div>
 </div>
