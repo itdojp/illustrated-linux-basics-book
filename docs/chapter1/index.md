@@ -181,7 +181,7 @@ drwxr-xr-x  3 user user 4.0K Jan 10 09:15 ..<br>
         <div class="command-card">
             <h3>5. rm - ファイル削除</h3>
             <div class="command-box">$ rm file.txt<br>$ rm -rf directory</div>
-            <p><strong>注意：</strong><code>-rf</code> は強制削除であり、元に戻せません。練習ではテスト用ディレクトリ内で試し、<code>/</code> やホームディレクトリ直下など重要な場所では実行しないでください。</p>
+            <p><strong>注意：</strong><code>-rf</code> は強制削除であり、元に戻せません。練習ではテスト用ディレクトリ内で試し、<code>/</code> やホームディレクトリ直下など重要な場所では実行しないでください。不安な場合は、まず <code>ls</code> で対象を確認し、必要に応じて <code>-i</code>（確認）を付けます。</p>
         </div>
         
         <div class="command-card">
@@ -193,7 +193,7 @@ drwxr-xr-x  3 user user 4.0K Jan 10 09:15 ..<br>
         <div class="command-card">
             <h3>7. chmod - 権限変更</h3>
             <div class="command-box">$ chmod 755 script.sh<br>$ chmod +x script.sh</div>
-            <p>755 = 所有者:全権限、他:読み実行のみ</p>
+            <p>755 = 所有者: 読み/書き/実行、グループ/その他: 読み/実行</p>
         </div>
         
         <div class="command-card">
@@ -205,7 +205,7 @@ drwxr-xr-x  3 user user 4.0K Jan 10 09:15 ..<br>
         <div class="command-card">
             <h3>9. sudo - 管理者権限で実行</h3>
             <div class="command-box">$ sudo apt update<br>$ sudo systemctl restart apache2</div>
-            <p>システム変更時に必要</p>
+            <p>システム設定の変更時に必要</p>
         </div>
         
         <div class="command-card">

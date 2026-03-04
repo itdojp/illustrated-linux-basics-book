@@ -200,12 +200,12 @@ chapter: appendix
                 <td>-</td>
                 <td><code>htop</code></td>
             </tr>
-	            <tr>
-	                <td><code>kill</code></td>
-	                <td>プロセス終了</td>
-	                <td>-TERM（既定）, -KILL</td>
-	                <td><code>kill -TERM 1234</code></td>
-	            </tr>
+            <tr>
+                <td><code>kill</code></td>
+                <td>プロセス終了</td>
+                <td>-TERM（既定）, -KILL</td>
+                <td><code>kill -TERM 1234</code></td>
+            </tr>
             <tr>
                 <td><code>killall</code></td>
                 <td>プロセス名で終了</td>
@@ -239,12 +239,12 @@ chapter: appendix
             </tr>
         </thead>
         <tbody>
-	            <tr>
-	                <td><code>ping</code></td>
-	                <td>疎通確認</td>
-	                <td>-c</td>
-	                <td><code>ping -c 4 1.1.1.1</code></td>
-	            </tr>
+            <tr>
+                <td><code>ping</code></td>
+                <td>疎通確認</td>
+                <td>-c</td>
+                <td><code>ping -c 4 1.1.1.1</code></td>
+            </tr>
             <tr>
                 <td><code>curl</code></td>
                 <td>HTTP通信</td>

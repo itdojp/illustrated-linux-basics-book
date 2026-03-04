@@ -16,6 +16,10 @@ chapter: 4
             <li>トラブルシューティング用コマンドで状況を確認できる</li>
         </ul>
     </div>
+
+    <div class="key-point">
+        <strong>切り分けの基本：</strong>実務では「直前の変更」「再現性」「影響範囲」「ログ（いつ/どこで/誰が）」「現在の状態（CPU/メモリ/ディスク/ネットワーク）」を整理すると、対応が速くなります。
+    </div>
     
     <h2>4.1 初心者が遭遇しやすいエラー TOP 8</h2>
     
@@ -37,8 +41,8 @@ chapter: 4
                 <rect x="0" y="0" width="350" height="100" fill="#3498db" rx="10"/>
                 <text x="175" y="30" text-anchor="middle" fill="white" font-size="16" font-weight="bold">2. Command not found</text>
                 <text x="175" y="50" text-anchor="middle" fill="white" font-size="12">コマンドが見つかりません</text>
-                <text x="175" y="75" text-anchor="middle" fill="white" font-size="14">解決: apt/yum でインストール</text>
-                <text x="175" y="95" text-anchor="middle" fill="white" font-size="14">またはPATHを確認</text>
+                <text x="175" y="75" text-anchor="middle" fill="white" font-size="14">解決: apt/yum/dnf でインストール</text>
+                <text x="175" y="95" text-anchor="middle" fill="white" font-size="14">または PATH を確認</text>
             </g>
             
             <!-- No such file or directory -->
@@ -101,7 +105,7 @@ chapter: 4
     
     <div class="command-grid">
         <div class="command-card error-card">
-	            <h3>Permission denied</h3>
+            <h3>Permission denied</h3>
             <div class="error-box">bash: /etc/hosts: Permission denied</div>
             <h4>原因：</h4>
             <p>ファイルやディレクトリへのアクセス権限がない</p>
@@ -115,22 +119,23 @@ $ sudo chown $USER file.txt  # 所有者を変更
         </div>
         
         <div class="command-card error-card">
-	            <h3>Command not found</h3>
+            <h3>Command not found</h3>
             <div class="error-box">git: command not found</div>
             <h4>原因：</h4>
-            <p>コマンドがインストールされていない、またはPATHが通っていない</p>
+            <p>コマンドがインストールされていない、または PATH が通っていない</p>
             <h4>解決方法：</h4>
             <div class="command-box">
 $ sudo apt install git  # Ubuntu/Debian<br>
 $ sudo yum install git  # CentOS/RHEL<br>
+$ sudo dnf install git  # Fedora/RHEL8+<br>
 $ which git  # インストール確認<br>
 $ echo $PATH  # PATH確認<br>
-$ export PATH=$PATH:/new/path  # PATH追加
+$ export PATH=$PATH:/new/path  # 一時的に PATH 追加
             </div>
         </div>
         
         <div class="command-card error-card">
-	            <h3>No such file or directory</h3>
+            <h3>No such file or directory</h3>
             <div class="error-box">cat: test.txt: No such file or directory</div>
             <h4>原因：</h4>
             <p>指定したファイルやディレクトリが存在しない</p>
@@ -144,7 +149,7 @@ $ find . -name "test.txt"  # ファイルを検索
         </div>
 
         <div class="command-card error-card">
-	            <h3>Is a directory</h3>
+            <h3>Is a directory</h3>
             <div class="error-box">cat: mydir: Is a directory</div>
             <h4>原因：</h4>
             <p>ディレクトリをファイルとして扱おうとした（例: <code>cat</code> や <code>cp</code> の引数にディレクトリを指定）</p>
@@ -157,7 +162,7 @@ $ ls -la  # 中のファイルを確認して正しいファイル名を指定
         </div>
         
         <div class="command-card error-card">
-	            <h3>No space left on device</h3>
+            <h3>No space left on device</h3>
             <div class="error-box">cp: error writing './large.file': No space left on device</div>
             <h4>原因：</h4>
             <p>ディスクの空き容量が不足</p>
@@ -198,7 +203,7 @@ $ sudo systemctl status apache2  # Debian/Ubuntu<br>
 $ sudo systemctl status httpd  # RHEL系<br>
 $ sudo systemctl start apache2  # Debian/Ubuntu<br>
 $ sudo systemctl start httpd  # RHEL系<br>
-$ sudo netstat -tlnp  # ポート確認<br>
+$ sudo ss -tlnp  # ポート確認<br>
 $ sudo ufw status  # Debian/Ubuntu（UFW）<br>
 $ sudo firewall-cmd --state  # RHEL系（firewalld）<br>
 $ sudo ufw allow 80/tcp  # Debian/Ubuntu<br>
@@ -266,27 +271,27 @@ $ last  # ログイン履歴
             </div>
         </div>
         
-	        <div class="command-card">
-	            <h3>ネットワーク診断</h3>
-	            <div class="command-box">
-	$ ping -c 4 1.1.1.1  # 接続確認（環境により ICMP が遮断されることがある）<br>
-	$ ip addr  # IPアドレス確認<br>
-	$ netstat -tlnp  # ポート確認<br>
-	$ ss -tlnp  # ソケット確認<br>
-	$ traceroute 1.1.1.1  # 経路確認（環境により UDP/ICMP が遮断されることがある）
-	            </div>
-	        </div>
+        <div class="command-card">
+            <h3>ネットワーク診断</h3>
+            <div class="command-box">
+$ ping -c 4 1.1.1.1  # 接続確認（環境により ICMP が遮断されることがある）<br>
+$ ip addr  # IPアドレス確認<br>
+$ ss -tlnp  # ソケット/ポート確認<br>
+$ netstat -tlnp  # ポート確認（net-tools）<br>
+$ traceroute 1.1.1.1  # 経路確認（環境により UDP/ICMP が遮断されることがある）
+            </div>
+        </div>
     </div>
     
     <h2>4.5 よくある質問と回答</h2>
     
-	    <div class="faq-section">
-	        <h3>Q: sudoパスワードを忘れました</h3>
-	        <p>A: ディストリビューションや設定により手順は異なりますが、一般的にはリカバリーモード等で root 権限を取得し、パスワードを再設定します。</p>
-	        <div class="command-box">$ passwd username</div>
+    <div class="faq-section">
+        <h3>Q: sudoパスワードを忘れました</h3>
+        <p>A: ディストリビューションや設定により手順は異なりますが、一般的にはリカバリーモード等で root 権限を取得し、パスワードを再設定します。</p>
+        <div class="command-box">$ sudo passwd username</div>
         
         <h3>Q: ファイルを誤って削除しました</h3>
-        <p>A: Linuxでは通常、削除したファイルの復元は困難です。定期的なバックアップが重要です。</p>
+        <p>A: Linux では通常、削除したファイルの復元は困難です。まずはバックアップ/スナップショットの有無を確認し、再発防止として定期的なバックアップを運用します。</p>
         
         <h3>Q: システムが重い/遅い</h3>
         <p>A: <code>top</code> コマンドでCPU/メモリ使用率の高いプロセスを確認します。</p>

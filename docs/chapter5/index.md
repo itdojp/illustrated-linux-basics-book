@@ -46,8 +46,10 @@ $ ./hello.sh  # 実行</code></pre>
             <h3>backup.sh - 重要ファイルのバックアップ</h3>
             <pre class="code-box"><code class="language-bash">&#35;!/usr/bin/env bash
 
+set -euo pipefail
+
 &#35; バックアップ元とバックアップ先
-SOURCE="$HOME/Documents"
+SOURCE="$HOME/Documents"  # 実環境に合わせて変更
 BACKUP_DIR="$HOME/backups"
 DATE=$(date +%Y%m%d_%H%M%S)
 BACKUP_FILE="backup_${DATE}.tar.gz"
@@ -55,12 +57,16 @@ BACKUP_FILE="backup_${DATE}.tar.gz"
 &#35; バックアップディレクトリ作成
 mkdir -p "$BACKUP_DIR"
 
-&#35; バックアップ実行
-echo "バックアップを開始します"
-tar -czf "$BACKUP_DIR/$BACKUP_FILE" "$SOURCE"
+&#35; バックアップ元の存在確認
+if [ ! -d "$SOURCE" ]; then
+    echo "バックアップ元が見つかりません: $SOURCE"
+    echo "SOURCE を実環境に合わせて変更してください"
+    exit 1
+fi
 
-&#35; 結果確認
-if [ $? -eq 0 ]; then
+&#35; バックアップ実行
+echo "バックアップを開始します: $SOURCE -> $BACKUP_DIR/$BACKUP_FILE"
+if tar -czf "$BACKUP_DIR/$BACKUP_FILE" "$SOURCE"; then
     echo "バックアップ成功: $BACKUP_FILE"
     ls -lh "$BACKUP_DIR/$BACKUP_FILE"
 else
@@ -68,11 +74,11 @@ else
     exit 1
 fi
 
-	&#35; 古いバックアップを削除（7日以上前）
-	&#35; [注意] 以下は削除対象を表示したうえで削除します。削除したくない場合は、-delete の行をコメントアウトしてください。
-	find "$BACKUP_DIR" -name "backup_*.tar.gz" -mtime +7 -print
-	find "$BACKUP_DIR" -name "backup_*.tar.gz" -mtime +7 -delete
-	echo "7日以上前のバックアップを削除しました（該当がある場合）"</code></pre>
+&#35; 古いバックアップを削除（7日以上前）
+&#35; [注意] まず削除対象を表示し、問題なければ削除を有効化してください
+find "$BACKUP_DIR" -type f -name "backup_*.tar.gz" -mtime +7 -print
+find "$BACKUP_DIR" -type f -name "backup_*.tar.gz" -mtime +7 -delete
+echo "7日以上前のバックアップを削除しました（該当がある場合）"</code></pre>
             <p><strong>使い方：</strong></p>
             <pre class="command-box"><code class="language-bash">$ chmod +x backup.sh
 $ ./backup.sh</code></pre>
@@ -85,14 +91,17 @@ $ ./backup.sh</code></pre>
         <div class="command-card">
             <h3>定期バックアップの設定</h3>
             <pre class="command-box"><code class="language-bash">$ crontab -e</code></pre>
-            <pre class="code-box"><code class="language-text">&#35; 毎日午前3時にバックアップ実行
-0 3 * * * /home/user/scripts/backup.sh
+            <pre class="code-box"><code class="language-text">&#35; 注記: /home/&lt;linuxuser&gt;/... は実環境のユーザー名に置き換える
+&#35; 事前に /home/&lt;linuxuser&gt;/logs を作成しておく（例: mkdir -p /home/&lt;linuxuser&gt;/logs）
+
+&#35; 毎日午前3時にバックアップ実行（ログを残す）
+0 3 * * * /home/&lt;linuxuser&gt;/scripts/backup.sh >> /home/&lt;linuxuser&gt;/logs/backup.log 2>&amp;1
 
 &#35; 毎週月曜日にシステムレポート作成
-0 9 * * 1 /home/user/scripts/sysinfo.sh > /home/user/weekly_report.txt
+0 9 * * 1 /home/&lt;linuxuser&gt;/scripts/sysinfo.sh > /home/&lt;linuxuser&gt;/weekly_report.txt 2>&amp;1
 
 &#35; 毎月1日に古いログを削除
-0 0 1 * * find /home/user/logs -name "*.log" ! -name "cron.log" -mtime +30 -print -delete >> /home/user/logs/cron.log 2>&1</code></pre>
+0 0 1 * * find /home/&lt;linuxuser&gt;/logs -type f -name "*.log" ! -name "cron.log" -mtime +30 -print -delete >> /home/&lt;linuxuser&gt;/logs/cron.log 2>&amp;1</code></pre>
             <h4>cron記法の説明</h4>
             <div class="explanation">
                 <pre>

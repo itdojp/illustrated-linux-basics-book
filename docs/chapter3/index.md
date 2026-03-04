@@ -183,7 +183,7 @@ $ sed 's/old/new/g' file.txt  # 置換<br>
 $ sed -i 's/old/new/g' file.txt  # 直接編集<br>
 $ sed '5d' file.txt  # 5行目削除
             </div>
-            <p>一括置換に便利です。</p>
+            <p>一括置換に便利です。<code>-i</code> は直接編集のため、実務ではバックアップを取るか、まず標準出力で結果を確認してから適用します。</p>
         </div>
         
         <div class="command-card">
@@ -308,7 +308,7 @@ $ apt list --installed  # インストール済み一覧
 $ sudo yum install httpd<br>
 $ sudo dnf install postgresql  # Fedora/RHEL8+
             </div>
-            <p>RHEL系（RHEL/CentOS互換）では、7系は主に yum、8 以降は dnf が標準（推奨）ですが、yum コマンドも dnf への互換ラッパーとして利用できます。</p>
+            <p>RHEL系（RHEL/CentOS互換）では、環境により <code>yum</code>/<code>dnf</code> を使い分けます。近年は <code>dnf</code> が主流ですが、<code>yum</code> が <code>dnf</code> の互換フロントエンドとして提供される場合もあります。</p>
         </div>
         
         <div class="command-card">
@@ -335,7 +335,7 @@ $ sudo yum upgrade  # update と同義
     <div class="explanation">
         <h3>セキュリティ対策</h3>
         <ul>
-            <li>定期的に <code>sudo apt update && sudo apt upgrade</code> を実行</li>
+            <li>定期的にアップデートを適用（例: <code>sudo apt update && sudo apt upgrade</code>。実務では運用ポリシー/メンテナンス手順に従う）</li>
             <li>不要なパッケージは削除（攻撃対象を減らす）</li>
             <li>信頼できるリポジトリのみ使用</li>
         </ul>
