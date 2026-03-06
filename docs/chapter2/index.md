@@ -98,7 +98,7 @@ chapter: 2
             <h3>chmod - 権限変更</h3>
             <div class="command-box">
 $ chmod 755 script.sh<br>
-$ chmod u+x file.txt<br>
+$ chmod u+x script.sh<br>
 $ chmod go-w important.txt
             </div>
             <p><strong>数値指定：</strong></p>
@@ -137,6 +137,10 @@ $ sudo chgrp -R www-data /var/www/
             </div>
             <p>グループのみを変更したいときに使用します。</p>
         </div>
+    </div>
+
+    <div class="key-point">
+        <strong>注意：</strong><code>chown -R</code> や <code>chmod -R</code> は影響範囲が大きいため、実務では対象パスと権限設計を確認したうえで実行します。まずは <code>ls -l</code> で現状を確認し、必要ならテスト環境で検証します。
     </div>
     
     <h2>2.3 ユーザーとグループ管理</h2>
@@ -263,6 +267,10 @@ $ id alice  # より詳細な情報
             </div>
             <p>ユーザーの所属グループを確認します。</p>
         </div>
+    </div>
+
+    <div class="key-point">
+        <strong>実務メモ：</strong>企業環境ではアカウント管理をディレクトリサービス（例: LDAP/Active Directory）で一元管理する場合があります。ローカルユーザー/グループの追加・削除は、運用手順と権限管理のルールに従って実施します。
     </div>
     
     <h2>2.5 特殊な権限</h2>

@@ -43,7 +43,7 @@ chapter: 0
                 <rect x="650" y="50" width="120" height="150" fill="#9b59b6" stroke="#2c3e50" stroke-width="2"/>
                 <text x="710" y="130" text-anchor="middle" fill="white" font-size="16" font-weight="bold">マザーボード</text>
                 <text x="710" y="150" text-anchor="middle" fill="white" font-size="12">土台</text>
-                <text x="710" y="170" text-anchor="middle" fill="white" font-size="12">（全体を繋ぐ）</text>
+                <text x="710" y="170" text-anchor="middle" fill="white" font-size="12">（全体をつなぐ）</text>
                 
                 <!-- 料理の例え -->
                 <g transform="translate(0, 250)">
@@ -67,7 +67,7 @@ chapter: 0
                     <!-- マザーボード = キッチン -->
                     <rect x="650" y="30" width="120" height="100" fill="#9b59b6" opacity="0.3" stroke="#9b59b6" stroke-width="2"/>
                     <text x="710" y="85" text-anchor="middle" fill="#9b59b6" font-size="14">キッチン全体</text>
-                    <text x="710" y="140" text-anchor="middle" font-size="12">全てが置かれる場所</text>
+                    <text x="710" y="140" text-anchor="middle" font-size="12">すべてが置かれる場所</text>
                 </g>
                 
                 <!-- 矢印で関係性を示す -->
@@ -88,7 +88,7 @@ chapter: 0
             <ol>
                 <li>ストレージ（HDD/SSD）からプログラムとデータを取り出す</li>
                 <li>メモリ（RAM）に一時的に置く</li>
-                <li>CPU が メモリ上のデータを処理</li>
+                <li>CPUがメモリ上のデータを処理する</li>
                 <li>結果をメモリに書き戻し、必要に応じてストレージに保存</li>
             </ol>
         </div>
