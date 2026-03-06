@@ -100,8 +100,11 @@ $ ./backup.sh</code></pre>
 &#35; 毎週月曜日にシステムレポート作成
 0 9 * * 1 /home/&lt;linuxuser&gt;/scripts/sysinfo.sh > /home/&lt;linuxuser&gt;/weekly_report.txt 2>&amp;1
 
-&#35; 毎月1日に古いログを削除
-0 0 1 * * find /home/&lt;linuxuser&gt;/logs -type f -name "*.log" ! -name "cron.log" -mtime +30 -print -delete >> /home/&lt;linuxuser&gt;/logs/cron.log 2>&amp;1</code></pre>
+&#35; 毎月1日に古いログ候補を確認（まずは print のみ）
+0 0 1 * * find /home/&lt;linuxuser&gt;/logs -type f -name "*.log" ! -name "cron.log" -mtime +30 -print >> /home/&lt;linuxuser&gt;/logs/cron.log 2>&amp;1
+
+&#35; 削除を自動化する場合は、対象と保存期間を十分に確認してから別ジョブで有効化
+&#35; 5 0 1 * * find /home/&lt;linuxuser&gt;/logs -type f -name "*.log" ! -name "cron.log" -mtime +30 -print -delete >> /home/&lt;linuxuser&gt;/logs/cron.log 2>&amp;1</code></pre>
             <h4>cron記法の説明</h4>
             <div class="explanation">
                 <pre>
@@ -120,6 +123,7 @@ $ ./backup.sh</code></pre>
                     <li>PATH が最小限のため、必要ならフルパス（例: <code>/usr/bin/python3</code>）を使う</li>
                     <li>環境変数が引き継がれないため、必要な変数は crontab 側で定義する</li>
                     <li>標準出力/標準エラーはログへリダイレクトし、失敗時に追跡できるようにする</li>
+                    <li>削除系ジョブは、まず <code>-print</code> だけで候補を確認し、対象パスと保存期間を検証してから有効化する</li>
                 </ul>
             </div>
         </div>
