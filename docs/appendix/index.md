@@ -472,10 +472,10 @@ chapter: appendix
     <div class="explanation">
         <h3>まずは <code>man</code> を引く</h3>
         <ul>
-            <li><code>man ls</code> - コマンドの基本的な使い方を確認する</li>
-            <li><code>man chmod</code> - 権限指定の詳細を確認する</li>
-            <li><code>man hier</code> - Linux の標準的なディレクトリ構成を確認する</li>
-            <li><code>man bash</code> - シェルの基本挙動を確認する</li>
+            <li><code>man 1 ls</code> - コマンドの基本的な使い方を確認する</li>
+            <li><code>man 1 chmod</code> - 権限指定の詳細を確認する</li>
+            <li><code>man 7 hier</code> - Linux の標準的なディレクトリ構成を確認する</li>
+            <li><code>man 1 bash</code> - シェルの基本挙動を確認する</li>
         </ul>
 
         <h3>主要ディストリビューションの公式ドキュメント</h3>
