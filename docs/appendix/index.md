@@ -1,13 +1,22 @@
 ---
 layout: chapter
-title: "付録：コマンド一覧表"
+title: "付録：コマンド一覧・用語集・参考リンク"
 chapter: appendix
 ---
 
 <div class="section">
-    <h1>付録：コマンド一覧表</h1>
+    <h1>付録：コマンド一覧・用語集・参考リンク</h1>
+
+    <div class="key-point">
+        <strong>この付録の使い方：</strong>
+        <ul>
+            <li><a href="#command-reference">コマンド一覧</a> - 基本操作を素早く引き直す</li>
+            <li><a href="#glossary">最小用語集</a> - 権限やプロセスなどの用語を確認する</li>
+            <li><a href="#official-references">参考リンク</a> - <code>man</code> と公式ドキュメントをたどる</li>
+        </ul>
+    </div>
     
-    <h2>基本コマンド</h2>
+    <h2 id="command-reference">基本コマンド</h2>
     
     <table class="comparison-table">
         <thead>
@@ -400,6 +409,96 @@ chapter: appendix
             <li><code>~</code> - ホームディレクトリ</li>
             <li><code>.</code> - 現在のディレクトリ</li>
             <li><code>..</code> - 親ディレクトリ</li>
+        </ul>
+    </div>
+
+    <h2 id="glossary">最小用語集</h2>
+
+    <table class="comparison-table">
+        <thead>
+            <tr>
+                <th>用語</th>
+                <th>意味</th>
+                <th>最初に出てくる章の目安</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>シェル</td>
+                <td>コマンドを受け取り、OSへ処理を依頼するプログラム。代表例は <code>bash</code>。</td>
+                <td>第1章</td>
+            </tr>
+            <tr>
+                <td>ディストリビューション</td>
+                <td>Linux カーネルに各種ソフトウェアや管理方針を組み合わせた配布形態。Ubuntu や RHEL 系など。</td>
+                <td>第0章 / 第3章</td>
+            </tr>
+            <tr>
+                <td>パッケージマネージャー</td>
+                <td>ソフトウェアのインストール、更新、削除をまとめて管理する仕組み。<code>apt</code>、<code>dnf</code>、<code>yum</code> など。</td>
+                <td>第3章</td>
+            </tr>
+            <tr>
+                <td>プロセス</td>
+                <td>実行中のプログラム。1つのコマンドやサービスが動作すると、OS上ではプロセスとして管理される。</td>
+                <td>第1章 / 第4章</td>
+            </tr>
+            <tr>
+                <td>PID</td>
+                <td>各プロセスに付与される識別番号。<code>ps</code> や <code>top</code> で確認し、<code>kill</code> の対象にする。</td>
+                <td>第1章</td>
+            </tr>
+            <tr>
+                <td>root</td>
+                <td>Linux の管理者権限を持つ特別なユーザー。操作範囲が広いため、日常作業での常用は避ける。</td>
+                <td>第2章 / 第4章</td>
+            </tr>
+            <tr>
+                <td>sudo</td>
+                <td>必要な場面だけ一時的に管理者権限でコマンドを実行する仕組み。</td>
+                <td>第2章 / 第4章</td>
+            </tr>
+            <tr>
+                <td>権限（r/w/x）</td>
+                <td>読み取り、書き込み、実行の可否を表す基本ルール。所有者、グループ、その他で別々に設定する。</td>
+                <td>第2章</td>
+            </tr>
+            <tr>
+                <td>ホームディレクトリ</td>
+                <td>各ユーザーの作業開始地点。通常は <code>~</code> で表す。</td>
+                <td>第1章</td>
+            </tr>
+            <tr>
+                <td>標準入力 / 標準出力</td>
+                <td>コマンドが受け取る入力と、画面やファイルへ出す結果。パイプやリダイレクトの理解に必要。</td>
+                <td>第1章 / 第3章</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2 id="official-references">さらに確認したいときの参照先</h2>
+
+    <div class="explanation">
+        <h3>まずは <code>man</code> を引く</h3>
+        <ul>
+            <li><code>man 1 ls</code> - コマンドの基本的な使い方を確認する</li>
+            <li><code>man 1 chmod</code> - 権限指定の詳細を確認する</li>
+            <li><code>man 7 hier</code> - Linux の標準的なディレクトリ構成を確認する</li>
+            <li><code>man 1 bash</code> - シェルの基本挙動を確認する</li>
+        </ul>
+
+        <h3>主要ディストリビューションの公式ドキュメント</h3>
+        <ul>
+            <li><a href="https://help.ubuntu.com/" target="_blank" rel="noopener noreferrer">Ubuntu Documentation</a></li>
+            <li><a href="https://docs.redhat.com/" target="_blank" rel="noopener noreferrer">Red Hat Documentation</a></li>
+            <li><a href="https://www.debian.org/doc/" target="_blank" rel="noopener noreferrer">Debian Documentation</a></li>
+        </ul>
+
+        <h3>学習を続けるときの見方</h3>
+        <ul>
+            <li>まず本書の該当章で全体像をつかみ、次に <code>man</code> でコマンド単位の詳細を確認する</li>
+            <li>ディストリ差分が出てきたら、使っているディストリビューションの公式ドキュメントを優先する</li>
+            <li>本番環境で試す前に、手元の検証環境や仮想マシンで再現してから実行する</li>
         </ul>
     </div>
 
