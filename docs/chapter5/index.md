@@ -172,7 +172,7 @@ $ ./backup.sh</code></pre>
     <div class="key-point">
         <strong>次に読む：</strong>
         <ul>
-            <li><a href="../appendix/">付録：コマンド一覧表</a>（必要に応じてコマンドを確認する）</li>
+            <li><a href="../appendix/">付録：コマンド一覧・用語集・参考リンク</a>（必要なコマンドと用語を確認する）</li>
             <li><a href="../">目次</a>（目的の章に戻る）</li>
         </ul>
     </div>

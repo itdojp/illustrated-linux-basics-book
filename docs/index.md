@@ -43,7 +43,7 @@ title: "図解でわかるLinux基礎"
 
 - 用語の意味を確認したいときは、[付録の最小用語集](./appendix/#glossary)を参照する。
 - コマンドを一覧で見直したいときは、[付録のコマンド一覧](./appendix/#command-reference)を開く。
-- `man` や主要ディストリの一次情報を確認したいときは、[付録の参考リンク](./appendix/#official-references)を使う。
+- `man` や主要ディストリビューションの一次情報を確認したいときは、[付録の参考リンク](./appendix/#official-references)を使う。
 
 ## 所要時間
 - 通読: 約2〜2.5時間（本文量ベース概算。400〜600文字/分換算）
