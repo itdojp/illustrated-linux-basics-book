@@ -6,8 +6,17 @@ chapter: appendix
 
 <div class="section">
     <h1>付録：コマンド一覧・用語集・参考リンク</h1>
+
+    <div class="key-point">
+        <strong>この付録の使い方：</strong>
+        <ul>
+            <li><a href="#command-reference">コマンド一覧</a> - 基本操作を素早く引き直す</li>
+            <li><a href="#glossary">最小用語集</a> - 権限やプロセスなどの用語を確認する</li>
+            <li><a href="#official-references">参考リンク</a> - <code>man</code> と公式ドキュメントをたどる</li>
+        </ul>
+    </div>
     
-    <h2>基本コマンド</h2>
+    <h2 id="command-reference">基本コマンド</h2>
     
     <table class="comparison-table">
         <thead>
@@ -403,7 +412,7 @@ chapter: appendix
         </ul>
     </div>
 
-    <h2>最小用語集</h2>
+    <h2 id="glossary">最小用語集</h2>
 
     <table class="comparison-table">
         <thead>
@@ -467,15 +476,15 @@ chapter: appendix
         </tbody>
     </table>
 
-    <h2>さらに確認したいときの参照先</h2>
+    <h2 id="official-references">さらに確認したいときの参照先</h2>
 
     <div class="explanation">
         <h3>まずは <code>man</code> を引く</h3>
         <ul>
-            <li><code>man ls</code> - コマンドの基本的な使い方を確認する</li>
-            <li><code>man chmod</code> - 権限指定の詳細を確認する</li>
-            <li><code>man hier</code> - Linux の標準的なディレクトリ構成を確認する</li>
-            <li><code>man bash</code> - シェルの基本挙動を確認する</li>
+            <li><code>man 1 ls</code> - コマンドの基本的な使い方を確認する</li>
+            <li><code>man 1 chmod</code> - 権限指定の詳細を確認する</li>
+            <li><code>man 7 hier</code> - Linux の標準的なディレクトリ構成を確認する</li>
+            <li><code>man 1 bash</code> - シェルの基本挙動を確認する</li>
         </ul>
 
         <h3>主要ディストリビューションの公式ドキュメント</h3>
