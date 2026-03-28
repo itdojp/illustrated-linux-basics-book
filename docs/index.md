@@ -105,6 +105,12 @@ ITインフラストラクチャとソフトウェア開発を専門とする技
 
 [詳細なライセンス条件](https://github.com/itdojp/it-engineer-knowledge-architecture/blob/main/LICENSE.md)
 
+## 利用と更新情報
+
+- リポジトリ: [itdojp/illustrated-linux-basics-book](https://github.com/itdojp/illustrated-linux-basics-book)
+- 更新差分を追う場合は、GitHub のコミット履歴と Pull Request を参照してください。
+- 図や手順を教材として再利用する場合は、ライセンス条件と社内ルールの両方を確認してください。
+
 **お問い合わせ**  
 株式会社アイティードゥ（ITDO Inc.）  
 Email: [knowledge@itdo.jp](mailto:knowledge@itdo.jp)
