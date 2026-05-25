@@ -28,7 +28,7 @@
 
 ## 📄 ライセンス
 
-本書は **Creative Commons BY-NC-SA 4.0** ライセンスで公開されています。
+本書は **CC BY-NC-SA 4.0**（Creative Commons Attribution-NonCommercial-ShareAlike 4.0）ライセンスで公開されています。
 
 - **🔓 教育・研究・個人学習での利用は自由** です
 - **💼 商用利用には事前許諾** が必要です
@@ -38,6 +38,16 @@
 ### 商用利用について
 
 商用利用をご希望の場合は、[商用ライセンス申請](https://github.com/itdojp/illustrated-linux-basics-book/issues/new?assignees=&labels=commercial-license%2C+enterprise&projects=&template=commercial_license.md&title=%5B%E5%95%86%E7%94%A8%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9%5D+%E5%A5%91%E7%B4%84%E7%94%B3%E8%AB%8B+-+%5B%E7%B5%84%E7%B9%94%E5%90%8D%5D)からお申し込みください。
+
+## ✅ 品質確認
+
+公開メタデータとナビゲーションの整合性は、次のコマンドで確認できます。
+
+```bash
+python3 scripts/check-metadata-consistency.py
+```
+
+このチェックは `book-config.json`、`docs/_config.yml`、`docs/index.md`、`docs/_data/navigation.yml`、README の公開URL・連絡先を検証します。
 
 ## 👥 コントリビューション
 
