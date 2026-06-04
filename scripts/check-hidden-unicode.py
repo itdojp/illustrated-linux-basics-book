@@ -13,6 +13,7 @@ from typing import Iterable, List, Sequence, Tuple
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_TARGETS = [".github", "docs"]
 TEXT_SUFFIXES = {".css", ".html", ".js", ".md", ".svg", ".yaml", ".yml"}
+TEXT_FILENAMES = {"CODEOWNERS"}
 BANNED = [
     "\u061c",  # ARABIC LETTER MARK
     "\u00ad",  # SOFT HYPHEN
@@ -47,7 +48,9 @@ def iter_text_files(targets: Sequence[str]) -> Iterable[Path]:
             continue
         candidates = [path] if path.is_file() else path.rglob("*")
         for candidate in candidates:
-            if not candidate.is_file() or candidate.suffix.lower() not in TEXT_SUFFIXES:
+            if not candidate.is_file():
+                continue
+            if candidate.suffix.lower() not in TEXT_SUFFIXES and candidate.name not in TEXT_FILENAMES:
                 continue
             if candidate in seen:
                 continue
