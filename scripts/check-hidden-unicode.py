@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_TARGETS = [".github", "docs"]
 TEXT_SUFFIXES = {".css", ".html", ".js", ".md", ".svg", ".yaml", ".yml"}
 TEXT_FILENAMES = {"CODEOWNERS"}
+EXCLUDED_DIR_NAMES = {"_site", ".bundle", ".jekyll-cache", "node_modules", "vendor"}
 BANNED = [
     "\u061c",  # ARABIC LETTER MARK
     "\u00ad",  # SOFT HYPHEN
@@ -40,6 +41,17 @@ PATTERN = re.compile("[" + "".join(BANNED) + "]")
 Hit = Tuple[Path, int, int, int, str]
 
 
+def display_path(path: Path) -> Path:
+    try:
+        return path.relative_to(ROOT)
+    except ValueError:
+        return path
+
+
+def has_excluded_dir(path: Path) -> bool:
+    return any(part in EXCLUDED_DIR_NAMES for part in path.parts)
+
+
 def iter_text_files(targets: Sequence[str]) -> Iterable[Path]:
     seen = set()
     for target in targets:
@@ -48,6 +60,8 @@ def iter_text_files(targets: Sequence[str]) -> Iterable[Path]:
             continue
         candidates = [path] if path.is_file() else path.rglob("*")
         for candidate in candidates:
+            if has_excluded_dir(candidate):
+                continue
             if not candidate.is_file():
                 continue
             if candidate.suffix.lower() not in TEXT_SUFFIXES and candidate.name not in TEXT_FILENAMES:
@@ -62,8 +76,7 @@ def scan_file(path: Path) -> List[Hit]:
     try:
         text = path.read_text(encoding="utf-8")
     except UnicodeDecodeError as exc:
-        rel = path.relative_to(ROOT)
-        return [(rel, 0, 0, 0, "UTF-8 decode error: {}".format(exc))]
+        return [(display_path(path), 0, 0, 0, "UTF-8 decode error: {}".format(exc))]
 
     hits: List[Hit] = []
     for match in PATTERN.finditer(text):
@@ -72,7 +85,7 @@ def scan_file(path: Path) -> List[Hit]:
         line = text.count("\n", 0, match.start()) + 1
         last_newline = text.rfind("\n", 0, match.start())
         col = match.start() + 1 if last_newline == -1 else match.start() - last_newline
-        hits.append((path.relative_to(ROOT), line, col, cp, unicodedata.name(char, "UNKNOWN")))
+        hits.append((display_path(path), line, col, cp, unicodedata.name(char, "UNKNOWN")))
     return hits
 
 
