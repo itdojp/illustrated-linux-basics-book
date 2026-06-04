@@ -19,6 +19,9 @@ jobs:
       - name: Checkout book
         uses: actions/checkout@v6
 
+      - name: Hidden Unicode check
+        run: python3 scripts/check-hidden-unicode.py
+
       - name: Book metadata consistency check
         run: python3 scripts/check-metadata-consistency.py
 

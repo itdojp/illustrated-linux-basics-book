@@ -44,10 +44,12 @@
 公開メタデータとナビゲーションの整合性は、次のコマンドで確認できます。
 
 ```bash
+python3 scripts/check-hidden-unicode.py
 python3 scripts/check-metadata-consistency.py
 ```
 
-このチェックは `book-config.json`、`docs/_config.yml`、`docs/index.md`、`docs/_data/navigation.yml`、README の公開URL・連絡先を検証します。
+`check-hidden-unicode.py` は `.github/` と `docs/` のテキストファイルに混入した双方向制御文字・ゼロ幅文字を検出します。
+`check-metadata-consistency.py` は `book-config.json`、`docs/_config.yml`、`docs/index.md`、`docs/_data/navigation.yml`、README の公開URL・連絡先を検証します。
 
 ## 👥 コントリビューション
 
