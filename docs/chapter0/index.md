@@ -86,7 +86,7 @@ chapter: 0
         <div class="explanation">
             <strong>動作の流れ：</strong>
             <ol>
-                <li>ストレージ（HDD/SSD）からプログラムとデータを取り出す</li>
+                <li>ストレージ（HDD / SSD）からプログラムとデータを取り出す</li>
                 <li>メモリ（RAM）に一時的に置く</li>
                 <li>CPU がメモリ上のデータを処理する</li>
                 <li>結果をメモリに書き戻し、必要に応じてストレージに保存</li>

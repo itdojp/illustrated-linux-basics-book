@@ -12,7 +12,7 @@ chapter: 2
     <div class="explanation">
         <ul>
             <li><code>ls -l</code> の出力から、権限（r/w/x）と所有者/グループを読み取れる</li>
-            <li><code>chmod</code>/<code>chown</code>/<code>chgrp</code> で権限と所有者を変更できる</li>
+            <li><code>chmod</code> / <code>chown</code> / <code>chgrp</code> で権限と所有者を変更できる</li>
             <li>ユーザー/グループ管理の基本コマンドを把握できる</li>
         </ul>
     </div>

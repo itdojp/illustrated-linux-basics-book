@@ -13,7 +13,7 @@ chapter: 1
         <ul>
             <li>Linux で頻出するコマンドを俯瞰できる</li>
             <li>ファイル操作や検索など、基本用途を押さえたうえで実行例を試せる</li>
-            <li>パイプ（<code>|</code>）とリダイレクト（<code>&gt;</code>/<code>&gt;&gt;</code>）でコマンドを組み合わせられる</li>
+            <li>パイプ（<code>|</code>）とリダイレクト（<code>&gt;</code> / <code>&gt;&gt;</code>）でコマンドを組み合わせられる</li>
         </ul>
     </div>
     
@@ -273,7 +273,7 @@ drwxr-xr-x  3 user user 4.0K Jan 10 09:15 ..<br>
     
     <div class="explanation">
         <ul>
-            <li>まずは <code>ls</code>/<code>cd</code>/<code>pwd</code> で現在位置と内容を確認する</li>
+            <li>まずは <code>ls</code> / <code>cd</code> / <code>pwd</code> で現在位置と内容を確認する</li>
             <li><code>grep</code> やパイプで必要な情報だけを抽出できる</li>
             <li>権限やユーザーの話が出てきたら <a href="../chapter2/">第2章</a> を参照する</li>
         </ul>

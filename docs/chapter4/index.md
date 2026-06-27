@@ -41,7 +41,7 @@ chapter: 4
                 <rect x="0" y="0" width="350" height="100" fill="#3498db" rx="10"/>
                 <text x="175" y="30" text-anchor="middle" fill="white" font-size="16" font-weight="bold">2. Command not found</text>
                 <text x="175" y="50" text-anchor="middle" fill="white" font-size="12">コマンドが見つかりません</text>
-                <text x="175" y="75" text-anchor="middle" fill="white" font-size="14">解決: apt/yum/dnf でインストール</text>
+                <text x="175" y="75" text-anchor="middle" fill="white" font-size="14">解決: apt / yum / dnf でインストール</text>
                 <text x="175" y="95" text-anchor="middle" fill="white" font-size="14">または PATH を確認</text>
             </g>
             
@@ -215,7 +215,7 @@ $ sudo firewall-cmd --permanent --add-service=http && sudo firewall-cmd --reload
             <h3>Syntax error</h3>
             <div class="error-box">bash: syntax error near unexpected token `then'</div>
             <h4>原因：</h4>
-            <p>スペルミス、引用符（<code>'</code>/<code>"</code>）の閉じ忘れ、<code>if</code>/<code>fi</code> の対応漏れなど</p>
+            <p>スペルミス、引用符（<code>'</code> / <code>"</code>）の閉じ忘れ、<code>if</code> / <code>fi</code> の対応漏れなど</p>
             <h4>解決方法：</h4>
             <div class="command-box">
 $ bash -n script.sh  # 実行せず構文だけチェック<br>
@@ -276,9 +276,9 @@ $ last  # ログイン履歴
             <div class="command-box">
 $ ping -c 4 1.1.1.1  # 接続確認（環境により ICMP が遮断されることがある）<br>
 $ ip addr  # IP アドレス確認<br>
-$ ss -tlnp  # ソケット/ポート確認<br>
+$ ss -tlnp  # ソケット / ポート確認<br>
 $ netstat -tlnp  # ポート確認（net-tools）<br>
-$ traceroute 1.1.1.1  # 経路確認（環境により UDP/ICMP が遮断されることがある）
+$ traceroute 1.1.1.1  # 経路確認（環境により UDP / ICMP が遮断されることがある）
             </div>
         </div>
     </div>
@@ -291,7 +291,7 @@ $ traceroute 1.1.1.1  # 経路確認（環境により UDP/ICMP が遮断され�
         <div class="command-box">$ passwd username  # （root シェルで実行）</div>
         
         <h3>Q: ファイルを誤って削除しました</h3>
-        <p>A: Linux では通常、削除したファイルの復元は困難です。まずはバックアップ/スナップショットの有無を確認し、再発防止として定期的なバックアップを運用します。</p>
+        <p>A: Linux では通常、削除したファイルの復元は困難です。まずはバックアップ / スナップショットの有無を確認し、再発防止として定期的なバックアップを運用します。</p>
         
         <h3>Q: システムが重い/遅い</h3>
         <p>A: <code>top</code> コマンドで CPU / メモリ使用率の高いプロセスを確認します。</p>
@@ -310,7 +310,7 @@ $ sudo yum-complete-transaction  # CentOS/RHEL（必要なら yum-utils を導�
     <div class="explanation">
         <ul>
             <li>まずはエラーメッセージを読み、「存在しない」「権限不足」「場所が違う」などを切り分ける</li>
-            <li>必要に応じて <code>top</code>/<code>df</code>/<code>journalctl</code> などで状況を確認する</li>
+            <li>必要に応じて <code>top</code> / <code>df</code> / <code>journalctl</code> などで状況を確認する</li>
             <li>再発防止には、手順の記録とバックアップが有効</li>
         </ul>
     </div>

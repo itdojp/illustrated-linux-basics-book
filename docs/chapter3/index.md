@@ -308,7 +308,7 @@ $ apt list --installed  # インストール済み一覧
 $ sudo yum install httpd<br>
 $ sudo dnf install postgresql  # Fedora/RHEL8+
             </div>
-            <p>RHEL 系（RHEL / CentOS 互換）では、環境により <code>yum</code>/<code>dnf</code> を使い分けます。近年は <code>dnf</code> が主流ですが、<code>yum</code> が <code>dnf</code> の互換フロントエンドとして提供される場合もあります。</p>
+            <p>RHEL 系（RHEL / CentOS 互換）では、環境により <code>yum</code> / <code>dnf</code> を使い分けます。近年は <code>dnf</code> が主流ですが、<code>yum</code> が <code>dnf</code> の互換フロントエンドとして提供される場合もあります。</p>
         </div>
         
         <div class="command-card">
