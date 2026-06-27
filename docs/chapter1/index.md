@@ -11,9 +11,9 @@ chapter: 1
     
     <div class="explanation">
         <ul>
-            <li>Linuxで頻出するコマンドを俯瞰できる</li>
+            <li>Linux で頻出するコマンドを俯瞰できる</li>
             <li>ファイル操作や検索など、基本用途を押さえたうえで実行例を試せる</li>
-            <li>パイプ（<code>|</code>）とリダイレクト（<code>&gt;</code>/<code>&gt;&gt;</code>）でコマンドを組み合わせられる</li>
+            <li>パイプ（<code>|</code>）とリダイレクト（<code>&gt;</code> / <code>&gt;&gt;</code>）でコマンドを組み合わせられる</li>
         </ul>
     </div>
     
@@ -229,7 +229,7 @@ drwxr-xr-x  3 user user 4.0K Jan 10 09:15 ..<br>
         <div class="command-card">
             <h3>13. ps - プロセス表示</h3>
             <div class="command-box">$ ps aux<br>$ ps -ef</div>
-            <p>実行中のプログラムを確認（<code>aux</code>はBSD形式、<code>-ef</code>はSystem V形式）</p>
+            <p>実行中のプログラムを確認（<code>aux</code> は BSD 形式、<code>-ef</code> は System V 形式）</p>
         </div>
 
         <div class="command-card">
@@ -253,7 +253,7 @@ drwxr-xr-x  3 user user 4.0K Jan 10 09:15 ..<br>
         <p>→ テキストファイルだけを表示</p>
         
         <div class="command-box">$ ps aux | grep python | grep -v grep</div>
-        <p>→ Python関連のプロセスを表示（grep自身は除外）</p>
+        <p>→ Python 関連のプロセスを表示（grep 自身は除外）</p>
 
         <div class="key-point">
             <strong>補足：</strong><code>ps | grep</code> 以外に、<code>pgrep</code> でプロセス名から検索する方法もあります。
@@ -273,7 +273,7 @@ drwxr-xr-x  3 user user 4.0K Jan 10 09:15 ..<br>
     
     <div class="explanation">
         <ul>
-            <li>まずは <code>ls</code>/<code>cd</code>/<code>pwd</code> で現在位置と内容を確認する</li>
+            <li>まずは <code>ls</code> / <code>cd</code> / <code>pwd</code> で現在位置と内容を確認する</li>
             <li><code>grep</code> やパイプで必要な情報だけを抽出できる</li>
             <li>権限やユーザーの話が出てきたら <a href="../chapter2/">第2章</a> を参照する</li>
         </ul>

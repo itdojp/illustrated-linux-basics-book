@@ -17,11 +17,11 @@ chapter: 3
         </ul>
     </div>
     
-    <h2>3.1 viエディタの基本操作</h2>
+    <h2>3.1 vi エディタの基本操作</h2>
     
     <div class="diagram-container">
         <svg width="800" height="450" viewBox="0 0 800 450">
-            <text x="400" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#2c3e50">viエディタのモード遷移</text>
+            <text x="400" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#2c3e50">vi エディタのモード遷移</text>
             
             <!-- ノーマルモード -->
             <circle cx="400" cy="150" r="80" fill="#3498db"/>
@@ -75,7 +75,7 @@ chapter: 3
     
     <div class="command-grid">
         <div class="command-card">
-            <h3>vi基本操作早見表</h3>
+            <h3>vi 基本操作早見表</h3>
             <table class="comparison-table">
                 <tr>
                     <th>操作</th>
@@ -85,7 +85,7 @@ chapter: 3
                 <tr>
                     <td>ファイルを開く</td>
                     <td><code>vi file.txt</code></td>
-                    <td>viエディタでファイルを開く</td>
+                    <td>vi エディタでファイルを開く</td>
                 </tr>
                 <tr>
                     <td>挿入モードへ</td>
@@ -118,7 +118,7 @@ chapter: 3
                     <td>変更を破棄して終了</td>
                 </tr>
                 <tr>
-                    <td>1行削除</td>
+                    <td>1 行削除</td>
                     <td><code>dd</code></td>
                     <td>カーソル行を削除</td>
                 </tr>
@@ -156,10 +156,10 @@ $ cat file.txt | less
         <div class="command-card">
             <h3>head / tail - 先頭/末尾表示</h3>
             <div class="command-box">
-$ head -n 10 file.txt  # 先頭10行<br>
-$ tail -n 20 file.txt  # 末尾20行<br>
-$ tail -f /var/log/syslog  # Debian/Ubuntu系の例<br>
-$ tail -f /var/log/messages  # RHEL系の例<br>
+$ head -n 10 file.txt  # 先頭 10 行<br>
+$ tail -n 20 file.txt  # 末尾 20 行<br>
+$ tail -f /var/log/syslog  # Debian / Ubuntu 系の例<br>
+$ tail -f /var/log/messages  # RHEL 系の例<br>
 $ journalctl -f  # systemd-journald（多くのディストロで有効）
             </div>
             <p><code>-f</code> はログ監視に便利です（権限が必要な場合は <code>sudo</code> を付けます）。</p>
@@ -181,7 +181,7 @@ $ grep -v "debug" log.txt  # 除外
             <div class="command-box">
 $ sed 's/old/new/g' file.txt  # 置換<br>
 $ sed -i 's/old/new/g' file.txt  # 直接編集<br>
-$ sed '5d' file.txt  # 5行目削除
+$ sed '5d' file.txt  # 5 行目削除
             </div>
             <p>一括置換に便利です。<code>-i</code> は直接編集のため、実務ではバックアップを取るか、まず標準出力で結果を確認してから適用します。</p>
         </div>
@@ -189,9 +189,9 @@ $ sed '5d' file.txt  # 5行目削除
         <div class="command-card">
             <h3>awk - テキスト処理言語</h3>
             <div class="command-box">
-$ awk '{print $1}' file.txt  # 1列目表示<br>
+$ awk '{print $1}' file.txt  # 1 列目表示<br>
 $ awk -F: '{print $1}' /etc/passwd  # 区切り文字指定<br>
-$ ps aux | awk '{print $2, $11}'  # PIDとコマンド
+$ ps aux | awk '{print $2, $11}'  # PID とコマンド
             </div>
             <p>列単位の処理に強力です。</p>
         </div>
@@ -203,10 +203,10 @@ $ ps aux | awk '{print $2, $11}'  # PIDとコマンド
         <svg width="850" height="400" viewBox="0 0 850 400">
             <text x="425" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#2c3e50">主要なパッケージ管理システム</text>
             
-            <!-- Debian/Ubuntu系 -->
+            <!-- Debian / Ubuntu 系 -->
             <g transform="translate(50, 60)">
                 <rect x="0" y="0" width="350" height="280" fill="#e8f4fd" stroke="#2196f3" stroke-width="2" rx="10"/>
-                <text x="175" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#1976d2">Debian/Ubuntu系</text>
+                <text x="175" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#1976d2">Debian / Ubuntu 系</text>
                 
                 <!-- APT -->
                 <rect x="20" y="50" width="310" height="100" fill="#2196f3" rx="5"/>
@@ -226,10 +226,10 @@ $ ps aux | awk '{print $2, $11}'  # PIDとコマンド
                 <text x="20" y="295" font-size="12" fill="#333">ファイル形式: .deb</text>
             </g>
             
-            <!-- RedHat/CentOS系 -->
+            <!-- Red Hat / CentOS 系 -->
             <g transform="translate(450, 60)">
                 <rect x="0" y="0" width="350" height="280" fill="#ffebee" stroke="#f44336" stroke-width="2" rx="10"/>
-                <text x="175" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#c62828">RedHat/CentOS系</text>
+                <text x="175" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#c62828">Red Hat / CentOS 系</text>
                 
                 <!-- YUM/DNF -->
                 <rect x="20" y="50" width="310" height="100" fill="#f44336" rx="5"/>
@@ -308,7 +308,7 @@ $ apt list --installed  # インストール済み一覧
 $ sudo yum install httpd<br>
 $ sudo dnf install postgresql  # Fedora/RHEL8+
             </div>
-            <p>RHEL系（RHEL/CentOS互換）では、環境により <code>yum</code>/<code>dnf</code> を使い分けます。近年は <code>dnf</code> が主流ですが、<code>yum</code> が <code>dnf</code> の互換フロントエンドとして提供される場合もあります。</p>
+            <p>RHEL 系（RHEL / CentOS 互換）では、環境により <code>yum</code> / <code>dnf</code> を使い分けます。近年は <code>dnf</code> が主流ですが、<code>yum</code> が <code>dnf</code> の互換フロントエンドとして提供される場合もあります。</p>
         </div>
         
         <div class="command-card">

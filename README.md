@@ -4,7 +4,7 @@
 
 ## 📖 書籍について
 
-この書籍では、複雑なLinuxの概念を分かりやすい図解で説明し、初心者でも理解しやすい形で解説します。
+この書籍では、複雑な Linux の概念を分かりやすい図解で説明し、初心者でも理解しやすい形で解説します。
 
 ### 特徴
 - **図解中心**：複雑な概念も分かりやすい図解で説明
@@ -49,11 +49,11 @@ python3 scripts/check-metadata-consistency.py
 ```
 
 `check-hidden-unicode.py` は `.github/` と `docs/` のテキストファイルに混入した双方向制御文字・ゼロ幅文字を検出します。
-`check-metadata-consistency.py` は `book-config.json`、`docs/_config.yml`、`docs/index.md`、`docs/_data/navigation.yml`、README の公開URL・連絡先を検証します。
+`check-metadata-consistency.py` は `book-config.json`、`docs/_config.yml`、`docs/index.md`、`docs/_data/navigation.yml`、README の公開 URL・連絡先を検証します。
 
 ## 👥 コントリビューション
 
-プロジェクトへの貢献を歓迎します！[コントリビューションガイド](CONTRIBUTING.md)をご確認ください。
+プロジェクトへの貢献を歓迎します！[コントリビューションガイド](CONTRIBUTING.md) をご確認ください。
 
 ## 📞 お問い合わせ
 

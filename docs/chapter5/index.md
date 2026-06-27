@@ -85,7 +85,7 @@ $ ./backup.sh</code></pre>
         </div>
     </div>
     
-    <h2>5.3 cronで定期実行</h2>
+    <h2>5.3 cron で定期実行</h2>
     
     <div class="command-grid">
         <div class="command-card">
@@ -105,7 +105,7 @@ $ ./backup.sh</code></pre>
 
 &#35; 削除を自動化する場合は、対象と保存期間を十分に確認してから別ジョブで有効化
 &#35; 5 0 1 * * find /home/&lt;linuxuser&gt;/logs -type f -name "*.log" ! -name "cron.log" -mtime +30 -print -delete >> /home/&lt;linuxuser&gt;/logs/cron.log 2>&amp;1</code></pre>
-            <h4>cron記法の説明</h4>
+            <h4>cron 記法の説明</h4>
             <div class="explanation">
                 <pre>
 分 時 日 月 曜日 コマンド
@@ -136,16 +136,16 @@ $ ./backup.sh</code></pre>
         <ul>
             <li>シェルスクリプトの基本構造（shebang/コメント/実行権限）</li>
             <li>変数の定義と使用方法</li>
-            <li>条件分岐（if文）による処理制御</li>
+            <li>条件分岐（if 文）による処理制御</li>
             <li>コマンド置換（$(command)）の活用</li>
-            <li>cronによる定期実行の設定</li>
+            <li>cron による定期実行の設定</li>
         </ul>
         
         <h3>次のステップ</h3>
         <ul>
-            <li>ループ処理（for, while文）の学習</li>
+            <li>ループ処理（for, while 文）の学習</li>
             <li>関数の定義と活用</li>
-            <li>より複雑な条件分岐（case文）</li>
+            <li>より複雑な条件分岐（case 文）</li>
             <li>エラーハンドリングの実装</li>
         </ul>
         

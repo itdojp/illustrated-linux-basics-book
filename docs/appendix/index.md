@@ -143,7 +143,7 @@ chapter: appendix
     </table>
 
     <div class="key-point">
-        <strong>補足：</strong>ログのパスはディストリビューションで異なります（例: Debian/Ubuntuは <code>/var/log/syslog</code>、RHEL系は <code>/var/log/messages</code>）。systemd環境では <code>journalctl</code> でも確認できます。
+        <strong>補足：</strong>ログのパスはディストリビューションで異なります（例: Debian / Ubuntu は <code>/var/log/syslog</code>、RHEL 系は <code>/var/log/messages</code>）。systemd 環境では <code>journalctl</code> でも確認できます。
     </div>
     
     <h2>権限・所有者</h2>
@@ -205,7 +205,7 @@ chapter: appendix
             </tr>
             <tr>
                 <td><code>htop</code></td>
-                <td>高機能なtop</td>
+                <td>高機能な top</td>
                 <td>-</td>
                 <td><code>htop</code></td>
             </tr>
@@ -256,7 +256,7 @@ chapter: appendix
             </tr>
             <tr>
                 <td><code>curl</code></td>
-                <td>HTTP通信</td>
+                <td>HTTP 通信</td>
                 <td>-I, -o</td>
                 <td><code>curl -I https://example.com</code></td>
             </tr>
@@ -280,13 +280,13 @@ chapter: appendix
             </tr>
             <tr>
                 <td><code>nslookup</code></td>
-                <td>DNS問い合わせ</td>
+                <td>DNS 問い合わせ</td>
                 <td>-</td>
                 <td><code>nslookup example.com</code></td>
             </tr>
             <tr>
                 <td><code>dig</code></td>
-                <td>DNS詳細問い合わせ</td>
+                <td>DNS 詳細問い合わせ</td>
                 <td>+short</td>
                 <td><code>dig +short example.com</code></td>
             </tr>
@@ -343,7 +343,7 @@ chapter: appendix
             </tr>
             <tr>
                 <td><code>id</code></td>
-                <td>ユーザーID確認</td>
+                <td>ユーザー ID 確認</td>
                 <td>-</td>
                 <td><code>id</code></td>
             </tr>
@@ -370,25 +370,25 @@ chapter: appendix
             </tr>
             <tr>
                 <td><code>zip</code></td>
-                <td>ZIP圧縮</td>
+                <td>ZIP 圧縮</td>
                 <td>-r</td>
                 <td><code>zip -r archive.zip folder</code></td>
             </tr>
             <tr>
                 <td><code>unzip</code></td>
-                <td>ZIP展開</td>
+                <td>ZIP 展開</td>
                 <td>-d</td>
                 <td><code>unzip archive.zip -d /tmp</code></td>
             </tr>
             <tr>
                 <td><code>gzip</code></td>
-                <td>gzip圧縮</td>
+                <td>gzip 圧縮</td>
                 <td>-d</td>
                 <td><code>gzip file.txt</code></td>
             </tr>
             <tr>
                 <td><code>gunzip</code></td>
-                <td>gzip展開</td>
+                <td>gzip 展開</td>
                 <td>-</td>
                 <td><code>gunzip file.txt.gz</code></td>
             </tr>
@@ -425,7 +425,7 @@ chapter: appendix
         <tbody>
             <tr>
                 <td>シェル</td>
-                <td>コマンドを受け取り、OSへ処理を依頼するプログラム。代表例は <code>bash</code>。</td>
+                <td>コマンドを受け取り、OS へ処理を依頼するプログラム。代表例は <code>bash</code>。</td>
                 <td>第1章</td>
             </tr>
             <tr>
@@ -440,7 +440,7 @@ chapter: appendix
             </tr>
             <tr>
                 <td>プロセス</td>
-                <td>実行中のプログラム。1つのコマンドやサービスが動作すると、OS上ではプロセスとして管理される。</td>
+                <td>実行中のプログラム。1つのコマンドやサービスが動作すると、OS 上ではプロセスとして管理される。</td>
                 <td>第1章 / 第4章</td>
             </tr>
             <tr>

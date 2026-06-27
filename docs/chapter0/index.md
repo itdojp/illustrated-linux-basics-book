@@ -11,13 +11,13 @@ chapter: 0
         
         <div class="explanation">
             <ul>
-                <li>CPU・メモリ・ストレージなど、PCの主要パーツの役割を説明できる</li>
-                <li>OSが「アプリとハードウェアの間」をつなぐ理由を説明できる</li>
-                <li>サーバーが「役割」であること（通常のPCとの違い）を説明できる</li>
+                <li>CPU・メモリ・ストレージなど、PC の主要パーツの役割を説明できる</li>
+                <li>OS が「アプリとハードウェアの間」をつなぐ理由を説明できる</li>
+                <li>サーバーが「役割」であること（通常の PC との違い）を説明できる</li>
             </ul>
         </div>
         
-        <h2>0.1 PCの中身を図解</h2>
+        <h2>0.1 PC の中身を図解</h2>
         
         <div class="diagram-container">
             <svg width="800" height="500" viewBox="0 0 800 500">
@@ -86,14 +86,14 @@ chapter: 0
         <div class="explanation">
             <strong>動作の流れ：</strong>
             <ol>
-                <li>ストレージ（HDD/SSD）からプログラムとデータを取り出す</li>
+                <li>ストレージ（HDD / SSD）からプログラムとデータを取り出す</li>
                 <li>メモリ（RAM）に一時的に置く</li>
-                <li>CPUがメモリ上のデータを処理する</li>
+                <li>CPU がメモリ上のデータを処理する</li>
                 <li>結果をメモリに書き戻し、必要に応じてストレージに保存</li>
             </ol>
         </div>
         
-        <h2>0.2 OSとは何か</h2>
+        <h2>0.2 OS とは何か</h2>
         
         <div class="diagram-container">
             <svg width="800" height="400" viewBox="0 0 800 400">
@@ -101,7 +101,7 @@ chapter: 0
                 <rect x="50" y="300" width="700" height="80" fill="#95a5a6" stroke="#2c3e50" stroke-width="2"/>
                 <text x="400" y="345" text-anchor="middle" fill="white" font-size="18" font-weight="bold">ハードウェア（CPU、メモリ、ディスク等）</text>
                 
-                <!-- OS層 -->
+                <!-- OS 層 -->
                 <rect x="50" y="180" width="700" height="100" fill="#3498db" stroke="#2c3e50" stroke-width="2"/>
                 <text x="400" y="220" text-anchor="middle" fill="white" font-size="20" font-weight="bold">オペレーティングシステム（OS）</text>
                 <text x="400" y="250" text-anchor="middle" fill="white" font-size="14">ハードウェアとアプリケーションの仲介役</text>
@@ -118,7 +118,7 @@ chapter: 0
                     <text x="460" y="105" text-anchor="middle" fill="white" font-size="14">データベース</text>
                     
                     <rect x="560" y="50" width="120" height="100" fill="#9b59b6" stroke="#2c3e50" stroke-width="2" rx="5"/>
-                    <text x="620" y="105" text-anchor="middle" fill="white" font-size="14">Webサーバー</text>
+                    <text x="620" y="105" text-anchor="middle" fill="white" font-size="14">Web サーバー</text>
                 </g>
                 
                 <!-- 矢印 -->
@@ -137,17 +137,17 @@ chapter: 0
         </div>
         
         <div class="key-point">
-            <strong>OSの役割：</strong>アプリケーションがハードウェアを直接操作しなくて済むように、標準的なインターフェースを提供する「通訳」のような役割を持ちます。たとえば、アプリケーションは「ファイルを保存したい」とOSに伝えるだけで、どのディスクにどう書き込むかといった細かい処理はOSが代わりに行います。
+            <strong>OS の役割：</strong>アプリケーションがハードウェアを直接操作しなくて済むように、標準的なインターフェースを提供する「通訳」のような役割を持ちます。たとえば、アプリケーションは「ファイルを保存したい」と OS に伝えるだけで、どのディスクにどう書き込むかといった細かい処理は OS が代わりに行います。
         </div>
         
         <h2>0.3 サーバーとは</h2>
         
         <div class="diagram-container">
             <svg width="800" height="450" viewBox="0 0 800 450">
-                <!-- 通常のPC -->
+                <!-- 通常の PC -->
                 <g transform="translate(100, 50)">
                     <rect x="0" y="0" width="200" height="150" fill="#3498db" stroke="#2c3e50" stroke-width="2" rx="10"/>
-                    <text x="100" y="30" text-anchor="middle" fill="white" font-size="18" font-weight="bold">通常のPC</text>
+                    <text x="100" y="30" text-anchor="middle" fill="white" font-size="18" font-weight="bold">通常の PC</text>
                     
                     <rect x="20" y="50" width="160" height="20" fill="white" opacity="0.3"/>
                     <text x="100" y="65" text-anchor="middle" fill="white" font-size="12">画面・キーボード必須</text>
@@ -156,7 +156,7 @@ chapter: 0
                     <text x="100" y="95" text-anchor="middle" fill="white" font-size="12">1人が使用</text>
                     
                     <rect x="20" y="110" width="160" height="20" fill="white" opacity="0.3"/>
-                    <text x="100" y="125" text-anchor="middle" fill="white" font-size="12">電源OFF可</text>
+                    <text x="100" y="125" text-anchor="middle" fill="white" font-size="12">電源 OFF 可</text>
                 </g>
                 
                 <!-- サーバー -->
@@ -214,20 +214,20 @@ chapter: 0
                 <li><strong>サービス提供者：</strong>クライアントからの要求に応答</li>
                 <li><strong>高可用性：</strong>停止すると多くのユーザーに影響</li>
                 <li><strong>リモート管理：</strong>SSH などを用いてネットワーク経由で操作</li>
-                <li><strong>専用OS：</strong>Linux、Windows Server などのサーバー向け OS</li>
+                <li><strong>専用 OS：</strong>Linux、Windows Server などのサーバー向け OS</li>
             </ul>
         </div>
         
         <div class="key-point">
-            <strong>重要：</strong>サーバーは特別な形のコンピュータだけを指すのではなく、「役割」を表す言葉です。通常のPCでも、サーバーソフトウェアを動かしてサービスを提供すれば、そのPCはサーバーとして振る舞います。
+            <strong>重要：</strong>サーバーは特別な形のコンピュータだけを指すのではなく、「役割」を表す言葉です。通常の PC でも、サーバーソフトウェアを動かしてサービスを提供すれば、その PC はサーバーとして振る舞います。
         </div>
         
         <h2>0.4 まとめ</h2>
         
         <div class="explanation">
             <ul>
-                <li>PCはCPU（計算）・メモリ（作業）・ストレージ（保存）が連携して動く</li>
-                <li>OSはアプリがハードウェアを直接操作しなくて済むようにする</li>
+                <li>PC は CPU（計算）・メモリ（作業）・ストレージ（保存）が連携して動く</li>
+                <li>OS はアプリがハードウェアを直接操作しなくて済むようにする</li>
                 <li>サーバーは「サービスを提供する役割」を持ったコンピュータであり、停止しにくい・リモートで管理することが多い</li>
             </ul>
         </div>
