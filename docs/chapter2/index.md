@@ -21,7 +21,7 @@ chapter: 2
     
     <div class="diagram-container">
         <svg width="850" height="500" viewBox="0 0 850 500">
-            <text x="425" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#2c3e50">Linuxの権限システム</text>
+            <text x="425" y="30" text-anchor="middle" font-size="20" font-weight="bold" fill="#2c3e50">Linux の権限システム</text>
             
             <!-- ls -l の出力例 -->
             <rect x="50" y="60" width="750" height="80" fill="#f5f5f5" stroke="#333" stroke-width="2" rx="5"/>
@@ -200,7 +200,7 @@ $ sudo chgrp -R www-data /var/www/
     </div>
 
     <div class="key-point">
-        <strong>補足：</strong>管理者権限（<code>sudo</code>）を使えるユーザーは、ディストリビューションにより <code>sudo</code> グループ（Debian/Ubuntu系）や <code>wheel</code> グループ（RHEL系）に所属することが多いです。
+        <strong>補足：</strong>管理者権限（<code>sudo</code>）を使えるユーザーは、ディストリビューションにより <code>sudo</code> グループ（Debian / Ubuntu 系）や <code>wheel</code> グループ（RHEL 系）に所属することが多いです。
     </div>
     
     <h2>2.4 ユーザー管理コマンド</h2>
@@ -255,7 +255,7 @@ $ sudo userdel -r olduser  # ホームも削除
 $ sudo groupadd developers<br>
 $ sudo groupadd -g 1500 special
             </div>
-            <p><code>-g</code> グループIDを指定します。</p>
+            <p><code>-g</code> グループ ID を指定します。</p>
         </div>
         
         <div class="command-card">
@@ -293,8 +293,8 @@ $ id alice  # より詳細な情報
         <h3>セキュリティの基本原則</h3>
         <ul>
             <li><strong>最小権限の原則</strong>：必要最小限の権限のみを付与</li>
-            <li><strong>777は避ける</strong>：全員に全権限の付与は避ける</li>
-            <li><strong>sudoの適切な使用</strong>：管理者権限は必要なときに限定する</li>
+            <li><strong>777 は避ける</strong>：全員に全権限の付与は避ける</li>
+            <li><strong>sudo の適切な使用</strong>：管理者権限は必要なときに限定する</li>
             <li><strong>定期的な確認</strong>：不要なユーザーや権限を定期的に見直す</li>
         </ul>
     </div>

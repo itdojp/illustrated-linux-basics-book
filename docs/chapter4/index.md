@@ -18,7 +18,7 @@ chapter: 4
     </div>
 
     <div class="key-point">
-        <strong>切り分けの基本：</strong>実務では「直前の変更」「再現性」「影響範囲」「ログ（いつ/どこで/誰が）」「現在の状態（CPU/メモリ/ディスク/ネットワーク）」を整理すると、対応が速くなります。
+        <strong>切り分けの基本：</strong>実務では「直前の変更」「再現性」「影響範囲」「ログ（いつ / どこで / 誰が）」「現在の状態（CPU / メモリ / ディスク / ネットワーク）」を整理すると、対応が速くなります。
     </div>
     
     <h2>4.1 初心者が遭遇しやすいエラー TOP 8</h2>
@@ -129,7 +129,7 @@ $ sudo apt install git  # Ubuntu/Debian<br>
 $ sudo yum install git  # CentOS/RHEL<br>
 $ sudo dnf install git  # Fedora/RHEL8+<br>
 $ which git  # インストール確認<br>
-$ echo $PATH  # PATH確認<br>
+$ echo $PATH  # PATH 確認<br>
 $ export PATH=$PATH:/new/path  # 一時的に PATH 追加
             </div>
         </div>
@@ -200,14 +200,14 @@ $ sudo umount -l /mnt  # 最終手段（遅延アンマウント）
             <h4>解決方法：</h4>
             <div class="command-box">
 $ sudo systemctl status apache2  # Debian/Ubuntu<br>
-$ sudo systemctl status httpd  # RHEL系<br>
+$ sudo systemctl status httpd  # RHEL 系<br>
 $ sudo systemctl start apache2  # Debian/Ubuntu<br>
-$ sudo systemctl start httpd  # RHEL系<br>
+$ sudo systemctl start httpd  # RHEL 系<br>
 $ sudo ss -tlnp  # ポート確認<br>
 $ sudo ufw status  # Debian/Ubuntu（UFW）<br>
-$ sudo firewall-cmd --state  # RHEL系（firewalld）<br>
+$ sudo firewall-cmd --state  # RHEL 系（firewalld）<br>
 $ sudo ufw allow 80/tcp  # Debian/Ubuntu<br>
-$ sudo firewall-cmd --permanent --add-service=http && sudo firewall-cmd --reload  # RHEL系
+$ sudo firewall-cmd --permanent --add-service=http && sudo firewall-cmd --reload  # RHEL 系
             </div>
         </div>
 
@@ -242,7 +242,7 @@ $ nl -ba script.sh | sed -n '1,120p'  # 行番号付きで該当箇所を確認
             <li><strong>ファイル名やパスを確認</strong> - タイポが原因の場合が多い</li>
             <li><strong>権限を確認</strong> - <code>ls -l</code> で確認</li>
             <li><strong>ログファイルを見る</strong> - <code>/var/log/</code> 以下のログを確認</li>
-            <li><strong>エラーメッセージで検索</strong> - Web検索や公式ドキュメントで情報を確認する</li>
+            <li><strong>エラーメッセージで検索</strong> - Web 検索や公式ドキュメントで情報を確認する</li>
         </ol>
     </div>
     
@@ -253,7 +253,7 @@ $ nl -ba script.sh | sed -n '1,120p'  # 行番号付きで該当箇所を確認
             <h3>システム情報確認</h3>
             <div class="command-box">
 $ uname -a  # システム情報<br>
-$ cat /etc/os-release  # OS情報<br>
+$ cat /etc/os-release  # OS 情報<br>
 $ free -h  # メモリ使用状況<br>
 $ df -h  # ディスク使用状況<br>
 $ top  # プロセス監視
@@ -264,8 +264,8 @@ $ top  # プロセス監視
             <h3>ログ確認</h3>
             <div class="command-box">
 $ sudo tail -f /var/log/syslog  # システムログ（Debian/Ubuntu）<br>
-$ sudo tail -f /var/log/messages  # システムログ（RHEL系）<br>
-$ sudo journalctl -xe  # systemdログ<br>
+$ sudo tail -f /var/log/messages  # システムログ（RHEL 系）<br>
+$ sudo journalctl -xe  # systemd ログ<br>
 $ dmesg  # カーネルメッセージ<br>
 $ last  # ログイン履歴
             </div>
@@ -275,7 +275,7 @@ $ last  # ログイン履歴
             <h3>ネットワーク診断</h3>
             <div class="command-box">
 $ ping -c 4 1.1.1.1  # 接続確認（環境により ICMP が遮断されることがある）<br>
-$ ip addr  # IPアドレス確認<br>
+$ ip addr  # IP アドレス確認<br>
 $ ss -tlnp  # ソケット/ポート確認<br>
 $ netstat -tlnp  # ポート確認（net-tools）<br>
 $ traceroute 1.1.1.1  # 経路確認（環境により UDP/ICMP が遮断されることがある）
@@ -288,13 +288,13 @@ $ traceroute 1.1.1.1  # 経路確認（環境により UDP/ICMP が遮断され�
     <div class="faq-section">
         <h3>Q: sudo で求められるパスワードを忘れました</h3>
         <p>A: 多くの環境では、<code>sudo</code> で求められるのは自分のログインパスワードであり、専用の「sudo パスワード」ではありません。思い出せない場合は、許可された手順でリカバリーモード等から再設定するか、管理者に依頼します。</p>
-        <div class="command-box">$ passwd username  # （rootシェルで実行）</div>
+        <div class="command-box">$ passwd username  # （root シェルで実行）</div>
         
         <h3>Q: ファイルを誤って削除しました</h3>
         <p>A: Linux では通常、削除したファイルの復元は困難です。まずはバックアップ/スナップショットの有無を確認し、再発防止として定期的なバックアップを運用します。</p>
         
         <h3>Q: システムが重い/遅い</h3>
-        <p>A: <code>top</code> コマンドでCPU/メモリ使用率の高いプロセスを確認します。</p>
+        <p>A: <code>top</code> コマンドで CPU / メモリ使用率の高いプロセスを確認します。</p>
         <div class="command-box">$ top  # qで終了</div>
         
         <h3>Q: パッケージの依存関係エラー</h3>
