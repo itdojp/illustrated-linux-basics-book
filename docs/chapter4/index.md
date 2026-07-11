@@ -32,7 +32,7 @@ chapter: 4
                 <rect x="0" y="0" width="350" height="100" fill="#e74c3c" rx="10"/>
                 <text x="175" y="30" text-anchor="middle" fill="white" font-size="16" font-weight="bold">1. Permission denied</text>
                 <text x="175" y="50" text-anchor="middle" fill="white" font-size="12">権限がありません</text>
-                <text x="175" y="75" text-anchor="middle" fill="white" font-size="14">確認: id / ls -ld / namei -l</text>
+                <text x="175" y="75" text-anchor="middle" fill="white" font-size="14">確認: id / ls -l / namei -l</text>
                 <text x="175" y="95" text-anchor="middle" fill="white" font-size="14">必要な権限と正規手順を確認</text>
             </g>
             
@@ -112,8 +112,8 @@ chapter: 4
             <h4>確認と対処：</h4>
             <div class="command-box">
 $ id  # 自分のユーザーと所属グループを確認<br>
-$ ls -ld file.txt  # 対象の所有者と権限を確認<br>
-$ namei -l /path/to/file.txt  # 親ディレクトリを含めて確認<br>
+$ ls -l /etc/hosts  # 対象の所有者と権限を確認<br>
+$ namei -l /etc/hosts  # 親ディレクトリを含めて確認<br>
 $ chmod u+rw file.txt  # 自分が所有する練習用ファイルで、必要な権限だけを追加<br>
 $ sudoedit /etc/hosts  # 管理対象ファイルは許可された手順で編集
             </div>

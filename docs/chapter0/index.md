@@ -214,7 +214,7 @@ chapter: 0
                 <li><strong>サービス提供者：</strong>クライアントからの要求に応答</li>
                 <li><strong>可用性：</strong>利用者や用途に応じて、必要な稼働時間と停止時の影響を設計</li>
                 <li><strong>リモート管理：</strong>画面を直接つながず、SSH などでネットワーク経由で操作することが多い</li>
-                <li><strong>OS：</strong>一般向けと同じLinuxやWindowsでも、サーバーソフトウェアを動かせる。用途によってサーバー向け構成を選ぶ</li>
+                <li><strong>OS：</strong>一般向けと同じ Linux や Windows でも、サーバーソフトウェアを動かせる。用途によってサーバー向け構成を選ぶ</li>
             </ul>
         </div>
         
