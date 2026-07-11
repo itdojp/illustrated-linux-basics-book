@@ -150,13 +150,13 @@ chapter: 0
                     <text x="100" y="30" text-anchor="middle" fill="white" font-size="18" font-weight="bold">通常の PC</text>
                     
                     <rect x="20" y="50" width="160" height="20" fill="white" opacity="0.3"/>
-                    <text x="100" y="65" text-anchor="middle" fill="white" font-size="12">画面・キーボード必須</text>
+                    <text x="100" y="65" text-anchor="middle" fill="white" font-size="12">対話操作が中心</text>
                     
                     <rect x="20" y="80" width="160" height="20" fill="white" opacity="0.3"/>
-                    <text x="100" y="95" text-anchor="middle" fill="white" font-size="12">1人が使用</text>
+                    <text x="100" y="95" text-anchor="middle" fill="white" font-size="12">利用者が直接操作</text>
                     
                     <rect x="20" y="110" width="160" height="20" fill="white" opacity="0.3"/>
-                    <text x="100" y="125" text-anchor="middle" fill="white" font-size="12">電源 OFF 可</text>
+                    <text x="100" y="125" text-anchor="middle" fill="white" font-size="12">必要時に起動・停止</text>
                 </g>
                 
                 <!-- サーバー -->
@@ -168,10 +168,10 @@ chapter: 0
                     <text x="100" y="65" text-anchor="middle" fill="white" font-size="12">画面なしで運用可</text>
                     
                     <rect x="20" y="80" width="160" height="20" fill="white" opacity="0.3"/>
-                    <text x="100" y="95" text-anchor="middle" fill="white" font-size="12">多数が同時利用</text>
+                    <text x="100" y="95" text-anchor="middle" fill="white" font-size="12">要求に応じて提供</text>
                     
                     <rect x="20" y="110" width="160" height="20" fill="white" opacity="0.3"/>
-                    <text x="100" y="125" text-anchor="middle" fill="white" font-size="12">24時間365日稼働</text>
+                    <text x="100" y="125" text-anchor="middle" fill="white" font-size="12">要件に応じて継続稼働</text>
                 </g>
                 
                 <!-- ネットワーク接続 -->
@@ -212,9 +212,9 @@ chapter: 0
             <strong>サーバーの特徴：</strong>
             <ul>
                 <li><strong>サービス提供者：</strong>クライアントからの要求に応答</li>
-                <li><strong>高可用性：</strong>停止すると多くのユーザーに影響</li>
-                <li><strong>リモート管理：</strong>SSH などを用いてネットワーク経由で操作</li>
-                <li><strong>専用 OS：</strong>Linux、Windows Server などのサーバー向け OS</li>
+                <li><strong>可用性：</strong>利用者や用途に応じて、必要な稼働時間と停止時の影響を設計</li>
+                <li><strong>リモート管理：</strong>画面を直接つながず、SSH などでネットワーク経由で操作することが多い</li>
+                <li><strong>OS：</strong>一般向けと同じ Linux や Windows でも、サーバーソフトウェアを動かせる。用途によってサーバー向け構成を選ぶ</li>
             </ul>
         </div>
         

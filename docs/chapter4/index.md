@@ -32,8 +32,8 @@ chapter: 4
                 <rect x="0" y="0" width="350" height="100" fill="#e74c3c" rx="10"/>
                 <text x="175" y="30" text-anchor="middle" fill="white" font-size="16" font-weight="bold">1. Permission denied</text>
                 <text x="175" y="50" text-anchor="middle" fill="white" font-size="12">権限がありません</text>
-                <text x="175" y="75" text-anchor="middle" fill="white" font-size="14">解決: sudo を使う</text>
-                <text x="175" y="95" text-anchor="middle" fill="white" font-size="14">または chmod で権限変更</text>
+                <text x="175" y="75" text-anchor="middle" fill="white" font-size="14">確認: id / ls -l / namei -l</text>
+                <text x="175" y="95" text-anchor="middle" fill="white" font-size="14">必要な権限と正規手順を確認</text>
             </g>
             
             <!-- Command not found -->
@@ -108,14 +108,16 @@ chapter: 4
             <h3>Permission denied</h3>
             <div class="error-box">bash: /etc/hosts: Permission denied</div>
             <h4>原因：</h4>
-            <p>ファイルやディレクトリへのアクセス権限がない</p>
-            <h4>解決方法：</h4>
+            <p>対象ファイルだけでなく、親ディレクトリの探索権限、所有者、読み取り専用マウント、セキュリティポリシー等が原因になる場合があります。</p>
+            <h4>確認と対処：</h4>
             <div class="command-box">
-$ sudo nano /etc/hosts  # 管理者権限で実行<br>
-$ ls -l file.txt  # 権限を確認<br>
-$ chmod 644 file.txt  # 権限を変更<br>
-$ sudo chown $USER file.txt  # 所有者を変更
+$ id  # 自分のユーザーと所属グループを確認<br>
+$ ls -l /etc/hosts  # 対象の所有者と権限を確認<br>
+$ namei -l /etc/hosts  # 親ディレクトリを含めて確認<br>
+$ chmod u+rw file.txt  # 自分が所有する練習用ファイルで、必要な権限だけを追加<br>
+$ sudoedit /etc/hosts  # 管理対象ファイルは許可された手順で編集
             </div>
+            <p><strong>注意：</strong>原因を確認せずに <code>sudo</code> を付けたり、<code>chmod 777</code> や <code>chown -R</code> を実行したりしないでください。共有環境や管理対象ファイルでは、管理者と運用手順を確認します。</p>
         </div>
         
         <div class="command-card error-card">
