@@ -435,8 +435,13 @@ chapter: appendix
             </tr>
             <tr>
                 <td>パッケージマネージャー</td>
-                <td>ソフトウェアのインストール、更新、削除をまとめて管理する仕組み。<code>apt</code>、<code>dnf</code>、<code>yum</code> など。</td>
+                <td>ソフトウェアのインストール、更新、削除をまとめて管理する仕組み。現行RHEL系の基本導線はDNF。旧YUMとは世代と契約を区別する。</td>
                 <td>第3章</td>
+            </tr>
+            <tr>
+                <td>トランザクション（transaction）</td>
+                <td>パッケージのinstall・upgrade・remove等を一まとまりで計画・記録する単位。実行前に対象と影響を確認する。</td>
+                <td>第3章 / 第4章</td>
             </tr>
             <tr>
                 <td>プロセス</td>
@@ -512,6 +517,31 @@ chapter: appendix
             <li><a href="https://help.ubuntu.com/" target="_blank" rel="noopener noreferrer">Ubuntu Documentation</a></li>
             <li><a href="https://docs.redhat.com/" target="_blank" rel="noopener noreferrer">Red Hat Documentation</a></li>
             <li><a href="https://www.debian.org/doc/" target="_blank" rel="noopener noreferrer">Debian Documentation</a></li>
+        </ul>
+
+        <h3 id="dnf-source-notes">DNF/YUM Source Notes（確認日: 2026-07-20）</h3>
+        <ul>
+            <li><a href="https://dnf.readthedocs.io/en/stable/command_ref.html" target="_blank" rel="noopener noreferrer">DNF4 Command Reference</a> - <code>upgrade</code>、<code>check</code>、<code>distro-sync</code>の対象と影響を確認。DNF4の<code>update</code>は非推奨alias。</li>
+            <li><a href="https://dnf.readthedocs.io/en/stable/cli_vs_yum.html" target="_blank" rel="noopener noreferrer">DNF CLI compared to YUM</a> - DNF内の<code>update</code>/<code>upgrade</code>と、旧YUMの<code>--obsoletes</code>差だけを支持する資料。</li>
+            <li><a href="https://dnf5.readthedocs.io/en/stable/dnf5.8.html" target="_blank" rel="noopener noreferrer">DNF5 manual</a> - DNF5の<code>check</code>、<code>history</code>、<code>distro-sync</code>、<code>upgrade</code>を確認。DNF4固有aliasの保証には使わない。</li>
+            <li><a href="https://dnf5.readthedocs.io/en/stable/commands/check-upgrade.8.html" target="_blank" rel="noopener noreferrer">DNF5 Check-Upgrade</a> - 更新候補がある場合の終了ステータス100を確認。</li>
+            <li><a href="https://fedoraproject.org/wiki/Changes/SwitchToDnf5" target="_blank" rel="noopener noreferrer">Fedora: Switch to DNF5</a> - Fedora 41で<code>/usr/bin/dnf</code>がDNF5を指すことと基本CLI互換の範囲を確認。</li>
+            <li>
+                <a href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html/considerations_in_adopting_rhel_8/software-management_considerations-in-adopting-rhel-8" target="_blank" rel="noopener noreferrer">RHEL 8 software management</a>
+                - YUM v4がDNF技術を基盤とし、<code>dnf</code>も利用できる範囲を確認。
+            </li>
+            <li>
+                <a href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/considerations_in_adopting_rhel_9/assembly_software-management_considerations-in-adopting-rhel-9" target="_blank" rel="noopener noreferrer">RHEL 9 software management</a>
+                - RHEL 9はDNFを標準とし、<code>yum</code>は互換aliasであることを確認。
+            </li>
+            <li>
+                <a href="https://docs.redhat.com/ja/documentation/red_hat_enterprise_linux/9/html/managing_software_with_the_dnf_tool/assembly_handling-package-management-history_managing-software-with-the-dnf-tool" target="_blank" rel="noopener noreferrer">RHEL 9 DNF transaction history</a>
+                - historyで成功・中止・対象を確認できる範囲と、undo/rollbackが変更操作であることを確認。
+            </li>
+            <li>
+                <a href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/deployment_guide/sec2-yum-complete-transaction" target="_blank" rel="noopener noreferrer">RHEL 6 Completing Transactions</a>
+                - <code>yum-complete-transaction</code>は中断した旧YUMトランザクション用。RHEL 8/9の一般修復には適用しない。
+            </li>
         </ul>
 
         <h3>学習を続けるときの見方</h3>
