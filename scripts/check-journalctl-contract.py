@@ -219,12 +219,14 @@ def runtime_test() -> None:
 
     deadline = time.monotonic() + 30
     while True:
-        state = run(["systemctl", "is-system-running"])
-        system_state = state.stdout.strip()
-        if system_state in {"running", "degraded"}:
+        state = run(["systemctl", "is-active", "systemd-journald.service"])
+        journal_state = state.stdout.strip()
+        if journal_state == "active":
             break
-        if system_state not in {"initializing", "starting"} or time.monotonic() >= deadline:
-            raise ContractError(f"runtime probe requires running systemd (state={system_state or 'unavailable'})")
+        if journal_state != "activating" or time.monotonic() >= deadline:
+            raise ContractError(
+                f"runtime probe requires active systemd-journald (state={journal_state or 'unavailable'})"
+            )
         time.sleep(1)
 
     probes = [
@@ -253,7 +255,7 @@ def runtime_test() -> None:
         raise ContractError(f"runtime follow probe could not run journalctl: {exc}") from exc
     if followed is not None and followed.returncode != 0:
         raise ContractError(f"runtime follow probe failed (rc={followed.returncode})")
-    print(f"systemd journal runtime contract passed (state={system_state}, 6 read-only probes).")
+    print(f"systemd journal runtime contract passed (journald={journal_state}, 6 read-only probes).")
 
 
 def expect_failure(label: str, action, expected: str) -> None:
