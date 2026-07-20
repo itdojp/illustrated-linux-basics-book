@@ -290,7 +290,7 @@ $ traceroute 1.1.1.1  # 経路確認（環境により UDP / ICMP が遮断さ�
     <div class="faq-section">
         <h3>Q: sudo で求められるパスワードを忘れました</h3>
         <p>A: 多くの環境では、<code>sudo</code> で求められるのは自分のログインパスワードであり、専用の「sudo パスワード」ではありません。思い出せない場合は、許可された手順でリカバリーモード等から再設定するか、管理者に依頼します。</p>
-        <div class="command-box">$ sudo passwd &lt;user-name&gt;  # &lt;user-name&gt; を対象ユーザーへ置換</div>
+        <div class="command-box"># passwd &lt;user-name&gt;  # リカバリーモードのrootシェルまたは管理者が実行</div>
         
         <h3>Q: ファイルを誤って削除しました</h3>
         <p>A: Linux では通常、削除したファイルの復元は困難です。まずはバックアップ / スナップショットの有無を確認し、再発防止として定期的なバックアップを運用します。</p>

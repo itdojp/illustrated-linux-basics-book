@@ -79,7 +79,10 @@ def check_source(snapshot: Snapshot) -> None:
         "chapter1": ["&lt;user-name&gt;:&lt;group-name&gt;"],
         "chapter2": ["&lt;user-name&gt;", "&lt;group-name&gt;"],
         "chapter3": ['id="package-placeholder-example"', "&lt;package-name&gt;"],
-        "chapter4": ['id="path-placeholder-example"', "&lt;directory-path&gt;", "$ sudo passwd &lt;user-name&gt;"],
+        "chapter4": [
+            'id="path-placeholder-example"', "&lt;directory-path&gt;",
+            "# passwd &lt;user-name&gt;", "リカバリーモードのrootシェルまたは管理者が実行",
+        ],
         "chapter5": ["&lt;user-name&gt;"],
         "appendix": ["プロンプト", "プレースホルダー", "<code>PATH</code>", "<code>HOME</code>"],
     }
