@@ -71,7 +71,11 @@ def check_source(snapshot: Snapshot, root: Path = ROOT, check_workflow: bool = T
         "dnf --version",
         "$ sudo dnf install httpd",
         "$ sudo dnf remove &lt;package-name&gt;",
+        "$ dnf check-update",
+        "DNF4の正式名（check-upgradeはalias）",
         "$ dnf check-upgrade",
+        "DNF5の正式名。環境に応じて上とどちらか一方を実行",
+        "どちらの確認コマンドも終了ステータス100",
         "$ sudo dnf upgrade",
         "DNF4の<code>update</code>は<code>upgrade</code>の非推奨alias",
         "yum update --obsoletes",
@@ -87,6 +91,7 @@ def check_source(snapshot: Snapshot, root: Path = ROOT, check_workflow: bool = T
     ]:
         reject(chapter3, token, "chapter 3 legacy route")
 
+    require(chapter4, 'id="dnf-recovery"', "chapter 4 diagnosis")
     recovery = chapter4[chapter4.index('id="dnf-recovery"') :]
     check_order(
         recovery,
@@ -107,6 +112,8 @@ def check_source(snapshot: Snapshot, root: Path = ROOT, check_workflow: bool = T
     )
     for token in [
         "パッケージを変更しない確認から始めます",
+        "sudo apt --fix-broken install --simulate",
+        "Ubuntu/Debian: 変更候補だけを確認",
         "（パッケージ変更なし）",
         "history undo",
         "パッケージの削除・downgrade",
@@ -132,6 +139,7 @@ def check_source(snapshot: Snapshot, root: Path = ROOT, check_workflow: bool = T
         'id="dnf-source-notes"',
         "確認日: 2026-07-20",
         "https://dnf.readthedocs.io/en/stable/command_ref.html",
+        "<code>check-update</code>（<code>check-upgrade</code>はalias）の終了ステータス100",
         "https://dnf.readthedocs.io/en/stable/cli_vs_yum.html",
         "https://dnf5.readthedocs.io/en/stable/dnf5.8.html",
         "https://dnf5.readthedocs.io/en/stable/commands/check-upgrade.8.html",
@@ -175,6 +183,10 @@ def check_built(snapshot: Snapshot) -> None:
             [
                 'id="dnf-yum-generations"',
                 "DNFとYUMの世代差",
+                "$ dnf check-update",
+                "DNF4の正式名（check-upgradeはalias）",
+                "$ dnf check-upgrade",
+                "DNF5の正式名。環境に応じて上とどちらか一方を実行",
                 "$ sudo dnf upgrade",
                 "yum update --obsoletes",
                 "常に同義",
@@ -185,6 +197,7 @@ def check_built(snapshot: Snapshot) -> None:
             chapter4,
             [
                 'id="dnf-recovery"',
+                "sudo apt --fix-broken install --simulate",
                 "$ dnf check",
                 "$ dnf history list",
                 "sudo dnf --assumeno distro-sync",
@@ -227,6 +240,14 @@ def self_test() -> None:
         return Snapshot(files)
 
     expect_failure(
+        "missing recovery anchor",
+        lambda: check_source(
+            mutated("chapter4", 'id="dnf-recovery"', 'id="package-recovery"'),
+            check_workflow=False,
+        ),
+        "missing",
+    )
+    expect_failure(
         "old equivalence",
         lambda: check_source(mutated("chapter3", "$ sudo dnf upgrade", "$ sudo yum upgrade  # update と同義"), check_workflow=False),
         "dnf upgrade",
@@ -262,7 +283,7 @@ def self_test() -> None:
         ),
         "一般修復",
     )
-    print("DNF/YUM contract self-test passed (6 negative mutations).")
+    print("DNF/YUM contract self-test passed (7 negative mutations).")
 
 
 def main() -> int:

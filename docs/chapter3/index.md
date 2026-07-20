@@ -327,10 +327,11 @@ $ sudo dnf autoremove  # トランザクション内容を確認してから承�
         <div class="command-card">
             <h3>システム更新</h3>
             <div class="command-box">
-$ dnf check-upgrade  # 更新候補を確認。候補ありの終了ステータスは100<br>
+$ dnf check-update  # DNF4の正式名（check-upgradeはalias）<br>
+$ dnf check-upgrade  # DNF5の正式名。環境に応じて上とどちらか一方を実行<br>
 $ sudo dnf upgrade
             </div>
-            <p>DNF4の<code>update</code>は<code>upgrade</code>の非推奨aliasで、<code>upgrade</code>が推奨です。旧YUM v3では<code>yum upgrade</code>は<code>yum update --obsoletes</code>相当なので、「常に同義」と扱いません。</p>
+            <p>更新候補がある場合、どちらの確認コマンドも終了ステータス100を返します。DNF4の<code>update</code>は<code>upgrade</code>の非推奨aliasで、<code>upgrade</code>が推奨です。旧YUM v3では<code>yum upgrade</code>は<code>yum update --obsoletes</code>相当なので、「常に同義」と扱いません。</p>
         </div>
     </div>
     

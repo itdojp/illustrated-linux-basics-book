@@ -521,7 +521,7 @@ chapter: appendix
 
         <h3 id="dnf-source-notes">DNF/YUM Source Notes（確認日: 2026-07-20）</h3>
         <ul>
-            <li><a href="https://dnf.readthedocs.io/en/stable/command_ref.html" target="_blank" rel="noopener noreferrer">DNF4 Command Reference</a> - <code>upgrade</code>、<code>check</code>、<code>distro-sync</code>の対象と影響を確認。DNF4の<code>update</code>は非推奨alias。</li>
+            <li><a href="https://dnf.readthedocs.io/en/stable/command_ref.html" target="_blank" rel="noopener noreferrer">DNF4 Command Reference</a> - <code>check-update</code>（<code>check-upgrade</code>はalias）の終了ステータス100と、<code>upgrade</code>、<code>check</code>、<code>distro-sync</code>の対象・影響を確認。DNF4の<code>update</code>は非推奨alias。</li>
             <li><a href="https://dnf.readthedocs.io/en/stable/cli_vs_yum.html" target="_blank" rel="noopener noreferrer">DNF CLI compared to YUM</a> - DNF内の<code>update</code>/<code>upgrade</code>と、旧YUMの<code>--obsoletes</code>差だけを支持する資料。</li>
             <li><a href="https://dnf5.readthedocs.io/en/stable/dnf5.8.html" target="_blank" rel="noopener noreferrer">DNF5 manual</a> - DNF5の<code>check</code>、<code>history</code>、<code>distro-sync</code>、<code>upgrade</code>を確認。DNF4固有aliasの保証には使わない。</li>
             <li><a href="https://dnf5.readthedocs.io/en/stable/commands/check-upgrade.8.html" target="_blank" rel="noopener noreferrer">DNF5 Check-Upgrade</a> - 更新候補がある場合の終了ステータス100を確認。</li>

@@ -302,6 +302,7 @@ $ traceroute 1.1.1.1  # 経路確認（環境により UDP / ICMP が遮断さ�
         <h3 id="dnf-recovery">Q: パッケージ管理で依存関係やトランザクションのエラーが出ました</h3>
         <p>A: ディストリビューションと症状を特定し、パッケージを変更しない確認から始めます。Ubuntu/Debianでは<code>apt --fix-broken install</code>の実行内容を確認します。RHEL 8/9・Fedora等のDNF系では、次の順で切り分けます。</p>
         <div class="command-box">
+$ sudo apt --fix-broken install --simulate  # Ubuntu/Debian: 変更候補だけを確認<br>
 $ cat /etc/os-release  # distributionとversion<br>
 $ dnf --version  # DNF世代<br>
 $ dnf check  # インストール済みパッケージDBを検査（パッケージ変更なし）<br>
