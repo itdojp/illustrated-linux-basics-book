@@ -189,7 +189,7 @@ def check_built(snapshot: Snapshot) -> None:
                 "DNF5の正式名。環境に応じて上とどちらか一方を実行",
                 "$ sudo dnf upgrade",
                 "yum update --obsoletes",
-                "常に同義",
+                "「常に同義」と扱いません",
             ],
         ),
         (
