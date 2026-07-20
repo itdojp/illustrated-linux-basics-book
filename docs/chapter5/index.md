@@ -17,6 +17,10 @@ chapter: 5
         </ul>
     </div>
     
+    <div class="key-point">
+        <strong>実行前に確認：</strong><code>$</code> プロンプトと <code>&lt;user-name&gt;</code> プレースホルダーの読み方は、<a href="../#command-notation">コマンド例の読み方</a>を参照してください。
+    </div>
+
     <h2>5.1 はじめてのシェルスクリプト</h2>
     
     <div class="explanation">
@@ -89,22 +93,22 @@ $ ./backup.sh</code></pre>
     
     <div class="command-grid">
         <div class="command-card">
-            <h3>定期バックアップの設定</h3>
+            <h3 id="cron-placeholder-example">定期バックアップの設定</h3>
             <pre class="command-box"><code class="language-bash">$ crontab -e</code></pre>
-            <pre class="code-box"><code class="language-text">&#35; 注記: /home/&lt;linuxuser&gt;/... は実環境のユーザー名に置き換える
-&#35; 事前に /home/&lt;linuxuser&gt;/logs を作成しておく（例: mkdir -p /home/&lt;linuxuser&gt;/logs）
+            <pre class="code-box"><code class="language-text">&#35; 注記: /home/&lt;user-name&gt;/... は実環境のユーザー名に置き換える
+&#35; 事前に /home/&lt;user-name&gt;/logs を作成しておく（例: mkdir -p /home/&lt;user-name&gt;/logs）
 
 &#35; 毎日午前3時にバックアップ実行（ログを残す）
-0 3 * * * /home/&lt;linuxuser&gt;/scripts/backup.sh >> /home/&lt;linuxuser&gt;/logs/backup.log 2>&amp;1
+0 3 * * * /home/&lt;user-name&gt;/scripts/backup.sh >> /home/&lt;user-name&gt;/logs/backup.log 2>&amp;1
 
 &#35; 毎週月曜日にシステムレポート作成
-0 9 * * 1 /home/&lt;linuxuser&gt;/scripts/sysinfo.sh > /home/&lt;linuxuser&gt;/weekly_report.txt 2>&amp;1
+0 9 * * 1 /home/&lt;user-name&gt;/scripts/sysinfo.sh > /home/&lt;user-name&gt;/weekly_report.txt 2>&amp;1
 
 &#35; 毎月1日に古いログ候補を確認（まずは print のみ）
-0 0 1 * * find /home/&lt;linuxuser&gt;/logs -type f -name "*.log" ! -name "cron.log" -mtime +30 -print >> /home/&lt;linuxuser&gt;/logs/cron.log 2>&amp;1
+0 0 1 * * find /home/&lt;user-name&gt;/logs -type f -name "*.log" ! -name "cron.log" -mtime +30 -print >> /home/&lt;user-name&gt;/logs/cron.log 2>&amp;1
 
 &#35; 削除を自動化する場合は、対象と保存期間を十分に確認してから別ジョブで有効化
-&#35; 5 0 1 * * find /home/&lt;linuxuser&gt;/logs -type f -name "*.log" ! -name "cron.log" -mtime +30 -print -delete >> /home/&lt;linuxuser&gt;/logs/cron.log 2>&amp;1</code></pre>
+&#35; 5 0 1 * * find /home/&lt;user-name&gt;/logs -type f -name "*.log" ! -name "cron.log" -mtime +30 -print -delete >> /home/&lt;user-name&gt;/logs/cron.log 2>&amp;1</code></pre>
             <h4>cron 記法の説明</h4>
             <div class="explanation">
                 <pre>

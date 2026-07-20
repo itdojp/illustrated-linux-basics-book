@@ -25,6 +25,11 @@ jobs:
       - name: Book metadata consistency check
         run: python3 scripts/check-metadata-consistency.py
 
+      - name: Command notation contract (source + self-test)
+        run: |
+          python3 scripts/check-command-notation.py --self-test
+          python3 scripts/check-command-notation.py
+
       - name: Checkout book-formatter (pinned)
         uses: actions/checkout@v6
         with:
@@ -91,6 +96,9 @@ jobs:
         with:
           source: ./${{ steps.scan.outputs.dir }}
           destination: ./_site
+
+      - name: Command notation contract (built site)
+        run: python3 scripts/check-command-notation.py --built-site _site
 
       - name: Smoke check built site (top + navigation + assets)
         shell: bash
