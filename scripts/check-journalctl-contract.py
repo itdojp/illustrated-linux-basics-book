@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import subprocess
 import sys
+import time
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict
@@ -216,10 +217,15 @@ def runtime_test() -> None:
         except (OSError, subprocess.TimeoutExpired) as exc:
             raise ContractError(f"runtime probe could not run {command[0]!r}: {exc}") from exc
 
-    state = run(["systemctl", "is-system-running"])
-    system_state = state.stdout.strip()
-    if system_state not in {"running", "degraded"}:
-        raise ContractError(f"runtime probe requires running systemd (state={system_state or 'unavailable'})")
+    deadline = time.monotonic() + 30
+    while True:
+        state = run(["systemctl", "is-system-running"])
+        system_state = state.stdout.strip()
+        if system_state in {"running", "degraded"}:
+            break
+        if system_state not in {"initializing", "starting"} or time.monotonic() >= deadline:
+            raise ContractError(f"runtime probe requires running systemd (state={system_state or 'unavailable'})")
+        time.sleep(1)
 
     probes = [
         ["systemctl", "status", "systemd-journald.service", "--no-pager"],
