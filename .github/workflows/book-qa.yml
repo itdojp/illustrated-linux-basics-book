@@ -30,6 +30,12 @@ jobs:
           python3 scripts/check-command-notation.py --self-test
           python3 scripts/check-command-notation.py
 
+      - name: Chapter 5 learning-flow contract (source + runtime)
+        run: |
+          python3 scripts/check-chapter5-learning-flow.py --self-test
+          python3 scripts/check-chapter5-learning-flow.py
+          python3 scripts/check-chapter5-learning-flow.py --runtime-test --work-root "${RUNNER_TEMP}"
+
       - name: Checkout book-formatter (pinned)
         uses: actions/checkout@v6
         with:
@@ -99,6 +105,9 @@ jobs:
 
       - name: Command notation contract (built site)
         run: python3 scripts/check-command-notation.py --built-site _site
+
+      - name: Chapter 5 learning-flow contract (built site)
+        run: python3 scripts/check-chapter5-learning-flow.py --built-site _site
 
       - name: Smoke check built site (top + navigation + assets)
         shell: bash

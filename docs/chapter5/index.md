@@ -34,20 +34,28 @@ chapter: 5
             <pre class="command-box"><code class="language-bash">$ vi hello.sh</code></pre>
             <pre class="code-box"><code class="language-bash">&#35;!/usr/bin/env bash
 &#35; これはコメントです
-echo "Hello, Linux World!"
-echo "今日は $(date) です"</code></pre>
+echo "Hello, Linux World!"</code></pre>
             <pre class="command-box"><code class="language-bash">$ chmod +x hello.sh  # 実行権限を付与
 $ ./hello.sh  # 実行</code></pre>
-            <pre class="output-box"><code class="language-text">Hello, Linux World!
-今日は Mon Jan 15 10:30:45 JST 2025 です</code></pre>
+            <pre class="output-box"><code class="language-text">Hello, Linux World!</code></pre>
         </div>
     </div>
     
     <h2>5.2 実践: バックアップスクリプト</h2>
+
+    <div class="explanation">
+        <h3>完成例で使う4つの要素</h3>
+        <ol>
+            <li id="concept-variables"><strong>変数と引用符：</strong><code>SOURCE="$HOME/Documents"</code>で値を保存します。<code>"$SOURCE"</code>と引用すれば、空白を含むパスも1つの引数になります。</li>
+            <li id="concept-command-substitution"><strong>コマンド置換：</strong><code>DATE=$(date +%Y%m%d_%H%M%S)</code>は、<code>date</code>の出力を変数へ保存します。</li>
+            <li id="concept-status"><strong><code>if</code>と終了ステータス：</strong>コマンドは成功時に0、失敗時に0以外を返します。<code>if tar ...; then</code>は、その結果で成功・失敗の処理を分けます。</li>
+            <li id="concept-strict-mode"><strong><code>set -euo pipefail</code>：</strong><code>-e</code>は未処理の失敗、<code>-u</code>は未定義変数、<code>pipefail</code>はpipeline途中の失敗を検出します。ただし、<code>if</code>の条件など停止しない文脈があり、後始末も自動では行いません。必要な箇所では<code>if</code>と<code>exit</code>を明示します。</li>
+        </ol>
+    </div>
     
     <div class="command-grid">
         <div class="command-card">
-            <h3>backup.sh - 重要ファイルのバックアップ</h3>
+            <h3 id="backup-example">backup.sh - 重要ファイルのバックアップ</h3>
             <pre class="code-box"><code class="language-bash">&#35;!/usr/bin/env bash
 
 set -euo pipefail
@@ -83,13 +91,18 @@ fi
 find "$BACKUP_DIR" -type f -name "backup_*.tar.gz" -mtime +7 -print
 &#35; find "$BACKUP_DIR" -type f -name "backup_*.tar.gz" -mtime +7 -delete  # 実際に削除する場合はこの行のコメントアウトを外す
 echo "7日以上前のバックアップを確認しました（削除を有効化している場合は削除も実行済みです）"</code></pre>
-            <p><strong>使い方：</strong></p>
+            <p id="standalone-verification"><strong>cronへ進む前の単体確認：</strong>まず手動実行し、終了ステータスが0で、ログに「バックアップ成功」があることを確認します。0以外なら定期実行せず、ログから原因を直します。</p>
             <pre class="command-box"><code class="language-bash">$ chmod +x backup.sh
-$ ./backup.sh</code></pre>
+$ ./backup.sh &gt; backup.log 2&gt;&amp;1
+$ status=$?
+$ echo "$status"  # 0なら成功
+$ tail -n 20 backup.log</code></pre>
         </div>
     </div>
     
     <h2>5.3 cron で定期実行</h2>
+
+    <p>前節で終了ステータス0とログを確認した同じスクリプトだけを登録します。</p>
     
     <div class="command-grid">
         <div class="command-card">
@@ -100,15 +113,7 @@ $ ./backup.sh</code></pre>
 
 &#35; 毎日午前3時にバックアップ実行（ログを残す）
 0 3 * * * /home/&lt;user-name&gt;/scripts/backup.sh >> /home/&lt;user-name&gt;/logs/backup.log 2>&amp;1
-
-&#35; 毎週月曜日にシステムレポート作成
-0 9 * * 1 /home/&lt;user-name&gt;/scripts/sysinfo.sh > /home/&lt;user-name&gt;/weekly_report.txt 2>&amp;1
-
-&#35; 毎月1日に古いログ候補を確認（まずは print のみ）
-0 0 1 * * find /home/&lt;user-name&gt;/logs -type f -name "*.log" ! -name "cron.log" -mtime +30 -print >> /home/&lt;user-name&gt;/logs/cron.log 2>&amp;1
-
-&#35; 削除を自動化する場合は、対象と保存期間を十分に確認してから別ジョブで有効化
-&#35; 5 0 1 * * find /home/&lt;user-name&gt;/logs -type f -name "*.log" ! -name "cron.log" -mtime +30 -print -delete >> /home/&lt;user-name&gt;/logs/cron.log 2>&amp;1</code></pre>
+</code></pre>
             <h4>cron 記法の説明</h4>
             <div class="explanation">
                 <pre>
@@ -117,8 +122,6 @@ $ ./backup.sh</code></pre>
 
 例：
 */5 * * * *  5分ごと
-0 */2 * * *  2時間ごと
-0 9-17 * * 1-5  平日9-17時の毎時0分
                 </pre>
             </div>
             <div class="key-point">
@@ -139,27 +142,16 @@ $ ./backup.sh</code></pre>
         <h3>この章で学んだこと</h3>
         <ul>
             <li>シェルスクリプトの基本構造（shebang/コメント/実行権限）</li>
-            <li>変数の定義と使用方法</li>
-            <li>条件分岐（if 文）による処理制御</li>
-            <li>コマンド置換（$(command)）の活用</li>
-            <li>cron による定期実行の設定</li>
-        </ul>
-        
-        <h3>次のステップ</h3>
-        <ul>
-            <li>ループ処理（for, while 文）の学習</li>
-            <li>関数の定義と活用</li>
-            <li>より複雑な条件分岐（case 文）</li>
-            <li>エラーハンドリングの実装</li>
+            <li>変数、引用符、コマンド置換による値の受け渡し</li>
+            <li><code>if</code>、終了ステータス、strict modeの限界</li>
+            <li>手動実行とログ確認を終えてからcronへ進む順序</li>
         </ul>
         
         <h3>スクリプト作成の要点</h3>
         <ul>
-            <li><strong>小さく始める</strong>：まず簡単な処理から作る</li>
-            <li><strong>コメントを書く</strong>：後で見返したときのために</li>
-            <li><strong>エラー処理を入れる</strong>：想定外の状況に備える</li>
-            <li><strong>テストする</strong>：本番前に必ずテスト環境で実行</li>
-            <li><strong>バージョン管理</strong>：Git などで管理する</li>
+            <li><strong>小さく始める：</strong>手動で成功してから定期実行する</li>
+            <li><strong>失敗を残す：</strong>終了ステータスとログを確認する</li>
+            <li><strong>変更を管理する：</strong>コメントとGitで意図を残す</li>
         </ul>
     </div>
     
