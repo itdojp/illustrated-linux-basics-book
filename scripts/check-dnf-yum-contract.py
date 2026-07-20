@@ -137,7 +137,7 @@ def check_source(snapshot: Snapshot, root: Path = ROOT, check_workflow: bool = T
         "<td>トランザクション（transaction）</td>",
         "パッケージのinstall・upgrade・remove等を一まとまりで計画・記録する単位",
         'id="dnf-source-notes"',
-        "確認日: 2026-07-20",
+        "DNF/YUM Source Notes（確認日: 2026-07-20）",
         "https://dnf.readthedocs.io/en/stable/command_ref.html",
         "<code>check-update</code>（<code>check-upgrade</code>はalias）の終了ステータス100",
         "https://dnf.readthedocs.io/en/stable/cli_vs_yum.html",
@@ -208,7 +208,12 @@ def check_built(snapshot: Snapshot) -> None:
         (
             "appendix",
             appendix,
-            ['id="dnf-source-notes"', "確認日: 2026-07-20", "DNF4 Command Reference", "RHEL 6 Completing Transactions"],
+            [
+                'id="dnf-source-notes"',
+                "DNF/YUM Source Notes（確認日: 2026-07-20）",
+                "DNF4 Command Reference",
+                "RHEL 6 Completing Transactions",
+            ],
         ),
     ]:
         for token in tokens:
@@ -272,7 +277,14 @@ def self_test() -> None:
     )
     expect_failure(
         "stale source note",
-        lambda: check_source(mutated("appendix", "確認日: 2026-07-20", "確認日なし"), check_workflow=False),
+        lambda: check_source(
+            mutated(
+                "appendix",
+                "DNF/YUM Source Notes（確認日: 2026-07-20）",
+                "DNF/YUM Source Notes（確認日なし）",
+            ),
+            check_workflow=False,
+        ),
         "確認日",
     )
     expect_failure(

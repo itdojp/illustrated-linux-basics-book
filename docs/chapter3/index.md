@@ -158,11 +158,19 @@ $ cat file.txt | less
             <div class="command-box">
 $ head -n 10 file.txt  # 先頭 10 行<br>
 $ tail -n 20 file.txt  # 末尾 20 行<br>
-$ tail -f /var/log/syslog  # Debian / Ubuntu 系の例<br>
-$ tail -f /var/log/messages  # RHEL 系の例<br>
-$ journalctl -f  # systemd-journald（多くのディストロで有効）
+$ tail -f application.log  # 場所が分かっているfileを追跡
             </div>
-            <p><code>-f</code> はログ監視に便利です（権限が必要な場合は <code>sudo</code> を付けます）。</p>
+            <p><code>-f</code>は追記を監視します。システムログのfile pathはlogging設定によって異なるため、systemd環境では次の<code>journalctl</code>を基本導線にします。</p>
+        </div>
+
+        <div class="command-card">
+            <h3 id="journalctl-basics">journalctl - systemd journal表示</h3>
+            <div class="command-box">
+$ systemctl status &lt;unit-name&gt; --no-pager  # unit名と状態を確認<br>
+$ journalctl -u &lt;unit-name&gt; -b -n 50 --no-pager  # 現在bootの末尾50件<br>
+$ journalctl -f -u &lt;unit-name&gt;  # 新着を追跡。終了はCtrl+C
+            </div>
+            <p>まず現在のuser権限で実行します。system journalを読めない場合だけ、運用ルールに従って<code>sudo</code>を使います。ログ確認のために権限設定を変更しません。priority・時刻・保存方式は<a href="../chapter4/#journal-troubleshooting">第4章</a>で切り分けます。</p>
         </div>
         
         <div class="command-card">
