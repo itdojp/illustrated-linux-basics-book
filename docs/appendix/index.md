@@ -113,7 +113,13 @@ chapter: appendix
                 <td><code>tail</code></td>
                 <td>末尾行表示</td>
                 <td>-n, -f</td>
-                <td><code>tail -f /var/log/syslog</code><br><code>tail -f /var/log/messages</code></td>
+                <td><code>tail -f application.log</code></td>
+            </tr>
+            <tr>
+                <td><code>journalctl</code></td>
+                <td>systemd journalの表示・filter</td>
+                <td>-u, -b, -p, -f, --since, --until</td>
+                <td><code>journalctl -u &lt;unit-name&gt; -b -n 50 --no-pager</code></td>
             </tr>
             <tr>
                 <td><code>grep</code></td>
@@ -142,9 +148,17 @@ chapter: appendix
         </tbody>
     </table>
 
-    <div class="key-point">
-        <strong>補足：</strong>ログのパスはディストリビューションで異なります（例: Debian / Ubuntu は <code>/var/log/syslog</code>、RHEL 系は <code>/var/log/messages</code>）。systemd 環境では <code>journalctl</code> でも確認できます。
+    <div class="key-point" id="logging-stack-reference">
+        <strong>systemd環境のlogging stack：</strong><code>systemd-journald</code>がservice等のmessageを収集し、<code>journalctl</code>が参照可能なjournal entryの標準表示手段です。<code>rsyslogd</code>等を併用する構成では、journalのsyslog messageを読み、設定に応じてfileへ記録または転送できます。したがって<code>/var/log/syslog</code>や<code>/var/log/messages</code>は存在する場合の例であり、ディストリビューション名だけでは決めません。基本手順は<a href="../chapter4/#journal-troubleshooting">第4章</a>を参照してください。
     </div>
+
+    <h3 id="logging-source-notes">Logging Source Notes（確認日: 2026-07-20）</h3>
+    <ul>
+        <li><a href="https://www.freedesktop.org/software/systemd/man/latest/journalctl.html" target="_blank" rel="noopener noreferrer">systemd journalctl manual</a> - <code>-u</code>、<code>-b</code>、<code>-p</code>、<code>-f</code>、<code>--since</code>/<code>--until</code>、<code>-e</code>、<code>-x</code>の用途を確認。表示結果は権限と保存済みentryの範囲に限られます。</li>
+        <li><a href="https://www.freedesktop.org/software/systemd/man/latest/journald.conf.html" target="_blank" rel="noopener noreferrer">systemd journald.conf manual</a> - <code>Storage=</code>の<code>volatile</code>、<code>persistent</code>、<code>auto</code>と保存先・fallbackを確認。各distributionの実設定を保証する資料ではありません。</li>
+        <li><a href="https://www.freedesktop.org/software/systemd/man/latest/systemd-journald.service.html" target="_blank" rel="noopener noreferrer">systemd-journald service manual</a> - journalの入力源、access control、syslog daemonとの連携境界を確認。</li>
+        <li><a href="https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/configuring-logging_configuring-basic-system-settings" target="_blank" rel="noopener noreferrer">RHEL 8 Configuring logging</a> - RHEL 8で<code>rsyslogd</code>がjournalのsyslog messageを読み、設定に応じてfileへ記録または転送する関係を確認。他distributionのfile pathを保証する資料ではありません。</li>
+    </ul>
     
     <h2>権限・所有者</h2>
     

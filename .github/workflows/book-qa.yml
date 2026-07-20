@@ -41,6 +41,12 @@ jobs:
           python3 scripts/check-dnf-yum-contract.py --self-test
           python3 scripts/check-dnf-yum-contract.py
 
+      - name: systemd journal guidance contract (source)
+        run: |
+          python3 scripts/check-journalctl-contract.py --self-test
+          python3 scripts/check-journalctl-contract.py
+          python3 scripts/check-journalctl-contract.py --runtime-test
+
       - name: Checkout book-formatter (pinned)
         uses: actions/checkout@v6
         with:
@@ -116,6 +122,9 @@ jobs:
 
       - name: DNF/YUM generation and recovery contract (built site)
         run: python3 scripts/check-dnf-yum-contract.py --built-site _site
+
+      - name: systemd journal guidance contract (built site)
+        run: python3 scripts/check-journalctl-contract.py --built-site _site
 
       - name: Smoke check built site (top + navigation + assets)
         shell: bash

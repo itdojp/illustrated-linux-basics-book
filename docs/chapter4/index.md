@@ -243,7 +243,7 @@ $ nl -ba script.sh | sed -n '1,120p'  # 行番号付きで該当箇所を確認
             <li><strong>エラーメッセージを最後まで読む</strong> - 重要な情報は最後にあることが多い</li>
             <li><strong>ファイル名やパスを確認</strong> - タイポが原因の場合が多い</li>
             <li><strong>権限を確認</strong> - <code>ls -l</code> で確認</li>
-            <li><strong>ログファイルを見る</strong> - <code>/var/log/</code> 以下のログを確認</li>
+            <li><strong>対象のログを見る</strong> - systemd環境では対象unitのjournal、その他はlogging設定で確認したfileを調べる</li>
             <li><strong>エラーメッセージで検索</strong> - Web 検索や公式ドキュメントで情報を確認する</li>
         </ol>
     </div>
@@ -263,11 +263,13 @@ $ top  # プロセス監視
         </div>
         
         <div class="command-card">
-            <h3>ログ確認</h3>
+            <h3 id="journal-troubleshooting">ログ確認（systemd環境）</h3>
             <div class="command-box">
-$ sudo tail -f /var/log/syslog  # システムログ（Debian/Ubuntu）<br>
-$ sudo tail -f /var/log/messages  # システムログ（RHEL 系）<br>
-$ sudo journalctl -xe  # systemd ログ<br>
+$ systemctl status &lt;unit-name&gt; --no-pager  # unit名・状態・直近の記録<br>
+$ journalctl -u &lt;unit-name&gt; -b -n 100 --no-pager  # 現在bootの対象unit<br>
+$ journalctl -u &lt;unit-name&gt; --since "&lt;start-time&gt;" --until "&lt;end-time&gt;" --no-pager  # 時刻範囲<br>
+$ journalctl -p err -b -n 100 --no-pager  # 現在bootのerror以上<br>
+$ journalctl -f -u &lt;unit-name&gt;  # 対象unitの新着を追跡<br>
 $ dmesg  # カーネルメッセージ<br>
 $ last  # ログイン履歴
             </div>
@@ -283,6 +285,18 @@ $ netstat -tlnp  # ポート確認（net-tools）<br>
 $ traceroute 1.1.1.1  # 経路確認（環境により UDP / ICMP が遮断されることがある）
             </div>
         </div>
+    </div>
+
+    <div class="key-point" id="logging-stack-boundary">
+        <strong>ログが見つからないときの確認順：</strong>
+        <ol>
+            <li><strong>対象：</strong><code>systemctl status &lt;unit-name&gt;</code>でunit名を確定し、<code>-u</code>と<code>-b</code>で現在bootの対象serviceへ絞ります。</li>
+            <li><strong>時刻・priority：</strong>障害時刻を<code>--since</code>/<code>--until</code>で指定します。<code>-p err</code>はerrorとそれより重大なpriorityだけを表示するため、情報が足りなければpriority filterを外します。</li>
+            <li><strong>権限：</strong>permission errorまたはsystemの記録が見えない場合は、所属groupと運用ルールを確認し、許可されている場合だけ同じ照会を<code>sudo</code>で再実行します。</li>
+            <li><strong>保存期間：</strong><code>journalctl --list-boots</code>で参照可能なbootを確認します。journalはvolatileな<code>/run/log/journal</code>またはpersistentな<code>/var/log/journal</code>等へ保存され、設定・保持期間・disk状況により過去bootが残らない場合があります。</li>
+            <li><strong>file出力：</strong><code>/var/log/syslog</code>や<code>/var/log/messages</code>は、<code>rsyslog</code>等のlogging daemonと設定がfileへ書く場合の例です。<code>systemctl status rsyslog --no-pager</code>と<code>/etc/rsyslog.conf</code>、<code>/etc/rsyslog.d/</code>を確認し、設定で確定したfileだけを<code>tail</code>します。</li>
+        </ol>
+        <p><code>journalctl -xe</code>の<code>-e</code>は末尾へ移動し、<code>-x</code>は利用可能なcatalog説明を追加しますが、unit・boot・時刻を自動では絞りません。本書では万能な初手にせず、上の目的別filterを先に使います。根拠と確認日は<a href="../appendix/#logging-source-notes">付録のLogging Source Notes</a>を参照してください。</p>
     </div>
     
     <h2>4.5 よくある質問と回答</h2>
