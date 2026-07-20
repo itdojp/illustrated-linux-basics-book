@@ -40,8 +40,15 @@ def reject(text: str, token: str, label: str) -> None:
         raise ContractError(f"{label}: obsolete/bare notation remains: {token!r}")
 
 
-def load_source() -> Snapshot:
-    return Snapshot({name: (ROOT / "docs" / rel).read_text(encoding="utf-8") for name, rel in TARGETS.items()})
+def load_source(root: Path = ROOT) -> Snapshot:
+    files: Dict[str, str] = {}
+    for name, rel in TARGETS.items():
+        path = root / "docs" / rel
+        try:
+            files[name] = path.read_text(encoding="utf-8")
+        except OSError as exc:
+            raise ContractError(f"source page unreadable ({name}): {path}: {exc}") from exc
+    return Snapshot(files)
 
 
 def check_source(snapshot: Snapshot) -> None:
@@ -138,6 +145,8 @@ def self_test() -> None:
     baseline = load_source()
     check_source(baseline)
 
+    expect_failure("missing source page", lambda: load_source(ROOT / "missing-fixture"), "source page unreadable (index)")
+
     def mutated(name: str, old: str, new: str) -> Snapshot:
         files = dict(baseline.files)
         if old not in files[name]:
@@ -150,7 +159,7 @@ def self_test() -> None:
     expect_failure("bare package", lambda: check_source(mutated("chapter3", "&lt;package-name&gt;", "package-name")), "package-name")
     expect_failure("missing backlink", lambda: check_source(mutated("chapter1", "../#command-notation", "../")), "command-notation")
     expect_failure("glossary", lambda: check_source(mutated("appendix", "プレースホルダー", "置換値")), "プレースホルダー")
-    print("Command notation self-test passed (5 negative mutations).")
+    print("Command notation self-test passed (6 negative mutations).")
 
 
 def main() -> int:
