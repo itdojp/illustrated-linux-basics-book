@@ -168,7 +168,7 @@ chapter: appendix
                 <td><code>chown</code></td>
                 <td>所有者変更</td>
                 <td>-R</td>
-                <td><code>chown user:group file</code></td>
+                <td><code>chown &lt;user-name&gt;:&lt;group-name&gt; file</code></td>
             </tr>
             <tr>
                 <td><code>umask</code></td>
@@ -472,6 +472,26 @@ chapter: appendix
                 <td>標準入力 / 標準出力</td>
                 <td>コマンドが受け取る入力と、画面やファイルへ出す結果。パイプやリダイレクトの理解に必要。</td>
                 <td>第1章 / 第3章</td>
+            </tr>
+            <tr>
+                <td>プロンプト</td>
+                <td>シェルが入力を待っていることを示す記号。本書の行頭の <code>$</code>（一般ユーザー）や <code>#</code>（root）は通常入力しない。</td>
+                <td>トップページ / 第1章</td>
+            </tr>
+            <tr>
+                <td>プレースホルダー</td>
+                <td><code>&lt;user-name&gt;</code>のように、実環境の値へ置き換える部分。山括弧を含めてそのままシェルへ貼り付けない。</td>
+                <td>トップページ / 第3〜5章</td>
+            </tr>
+            <tr>
+                <td><code>PATH</code></td>
+                <td>シェルが実行ファイルを探すディレクトリ一覧を持つ環境変数。値は <code>echo $PATH</code> で参照する。</td>
+                <td>第1章 / 第4章</td>
+            </tr>
+            <tr>
+                <td><code>HOME</code></td>
+                <td>現在のユーザーのホームディレクトリを示す環境変数。スクリプトでは <code>$HOME</code> と参照する。</td>
+                <td>第1章 / 第5章</td>
             </tr>
         </tbody>
     </table>

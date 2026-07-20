@@ -121,7 +121,7 @@ $ sudoedit /etc/hosts  # 管理対象ファイルは許可された手順で編�
         </div>
         
         <div class="command-card error-card">
-            <h3>Command not found</h3>
+            <h3 id="path-placeholder-example">Command not found</h3>
             <div class="error-box">git: command not found</div>
             <h4>原因：</h4>
             <p>コマンドがインストールされていない、または PATH が通っていない</p>
@@ -132,7 +132,7 @@ $ sudo yum install git  # CentOS/RHEL<br>
 $ sudo dnf install git  # Fedora/RHEL8+<br>
 $ which git  # インストール確認<br>
 $ echo $PATH  # PATH 確認<br>
-$ export PATH=$PATH:/new/path  # 一時的に PATH 追加
+$ export PATH="$PATH:&lt;directory-path&gt;"  # 例: &lt;directory-path&gt; を /opt/bin へ置換
             </div>
         </div>
         
@@ -290,7 +290,7 @@ $ traceroute 1.1.1.1  # 経路確認（環境により UDP / ICMP が遮断さ�
     <div class="faq-section">
         <h3>Q: sudo で求められるパスワードを忘れました</h3>
         <p>A: 多くの環境では、<code>sudo</code> で求められるのは自分のログインパスワードであり、専用の「sudo パスワード」ではありません。思い出せない場合は、許可された手順でリカバリーモード等から再設定するか、管理者に依頼します。</p>
-        <div class="command-box">$ passwd username  # （root シェルで実行）</div>
+        <div class="command-box">$ sudo passwd &lt;user-name&gt;  # &lt;user-name&gt; を対象ユーザーへ置換</div>
         
         <h3>Q: ファイルを誤って削除しました</h3>
         <p>A: Linux では通常、削除したファイルの復元は困難です。まずはバックアップ / スナップショットの有無を確認し、再発防止として定期的なバックアップを運用します。</p>

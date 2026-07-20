@@ -140,7 +140,11 @@ chapter: 1
         </svg>
     </div>
     
-    <h2>1.2 各コマンドの詳細</h2>
+    <div class="key-point">
+        <strong>実行前に確認：</strong>この章の <code>$</code> は入力しないプロンプトです。プレースホルダーと環境変数の区別は、<a href="../#command-notation">コマンド例の読み方</a>を先に確認してください。
+    </div>
+
+    <h2 id="command-examples">1.2 各コマンドの詳細</h2>
     
     <div class="command-grid">
         <div class="command-card">
@@ -198,7 +202,7 @@ drwxr-xr-x  3 user user 4.0K Jan 10 09:15 ..<br>
         
         <div class="command-card">
             <h3>8. chown - 所有者変更</h3>
-            <div class="command-box">$ sudo chown user:group file.txt</div>
+            <div class="command-box">$ sudo chown &lt;user-name&gt;:&lt;group-name&gt; file.txt</div>
             <p>ファイルの所有者とグループを変更</p>
         </div>
         

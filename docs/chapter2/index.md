@@ -119,9 +119,9 @@ $ chmod go-w important.txt
         <div class="command-card">
             <h3>chown - 所有者変更</h3>
             <div class="command-box">
-$ sudo chown user file.txt<br>
-$ sudo chown user:group file.txt<br>
-$ sudo chown -R user:group directory/
+$ sudo chown &lt;user-name&gt; file.txt<br>
+$ sudo chown &lt;user-name&gt;:&lt;group-name&gt; file.txt<br>
+$ sudo chown -R &lt;user-name&gt;:&lt;group-name&gt; directory/
             </div>
             <p>オプション：</p>
             <ul>

@@ -251,7 +251,7 @@ $ ps aux | awk '{print $2, $11}'  # PID とコマンド
         </svg>
     </div>
     
-    <h2>3.4 APT (Debian/Ubuntu)</h2>
+    <h2 id="package-placeholder-example">3.4 APT (Debian/Ubuntu)</h2>
     
     <div class="command-grid">
         <div class="command-card">
@@ -272,8 +272,8 @@ $ sudo apt install -y vim git curl
         <div class="command-card">
             <h3>パッケージ削除</h3>
             <div class="command-box">
-$ sudo apt remove package-name<br>
-$ sudo apt purge package-name  # 設定も削除<br>
+$ sudo apt remove &lt;package-name&gt;<br>
+$ sudo apt purge &lt;package-name&gt;  # 設定も削除<br>
 $ sudo apt autoremove  # 不要な依存削除
             </div>
             <p><code>purge</code> は設定ファイルも削除します。</p>
@@ -292,7 +292,7 @@ $ sudo apt full-upgrade  # 依存関係の変更（追加/削除）を許容
             <h3>パッケージ検索</h3>
             <div class="command-box">
 $ apt search keyword<br>
-$ apt show package-name  # 詳細情報<br>
+$ apt show &lt;package-name&gt;  # 詳細情報<br>
 $ apt list --installed  # インストール済み一覧
             </div>
             <p>必要なパッケージを探します。</p>
@@ -314,7 +314,7 @@ $ sudo dnf install postgresql  # Fedora/RHEL8+
         <div class="command-card">
             <h3>パッケージ削除</h3>
             <div class="command-box">
-$ sudo yum remove package-name<br>
+$ sudo yum remove &lt;package-name&gt;<br>
 $ sudo yum autoremove
             </div>
             <p>依存関係も考慮して削除します。</p>
@@ -344,7 +344,7 @@ $ sudo yum upgrade  # update と同義
         <ul>
             <li>大規模更新前はバックアップを取る</li>
             <li>本番環境では事前にテスト環境で確認</li>
-            <li><code>apt-mark hold package-name</code> で特定バージョン固定</li>
+            <li><code>apt-mark hold &lt;package-name&gt;</code> で特定バージョン固定</li>
             <li><code>dpkg -i</code> / <code>rpm -ivh</code> は依存解決をしないため、基本は <code>apt</code> / <code>dnf</code> / <code>yum</code> 経由でインストールする</li>
         </ul>
         
