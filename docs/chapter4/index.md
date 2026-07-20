@@ -299,12 +299,23 @@ $ traceroute 1.1.1.1  # 経路確認（環境により UDP / ICMP が遮断さ�
         <p>A: <code>top</code> コマンドで CPU / メモリ使用率の高いプロセスを確認します。</p>
         <div class="command-box">$ top  # qで終了</div>
         
-        <h3>Q: パッケージの依存関係エラー</h3>
-        <p>A: パッケージマネージャーの修復コマンドを実行します。</p>
+        <h3 id="dnf-recovery">Q: パッケージ管理で依存関係やトランザクションのエラーが出ました</h3>
+        <p>A: ディストリビューションと症状を特定し、パッケージを変更しない確認から始めます。Ubuntu/Debianでは<code>apt --fix-broken install</code>の実行内容を確認します。RHEL 8/9・Fedora等のDNF系では、次の順で切り分けます。</p>
         <div class="command-box">
-$ sudo apt --fix-broken install  # Ubuntu/Debian<br>
-$ sudo yum-complete-transaction  # CentOS/RHEL（必要なら yum-utils を導入）
+$ sudo apt --fix-broken install --simulate  # Ubuntu/Debian: 変更候補だけを確認<br>
+$ cat /etc/os-release  # distributionとversion<br>
+$ dnf --version  # DNF世代<br>
+$ dnf check  # インストール済みパッケージDBを検査（パッケージ変更なし）<br>
+$ dnf history list  # トランザクションの成功・中止を確認（パッケージ変更なし）<br>
+$ dnf history info &lt;transaction-id&gt;  # 対象の詳細（パッケージ変更なし）
         </div>
+        <ul>
+            <li><strong>インストール済みRPMの不整合：</strong><code>dnf check</code>の対象パッケージと問題種別を記録し、ベンダー手順または管理者判断へ渡します。</li>
+            <li><strong>中断したトランザクション：</strong><code>dnf history list</code>でIDと結果を確認します。<code>history undo</code>や<code>rollback</code>はパッケージの削除・downgradeを伴い、旧バージョンがなければ失敗するため、一般的な修復として実行しません。</li>
+            <li><strong>リポジトリメタデータ：</strong>リポジトリ設定・subscription・networkを確認後、<code>sudo dnf clean metadata</code>と<code>sudo dnf makecache</code>でメタデータcacheだけを再作成します。インストール済みパッケージは変更しません。</li>
+            <li><strong>リポジトリとのバージョン差：</strong><code>sudo dnf --assumeno distro-sync</code>で候補を事前確認します。パッケージ指定がなければ全インストール済みパッケージが対象で、実行時はupgradeまたはdowngradeが起こり得ます。期待するリポジトリ・パッケージ・保守時間・バックアップを確認できるまで承認しません。</li>
+        </ul>
+        <p>旧YUMの<code>yum-complete-transaction</code>は、電源断やクラッシュで中断した旧YUMトランザクションを再開する専用ツールです。依存関係エラー一般の解決策でも、RHEL 8/9のDNF基本導線でもありません。根拠と確認日は<a href="../appendix/#dnf-source-notes">付録のDNF/YUM Source Notes</a>を参照してください。</p>
     </div>
     
     <h2>4.6 まとめ</h2>

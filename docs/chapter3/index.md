@@ -231,11 +231,11 @@ $ ps aux | awk '{print $2, $11}'  # PID とコマンド
                 <rect x="0" y="0" width="350" height="280" fill="#ffebee" stroke="#f44336" stroke-width="2" rx="10"/>
                 <text x="175" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#c62828">Red Hat / CentOS 系</text>
                 
-                <!-- YUM/DNF -->
+                <!-- DNF/YUM compatibility -->
                 <rect x="20" y="50" width="310" height="100" fill="#f44336" rx="5"/>
-                <text x="175" y="75" text-anchor="middle" fill="white" font-size="16" font-weight="bold">YUM / DNF</text>
+                <text x="175" y="75" text-anchor="middle" fill="white" font-size="16" font-weight="bold">DNF / YUM互換</text>
                 <text x="175" y="100" text-anchor="middle" fill="white" font-size="12">高レベルパッケージ管理</text>
-                <text x="175" y="120" text-anchor="middle" fill="white" font-family="monospace" font-size="11">yum install, dnf update</text>
+                <text x="175" y="120" text-anchor="middle" fill="white" font-family="monospace" font-size="11">dnf install, dnf upgrade</text>
                 <text x="175" y="140" text-anchor="middle" fill="white" font-size="10">依存関係を自動解決</text>
                 
                 <!-- RPM -->
@@ -299,23 +299,27 @@ $ apt list --installed  # インストール済み一覧
         </div>
     </div>
     
-    <h2>3.5 YUM/DNF (RedHat/CentOS)</h2>
+    <h2 id="dnf-yum-generations">3.5 DNFとYUMの世代差（RHEL系/Fedora）</h2>
+
+    <div class="key-point">
+        <strong>この節の対象：</strong>RHEL 9はDNF、RHEL 8はDNF技術を使うYUM v4です。Fedora 41以降の<code>dnf</code>はDNF5を指します。本書は共通する<code>dnf</code>基本操作を使い、実行前に<code>cat /etc/os-release</code>と<code>dnf --version</code>で環境を確認します。
+    </div>
     
     <div class="command-grid">
         <div class="command-card">
             <h3>パッケージインストール</h3>
             <div class="command-box">
-$ sudo yum install httpd<br>
-$ sudo dnf install postgresql  # Fedora/RHEL8+
+$ sudo dnf install httpd<br>
+$ sudo dnf install postgresql
             </div>
-            <p>RHEL 系（RHEL / CentOS 互換）では、環境により <code>yum</code> / <code>dnf</code> を使い分けます。近年は <code>dnf</code> が主流ですが、<code>yum</code> が <code>dnf</code> の互換フロントエンドとして提供される場合もあります。</p>
+            <p>RHEL 8/9の<code>yum</code>はDNF系の互換入口です。新しい手順は<code>dnf</code>で記録し、旧YUM固有の手順と混在させません。</p>
         </div>
         
         <div class="command-card">
             <h3>パッケージ削除</h3>
             <div class="command-box">
-$ sudo yum remove &lt;package-name&gt;<br>
-$ sudo yum autoremove
+$ sudo dnf remove &lt;package-name&gt;<br>
+$ sudo dnf autoremove  # トランザクション内容を確認してから承認
             </div>
             <p>依存関係も考慮して削除します。</p>
         </div>
@@ -323,10 +327,11 @@ $ sudo yum autoremove
         <div class="command-card">
             <h3>システム更新</h3>
             <div class="command-box">
-$ sudo yum update<br>
-$ sudo yum upgrade  # update と同義
+$ dnf check-update  # DNF4の正式名（check-upgradeはalias）<br>
+$ dnf check-upgrade  # DNF5の正式名。環境に応じて上とどちらか一方を実行<br>
+$ sudo dnf upgrade
             </div>
-            <p>セキュリティアップデートを含みます。</p>
+            <p>更新候補がある場合、どちらの確認コマンドも終了ステータス100を返します。DNF4の<code>update</code>は<code>upgrade</code>の非推奨aliasで、<code>upgrade</code>が推奨です。旧YUM v3では<code>yum upgrade</code>は<code>yum update --obsoletes</code>相当なので、「常に同義」と扱いません。</p>
         </div>
     </div>
     
@@ -362,7 +367,7 @@ $ sudo yum upgrade  # update と同義
         <ul>
             <li><code>vi</code> は「モード」の切り替えが基本（まずは編集→保存→終了を押さえる）</li>
             <li>テキスト処理は <code>grep</code> とパイプを起点にすると理解しやすい</li>
-            <li>パッケージ管理は「更新（update）→インストール/アップグレード」の順を意識する</li>
+            <li>パッケージ管理は「環境と候補を確認→トランザクションを確認→upgrade」の順で進める</li>
         </ul>
     </div>
 
